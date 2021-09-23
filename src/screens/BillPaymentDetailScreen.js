@@ -13,6 +13,7 @@ const BillPaymentDetailScreen = () => {
 					<View style={styles.inputContainer}>
 							<Text>Category<Text>Utility</Text></Text>
 							<Text>Biller<Text>Ceylon Electricity Board</Text></Text>
+							<InputField text="Account Number"/>
 							<InputField text="Bill Amount"/>
 							<PrimaryButton onPress={btnClick} text="Proceed"/>
 					</View>
@@ -26,11 +27,11 @@ const styles = StyleSheet.create({
 				padding:10,
 		},
 		inputContainer:{
-				height:300,
+				height:'auto',
 				backgroundColor:'white',
-				padding:10,
+				padding:20,
 				alignItems:'center',
-				borderRadius:5,
+				borderRadius:10,
 		},
 })
 
