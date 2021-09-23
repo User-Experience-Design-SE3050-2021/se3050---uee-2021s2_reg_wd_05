@@ -9,21 +9,29 @@ const BillPaymentDetailScreen = () => {
 		}
 
 		return(
-				<View style={styles.container}>
-						<Text>Category<Text>Utility</Text></Text>
-						<Text>Biller<Text>Ceylon Electricity Board</Text></Text>
-						<InputField text="Bill Amount"/>
-						<PrimaryButton onPress={btnClick} text="Proceed"/>
-				</View>
+			<View style={styles.mainContainer}>
+					<View style={styles.inputContainer}>
+							<Text>Category<Text>Utility</Text></Text>
+							<Text>Biller<Text>Ceylon Electricity Board</Text></Text>
+							<InputField text="Bill Amount"/>
+							<PrimaryButton onPress={btnClick} text="Proceed"/>
+					</View>
+			</View>
+
 		)
 }
 
 const styles = StyleSheet.create({
-		container :{
-				flex:1,
-				alignItems:'center'
+		mainContainer:{
+				padding:10,
 		},
-
+		inputContainer:{
+				height:300,
+				backgroundColor:'white',
+				padding:10,
+				alignItems:'center',
+				borderRadius:5,
+		},
 })
 
 export default BillPaymentDetailScreen;
