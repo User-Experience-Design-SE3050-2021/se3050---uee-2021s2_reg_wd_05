@@ -9,31 +9,33 @@
 import React from 'react';
 import {
   ImageBackground,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
-  Text,
-  useColorScheme,
-  View,
 } from 'react-native';
 
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
-import BillPaymentScreen from "./src/screens/BillPaymentScreen";
+import BillPaymentDetailScreen from "./src/screens/BillPaymentDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
 
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: 'transparent',
+    },
+  };
+
   return (
     <ImageBackground
       source={require('./src/styles/UEE_Background.jpg')}
       style={{width: '100%', height: '100%'}}>
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
-          <Stack.Screen name="BillPaymentScreen" component={BillPaymentScreen} />
+          <Stack.Screen name="BillPaymentScreen" component={BillPaymentDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ImageBackground>
