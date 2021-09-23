@@ -1,10 +1,13 @@
-import React from "react";
-import {View, StyleSheet, TextInput, Dimensions, Text} from "react-native";
+import React, {useState} from "react";
+import {View, StyleSheet, TextInput, Text} from "react-native";
 import {InputField, PrimaryButton} from "../components";
 
-const { width } = Dimensions.get('window');
+// const { width } = Dimensions.get('window');
 
 const EnterCardDetailScreen = () => {
+
+    const [isSelected, setSelection] = useState(false);
+
 
     const btnClick = () => {
         console.log('Proceed button clicked');
@@ -35,7 +38,14 @@ const EnterCardDetailScreen = () => {
                     keyboardType="default"
                 />
 
-                <Text style={styles.checkBoxText}>Make this Card as Primary Card</Text>
+                <View style={styles.checkboxContainer}>
+                    {/*<CheckBox*/}
+                    {/*    value={isSelected}*/}
+                    {/*    onValueChange={setSelection}*/}
+                    {/*    style={styles.checkbox}*/}
+                    {/*/>*/}
+                    <Text style={styles.checkBoxText}>Make this Card as Primary Card</Text>
+                </View>
 
                 <PrimaryButton onPress={btnClick} text="Proceed"/>
             </View>
@@ -82,12 +92,19 @@ const styles = StyleSheet.create({
         marginRight:'auto',
     },
     checkBoxText:{
-        fontSize:18,
+        fontSize:15,
         paddingTop: 10,
-        paddingBottom: 15,
-        paddingLeft:15,
+        paddingBottom: 10,
+        // paddingLeft:'auto',
         marginRight:'auto',
-    }
+    },
+    checkboxContainer: {
+        flexDirection: "row",
+        marginBottom: 20,
+    },
+    checkbox: {
+        alignSelf: "center",
+    },
 })
 
 export default EnterCardDetailScreen;
