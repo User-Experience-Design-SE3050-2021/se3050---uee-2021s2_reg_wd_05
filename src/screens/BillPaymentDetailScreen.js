@@ -2,7 +2,7 @@ import React from "react";
 import {View,Text, StyleSheet} from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 
-const BillPaymentScreen = () => {
+const BillPaymentDetailScreen = () => {
 
 		const btnClick = () => {
 				console.log('button clicked');
@@ -24,4 +24,4 @@ const styles = StyleSheet.create({
 		}
 })
 
-export default BillPaymentScreen;
+export default BillPaymentDetailScreen;
