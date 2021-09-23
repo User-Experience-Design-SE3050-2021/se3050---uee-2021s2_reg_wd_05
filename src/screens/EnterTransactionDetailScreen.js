@@ -12,9 +12,9 @@ const EnterTransactionDetailScreen = () => {
         <View style={styles.container}>
             <InputField text="From Account" />
             <InputField text="Account No" />
-            {/*<InputField text="Account Holder Name" />*/}
-            {/*<InputField text="Amount" />*/}
-            {/*<InputField text="Description" />*/}
+            <InputField text="Account Holder Name" />
+            <InputField text="Amount" />
+            <InputField text="Description" />
             <PrimaryButton onPress={btnClick} text="Proceed"/>
         </View>
     )
