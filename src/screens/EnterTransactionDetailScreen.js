@@ -9,22 +9,29 @@ const EnterTransactionDetailScreen = () => {
     }
 
     return(
-        <View style={styles.container}>
-            <InputField text="From Account" />
-            <InputField text="Account No" />
-            <InputField text="Account Holder Name" />
-            <InputField text="Amount" />
-            <InputField text="Description" />
-            <PrimaryButton onPress={btnClick} text="Proceed"/>
+        <View style={styles.mainContainer}>
+            <View style={styles.inputContainer}>
+                <InputField text="From Account" />
+                <InputField text="Account No" />
+                <InputField text="Account Holder Name" />
+                <InputField text="Amount" />
+                <InputField text="Description" />
+                <PrimaryButton onPress={btnClick} text="Proceed"/>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container :{
-        flex:1,
+    mainContainer:{
+        padding:10,
+    },
+    inputContainer:{
+        height:'auto',
+        backgroundColor:'white',
+        padding:10,
         alignItems:'center',
-        justifyContent:'center'
+        borderRadius:5,
     },
     input: {
         height: 40,
