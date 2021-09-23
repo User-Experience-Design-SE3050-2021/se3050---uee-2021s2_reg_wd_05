@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, TextInput} from "react-native";
+import {View, StyleSheet} from "react-native";
 import {InputField, PrimaryButton} from "../components";
 
 const AddCardScreen = () => {
