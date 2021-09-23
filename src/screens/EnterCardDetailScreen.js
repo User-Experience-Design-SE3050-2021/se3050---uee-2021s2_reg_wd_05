@@ -2,7 +2,7 @@ import React from "react";
 import {View, StyleSheet} from "react-native";
 import {InputField, PrimaryButton} from "../components";
 
-const EnterCardDetails = () => {
+const EnterCardDetailScreen = () => {
 
     const btnClick = () => {
         console.log('Proceed button clicked');
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default EnterCardDetails;
+export default EnterCardDetailScreen;
