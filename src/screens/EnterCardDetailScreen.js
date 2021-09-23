@@ -9,21 +9,28 @@ const EnterCardDetailScreen = () => {
     }
 
     return(
-        <View style={styles.container}>
-            <InputField text="Card Holder Name" />
-            <InputField text="Card Number" />
-            <InputField text="Expired Date" />
-            <InputField />
-            <PrimaryButton onPress={btnClick} text="Proceed"/>
+        <View style={styles.mainContainer}>
+            <View style={styles.inputContainer}>
+                <InputField text="Card Holder Name" />
+                <InputField text="Card Number" />
+                <InputField text="Expired Date" />
+                <InputField />
+                <PrimaryButton onPress={btnClick} text="Proceed"/>
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container :{
-        flex:1,
+    mainContainer:{
+        padding:10,
+    },
+    inputContainer:{
+        height:'auto',
+        backgroundColor:'white',
+        padding:10,
         alignItems:'center',
-        justifyContent:'center'
+        borderRadius:5,
     },
     input: {
         height: 40,
