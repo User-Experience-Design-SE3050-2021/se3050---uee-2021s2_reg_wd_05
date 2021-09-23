@@ -1,17 +1,20 @@
 import React from "react";
 import {View, Text, StyleSheet, TextInput} from "react-native";
+import {InputField, PrimaryButton} from "../components";
 
 const AddCardScreen = () => {
-    const [text, onChangeText] = React.useState("");
+
+    const btnClick = () => {
+        console.log('Proceed button clicked');
+    }
 
     return(
         <View style={styles.container}>
-            <Text>Add Card Screen</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
-            />
+            <InputField text="Card Holder Name" />
+            <InputField text="Card Number" />
+            <InputField text="Expired Date" />
+            <InputField />
+            <PrimaryButton onPress={btnClick} text="Proceed"/>
         </View>
     )
 }
