@@ -3,7 +3,7 @@ import {TextInput, StyleSheet, Dimensions, View,Text} from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-const InputField = ({text}) =>{
+const InputField = ({text, width}) =>{
 		return(
 			<View>
 					<Text style={styles.text}>{text}</Text>
@@ -17,8 +17,8 @@ const InputField = ({text}) =>{
 
 const styles = StyleSheet.create({
 		input: {
-				width: width / 1.1,
-				height: 50,
+				width: width / 1.15,
+				height: 45,
 				margin: 12,
 				borderWidth: 1,
 				borderRadius:5,

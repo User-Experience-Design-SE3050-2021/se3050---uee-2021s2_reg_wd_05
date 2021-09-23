@@ -13,7 +13,7 @@ const PrimaryButton = ({ onPress, text }) =>{
 
 const styles = StyleSheet.create({
 		container:{
-				width: width / 1.2,
+				width: width / 1.15,
 				height:50,
 				padding:10,
 				justifyContent:'center',
