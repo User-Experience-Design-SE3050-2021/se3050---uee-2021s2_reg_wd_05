@@ -1,6 +1,6 @@
 import React from "react";
-import {View,Text, StyleSheet} from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
+import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
+import { PrimaryButton, InputField } from "../components";
 
 const BillPaymentDetailScreen = () => {
 
@@ -10,7 +10,9 @@ const BillPaymentDetailScreen = () => {
 
 		return(
 				<View style={styles.container}>
-						<Text>Bill Payment Screen</Text>
+						<Text>Category<Text>Utility</Text></Text>
+						<Text>Biller<Text>Ceylon Electricity Board</Text></Text>
+						<InputField text="Bill Amount"/>
 						<PrimaryButton onPress={btnClick} text="Proceed"/>
 				</View>
 		)
@@ -19,9 +21,9 @@ const BillPaymentDetailScreen = () => {
 const styles = StyleSheet.create({
 		container :{
 				flex:1,
-				alignItems:'center',
-				justifyContent:'center'
-		}
+				alignItems:'center'
+		},
+
 })
 
 export default BillPaymentDetailScreen;
