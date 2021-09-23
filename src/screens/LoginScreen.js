@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
 import { PrimaryButton, InputField } from "../components";
+import {Image} from "react-native-animatable";
 
 const LoginScreen = () => {
 
@@ -12,13 +13,15 @@ const LoginScreen = () => {
         <View style={styles.mainContainer}>
                 <View style={styles.container}>
                     <Text style={styles.heading}>Login</Text>
+                    {/*<Image source={require('../styles/UEE_Background.jpg')} />*/}
                         <InputField text="Email"/>
                         <InputField text="Password"/>
                     <Text style={styles.forgotpassword}>Forgot Password?</Text>
                     <Text style={styles.termsandcondition}>I Accept The <Text style={styles.termsandcondition}>Terms And Condition</Text> </Text>
                         <PrimaryButton onPress={btnClick} text="Login"/>
-                    <Text style={styles.contact}>Forgot User ID?<Text style={styles.contact}>Please Contact 0114569875</Text></Text>
-                    <Text style={styles.contact}>Don't Have an Account?<Text style={styles.Signup}>Signup</Text></Text>
+                    <Text style={styles.contact}>Forgot User ID?Please Contact </Text>
+                    <Text style={styles.contact}>0117569835</Text>
+                    <Text style={styles.daccount}>Don't Have an Account?<Text style={styles.Signup}>Signup</Text></Text>
                 </View>
         </View>
     )
@@ -42,18 +45,28 @@ const styles = StyleSheet.create({
     forgotpassword: {
         color: '#0000FF',
         fontSize: 17,
+        padding: 2,
+        margin: 3,
+        paddingLeft:160
     },
     termsandcondition: {
         fontSize: 17,
+        padding: 2,
+        margin: 3,
     },
     contact: {
         fontSize: 17,
-        paddingLeft:'auto',
+        padding: 2,
+        margin: 3,
+        // paddingRight:120,
     },
     Signup: {
         color: '#0000FF',
         fontSize: 17,
-    }
+    },
+    daccount: {
+        fontSize: 17,
+    },
 
 })
 
