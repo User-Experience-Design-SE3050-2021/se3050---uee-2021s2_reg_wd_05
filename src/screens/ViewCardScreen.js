@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet, ImageBackground} from "react-native";
+import {View, StyleSheet, ImageBackground, Image} from "react-native";
 
 // const { width } = Dimensions.get('window');
 
@@ -21,6 +21,10 @@ const ViewCardScreen = () => {
                 {/*<InputField text="Expired Date" />*/}
 
             </View>
+
+            <Image source={require('../styles/Add_Button.png')}
+                   style={{width: 50, height: 50}} />
+
         </View>
     )
 }
