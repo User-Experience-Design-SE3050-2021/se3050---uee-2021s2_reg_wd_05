@@ -1,6 +1,5 @@
 import React from "react";
-import {View, StyleSheet} from "react-native";
-import {InputField} from "../components";
+import {View, StyleSheet, ImageBackground} from "react-native";
 
 // const { width } = Dimensions.get('window');
 
@@ -11,8 +10,14 @@ const ViewCardScreen = () => {
         <View style={styles.mainContainer}>
             <View style={styles.inputContainer}>
 
-                <InputField text="Card Holder Name" />
-                <InputField text="Card Number" />
+                <ImageBackground
+                    source={require('../styles/Visa_Card.jpg')}
+                    style={styles.cards}>
+
+                {/*<InputField text="Card Holder Name" />*/}
+
+                </ImageBackground>
+                {/*<InputField text="Card Number" />*/}
                 {/*<InputField text="Expired Date" />*/}
 
             </View>
@@ -30,6 +35,10 @@ const styles = StyleSheet.create({
         padding:10,
         alignItems:'center',
         borderRadius:10,
+    },
+    cards:{
+        width: 380,
+        height: 200,
     },
 })
 
