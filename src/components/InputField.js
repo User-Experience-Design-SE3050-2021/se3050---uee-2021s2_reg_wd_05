@@ -1,10 +1,10 @@
 import React from 'react';
-import {TextInput, StyleSheet, Dimensions, View,Text} from 'react-native';
+import {TextInput, StyleSheet, Dimensions, View, Text} from 'react-native';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
-const InputField = ({text, width}) =>{
-		return(
+const InputField = ({text, width}) => {
+		return (
 			<View>
 					<Text style={styles.text}>{text}</Text>
 					<TextInput
@@ -21,15 +21,15 @@ const styles = StyleSheet.create({
 				height: 45,
 				margin: 12,
 				borderWidth: 1,
-				borderRadius:5,
+				borderRadius: 5,
 				padding: 10,
-				backgroundColor:'white',
+				backgroundColor: 'white',
 		},
-		text:{
-				fontSize:18,
+		text: {
+				fontSize: 18,
 				paddingTop: 10,
-				paddingLeft:15,
+				paddingLeft: 15,
 		}
 })
 
-export { InputField }
+export {InputField}

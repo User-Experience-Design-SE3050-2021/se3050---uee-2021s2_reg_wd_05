@@ -18,6 +18,10 @@ import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import BillPaymentDetailScreen from "./src/screens/BillPaymentDetailScreen";
 import EnterCardDetailScreen from "./src/screens/EnterCardDetailScreen";
 import EnterTransactionDetailScreen from "./src/screens/EnterTransactionDetailScreen";
+import MakePaymentScreen from "./src/screens/MakePaymentScreen";
+import LoginScreen from "./src/screens/LoginScreen";
+import SignupScreen from "./src/screens/SignupScreen";
+import ViewCardScreen from "./src/screens/ViewCardScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,8 +41,12 @@ const App = () => {
       style={{width: '100%', height: '100%'}}>
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
-          <Stack.Screen name="BillPaymentScreen" component={BillPaymentDetailScreen} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="SignUpScreen" component={SignupScreen} />
+          <Stack.Screen name="MakePaymentScreen" component={MakePaymentScreen} />
+          <Stack.Screen name="BillPaymentDetailScreen" component={BillPaymentDetailScreen} />
           <Stack.Screen name="Enter Card Details" component={EnterCardDetailScreen} />
+          <Stack.Screen name="View Card" component={ViewCardScreen} />
           <Stack.Screen name="Transaction" component={EnterTransactionDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>

@@ -1,8 +1,8 @@
 import React from "react";
-import {View, Text, StyleSheet, Dimensions} from "react-native";
+import {View, Text, StyleSheet, TextInput, Dimensions} from "react-native";
 import {PrimaryButton, InputField} from "../components";
 
-const BillPaymentDetailScreen = () => {
+const MakePaymentScreen = () => {
 
 		const btnClick = () => {
 				console.log('button clicked');
@@ -19,10 +19,29 @@ const BillPaymentDetailScreen = () => {
 									<Text style={styles.text}>Biller </Text>
 									<Text style={styles.rightText}>Ceylon Electricity Board</Text>
 							</View>
-							<InputField text="Account Number"/>
-							<InputField text="Bill Amount"/>
+							<View style={styles.textContainer}>
+									<Text style={styles.text}>Account No </Text>
+									<Text style={styles.rightText}>80749-5484</Text>
+							</View>
+							<View style={styles.textContainer}>
+									<Text style={styles.text}>Amount </Text>
+									<Text style={styles.rightText}>1520.00</Text>
+							</View>
+							<View style={styles.textContainer}>
+									<Text style={styles.text}>Card holder name</Text>
+									<Text style={styles.rightText}>Mr.Nuwan</Text>
+							</View>
+							<View style={styles.textContainer}>
+									<Text style={styles.text}>Card Number </Text>
+									<Text style={styles.rightText}>XXXX-XXXX-8345</Text>
+							</View>
+							<View style={styles.textContainer}>
+									<Text style={styles.text}>Ex Date</Text>
+									<Text style={styles.rightText}>15-22</Text>
+							</View>
+							<InputField text="CVV"/>
 							<View style={styles.buttonContainer}>
-									<PrimaryButton onPress={btnClick} text="Proceed"/>
+									<PrimaryButton onPress={btnClick} text="Make Payment"/>
 							</View>
 					</View>
 			</View>
@@ -60,4 +79,4 @@ const styles = StyleSheet.create({
 		}
 })
 
-export default BillPaymentDetailScreen;
+export default MakePaymentScreen;
