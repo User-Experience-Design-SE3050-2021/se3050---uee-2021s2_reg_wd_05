@@ -16,10 +16,8 @@ import {
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import BillPaymentDetailScreen from "./src/screens/BillPaymentDetailScreen";
-import AddCardScreen from "./src/screens/AddCardScreen";
-import SignupScreen from "./src/screens/SignupScreen";
-import LoginScreen from "./src/screens/LoginScreen";
-import ChangePinScreen from "./src/screens/ChangePinScreen";
+import EnterCardDetailScreen from "./src/screens/EnterCardDetailScreen";
+import EnterTransactionDetailScreen from "./src/screens/EnterTransactionDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,11 +37,9 @@ const App = () => {
       style={{width: '100%', height: '100%'}}>
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
-          {/*<Stack.Screen name="ChangePinScreen" component={ChangePinScreen} />*/}
-          {/*<Stack.Screen name="SignupScreen" component={SignupScreen} />*/}
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="BillPaymentScreen" component={BillPaymentDetailScreen} />
-          <Stack.Screen name="AddCardScreen" component={AddCardScreen} />
+          <Stack.Screen name="Enter Card Details" component={EnterCardDetailScreen} />
+          <Stack.Screen name="Transaction" component={EnterTransactionDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ImageBackground>
