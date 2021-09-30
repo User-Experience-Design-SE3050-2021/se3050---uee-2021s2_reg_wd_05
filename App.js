@@ -22,6 +22,15 @@ import MakePaymentScreen from "./src/screens/MakePaymentScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import SignupScreen from "./src/screens/SignupScreen";
 import ViewCardScreen from "./src/screens/ViewCardScreen";
+import AddComplaintScreen from "./src/screens/AddComplaintScreen";
+import ChangePinScreen from "./src/screens/ChangePinScreen";
+import CustomerProfileScreen from "./src/screens/CustomerProfileScreen";
+import ForgotPinScreen from "./src/screens/ForgotPinScreen";
+import SettingsScreen from "./src/screens/SettingsScreen";
+import ViewComplaintsScreen from "./src/screens/ViewComplaintsScreen";
+import ComplaintsHistoryScreen from "./src/screens/ComplaintsHistoryScreen";
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -41,13 +50,20 @@ const App = () => {
       style={{width: '100%', height: '100%'}}>
       <NavigationContainer theme={MyTheme}>
         <Stack.Navigator>
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
-          <Stack.Screen name="SignUpScreen" component={SignupScreen} />
-          <Stack.Screen name="MakePaymentScreen" component={MakePaymentScreen} />
-          <Stack.Screen name="BillPaymentDetailScreen" component={BillPaymentDetailScreen} />
-          <Stack.Screen name="Enter Card Details" component={EnterCardDetailScreen} />
-          <Stack.Screen name="View Card" component={ViewCardScreen} />
-          <Stack.Screen name="Transaction" component={EnterTransactionDetailScreen} />
+          {/*<Stack.Screen name="LoginScreen" component={LoginScreen} />*/}
+          {/*<Stack.Screen name="SignUpScreen" component={SignupScreen} />*/}
+          {/*<Stack.Screen name="MakePaymentScreen" component={MakePaymentScreen} />*/}
+          {/*<Stack.Screen name="BillPaymentDetailScreen" component={BillPaymentDetailScreen} />*/}
+          {/*<Stack.Screen name="Enter Card Details" component={EnterCardDetailScreen} />*/}
+          {/*<Stack.Screen name="View Card" component={ViewCardScreen} />*/}
+          {/*<Stack.Screen name="Transaction" component={EnterTransactionDetailScreen} />*/}
+          {/*<Stack.Screen name="Add Complaint Screen" component={AddComplaintScreen} />*/}
+          {/*<Stack.Screen name="View Complaints Screen" component={ViewComplaintsScreen} />*/}
+          {/*<Stack.Screen name="Change PIN Screen" component={ChangePinScreen} />*/}
+          {/*<Stack.Screen name="Customer Profile Screen" component={CustomerProfileScreen} />*/}
+          {/*<Stack.Screen name="Forgot PIN Screen" component={ForgotPinScreen} />*/}
+          {/*<Stack.Screen name="Settings Screen" component={SettingsScreen} />*/}
+          <Stack.Screen name="Complaints History Screen" component={ComplaintsHistoryScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ImageBackground>
