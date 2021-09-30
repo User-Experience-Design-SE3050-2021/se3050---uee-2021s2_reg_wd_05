@@ -1,10 +1,13 @@
 import React from "react";
-import {View, StyleSheet, ImageBackground, Image} from "react-native";
+import {View, StyleSheet, ImageBackground, Image, Dimensions} from "react-native";
 
-// const { width } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const ViewCardScreen = () => {
 
+    const btnClick = () => {
+        console.log('Proceed button clicked');
+    }
 
     return(
         <View style={styles.mainContainer}>
@@ -22,8 +25,10 @@ const ViewCardScreen = () => {
 
             </View>
 
-            <Image source={require('../styles/Add_Button.png')}
-                   style={{width: 50, height: 50}} />
+            <View style={styles.addButtonContainer}>
+                <Image source={require('../styles/Add_Button.png')}
+                   style={{ width: 50, height: 50,}} onPress={btnClick} />
+            </View>
 
         </View>
     )
@@ -44,6 +49,10 @@ const styles = StyleSheet.create({
         width: 380,
         height: 200,
     },
+    addButtonContainer:{
+        paddingTop: 300,
+        marginLeft: width / 1.25,
+    }
 })
 
 export default ViewCardScreen;
