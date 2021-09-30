@@ -5,6 +5,9 @@ const { width } = Dimensions.get('window');
 
 const ViewCardScreen = () => {
 
+    const btnClick = () => {
+        console.log('Proceed button clicked');
+    }
 
     return(
         <View style={styles.mainContainer}>
@@ -24,7 +27,7 @@ const ViewCardScreen = () => {
 
             <View style={styles.addButtonContainer}>
                 <Image source={require('../styles/Add_Button.png')}
-                   style={{ width: 50, height: 50,}} />
+                   style={{ width: 50, height: 50,}} onPress={btnClick} />
             </View>
 
         </View>
