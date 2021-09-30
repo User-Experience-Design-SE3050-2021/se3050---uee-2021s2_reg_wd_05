@@ -1,6 +1,7 @@
 import React from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
 import { PrimaryButton, InputField } from "../components";
+import {Image} from "react-native-animatable";
 
 const LoginScreen = () => {
 
@@ -11,14 +12,18 @@ const LoginScreen = () => {
     return(
         <View style={styles.mainContainer}>
                 <View style={styles.container}>
-                    <Text style={styles.heading}>Login</Text>
+                    <Image source={require('../styles/logo.png')}
+                           style={{width: 100, height: 100}} />
+                    {/*<Text style={styles.heading}>Login</Text>*/}
+                    {/*<Image source={require('../styles/UEE_Background.jpg')} />*/}
                         <InputField text="Email"/>
                         <InputField text="Password"/>
-                    <Text style={styles.forgotPassword}>Forgot Password?</Text>
-                    <Text style={styles.termsAndCondition}>I Accept The <Text style={styles.termsAndCondition}>Terms And Condition</Text> </Text>
+                    <Text style={styles.forgotpassword}>Forgot Password?</Text>
+                    <Text style={styles.termsandcondition}>I Accept The <Text style={styles.termsandcondition}>Terms And Condition</Text> </Text>
                         <PrimaryButton onPress={btnClick} text="Login"/>
-                    <Text style={styles.contact}>Forgot User ID?<Text style={styles.contact}>Please Contact 0114569875</Text></Text>
-                    <Text style={styles.contact}>Don't Have an Account?<Text style={styles.Signup}>Signup</Text></Text>
+                    <Text style={styles.contact}>Forgot User ID?Please Contact </Text>
+                    <Text style={styles.contact}>0117569835</Text>
+                    <Text style={styles.daccount}>Don't Have an Account?<Text style={styles.Signup}>Signup</Text></Text>
                 </View>
         </View>
     )
@@ -32,19 +37,21 @@ const styles = StyleSheet.create({
         alignItems:'center',
         height:'auto',
         backgroundColor:'white',
-        padding:40,
-        borderRadius:5
+        padding:20,
+        borderRadius:4
+
     },
     heading: {
         fontSize: 17,
     },
-    forgotPassword: {
+    forgotpassword: {
         color: '#0000FF',
         fontSize: 17,
         padding: 2,
         margin: 3,
+        paddingLeft:160
     },
-    termsAndCondition: {
+    termsandcondition: {
         fontSize: 17,
         padding: 2,
         margin: 3,
@@ -63,7 +70,7 @@ const styles = StyleSheet.create({
         fontSize: 17,
     },
 
-})
 
+})
 
 export default LoginScreen;

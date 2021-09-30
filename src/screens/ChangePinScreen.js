@@ -2,7 +2,7 @@ import React from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
 import { PrimaryButton, InputField } from "../components";
 
-const SignupScreen = () => {
+const ChangePinScreen = () => {
 
     const btnClick = () => {
         console.log('button clicked');
@@ -11,12 +11,9 @@ const SignupScreen = () => {
     return(
         <View style={styles.mainContainer}>
             <View style={styles.container}>
-                    <Text>Register</Text>
-                    <InputField text="User ID"/>
-                    <InputField text="PIN"/>
-                    <InputField text="Confirm PIN"/>
-                    <InputField text="Email ID"/>
-                {/*<InputField text="Email ID"/>*/}
+                <InputField text="Old PIN"/>
+                <InputField text="New PIN"/>
+                <InputField text="Confirm PIN"/>
 
                 <PrimaryButton onPress={btnClick} text="Submit"/>
             </View>
@@ -32,10 +29,11 @@ const styles = StyleSheet.create({
         alignItems:'center',
         height:'auto',
         backgroundColor:'white',
-        padding:18,
+        padding:30,
         borderRadius:5
+
     },
 
 })
 
-export default SignupScreen;
+export default ChangePinScreen;
