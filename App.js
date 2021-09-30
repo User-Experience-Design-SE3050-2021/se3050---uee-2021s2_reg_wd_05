@@ -22,6 +22,7 @@ import MakePaymentScreen from "./src/screens/MakePaymentScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import SignupScreen from "./src/screens/SignupScreen";
 import ViewCardScreen from "./src/screens/ViewCardScreen";
+import TransactionHistoryScreen from "./src/screens/TransactionHistoryScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,7 @@ const App = () => {
           <Stack.Screen name="Enter Card Details" component={EnterCardDetailScreen} />
           <Stack.Screen name="View Card" component={ViewCardScreen} />
           <Stack.Screen name="Transaction" component={EnterTransactionDetailScreen} />
+          <Stack.Screen name="Transaction History" component={TransactionHistoryScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ImageBackground>
