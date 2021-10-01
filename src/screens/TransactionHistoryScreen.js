@@ -1,8 +1,9 @@
 import React from "react";
-import {View, Text, StyleSheet, Dimensions} from "react-native";
-import {PrimaryButton, InputField} from "../components";
+import {View, Text, StyleSheet} from "react-native";
+import {PrimaryButton} from "../components";
+import NavigationBar from "./NavigationBar";
 
-const TransactionHistoryScreen = () => {
+const TransactionHistoryScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('button clicked');
@@ -28,6 +29,9 @@ const TransactionHistoryScreen = () => {
                     </View>
                 </View>
 
+            </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
             </View>
         </View>
 
@@ -66,6 +70,10 @@ const styles = StyleSheet.create({
         padding: 10,
         textAlign: 'right',
         alignSelf:'stretch'
+    },
+    bottomContainer: {
+        paddingTop:40,
+        alignItems: 'center'
     }
 })
 

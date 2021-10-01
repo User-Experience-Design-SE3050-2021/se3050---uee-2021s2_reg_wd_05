@@ -1,8 +1,9 @@
 import React from "react";
 import {View, StyleSheet} from "react-native";
 import {InputField, PrimaryButton} from "../components";
+import NavigationBar from "./NavigationBar";
 
-const EnterTransactionDetailScreen = () => {
+const EnterTransactionDetailScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('Proceed button clicked');
@@ -17,6 +18,9 @@ const EnterTransactionDetailScreen = () => {
                 <InputField text="Amount" />
                 <InputField text="Description" />
                 <PrimaryButton onPress={btnClick} text="Proceed"/>
+            </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
             </View>
         </View>
     )
@@ -33,6 +37,10 @@ const styles = StyleSheet.create({
         alignItems:'center',
         borderRadius:10,
     },
+    bottomContainer: {
+        paddingTop:40,
+        alignItems: 'center'
+    }
 })
 
 export default EnterTransactionDetailScreen;

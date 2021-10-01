@@ -1,9 +1,10 @@
 import React from "react";
-import {View, StyleSheet, ImageBackground, Image, Dimensions} from "react-native";
+import {View, StyleSheet, ImageBackground, Image, Dimensions, TouchableOpacity} from "react-native";
+import NavigationBar from "./NavigationBar";
 
 const { width } = Dimensions.get('window');
 
-const ViewCardScreen = () => {
+const ViewCardScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('Proceed button clicked');
@@ -11,23 +12,24 @@ const ViewCardScreen = () => {
 
     return(
         <View style={styles.mainContainer}>
-            <View style={styles.inputContainer}>
 
+            <View style={styles.inputContainer}>
                 <ImageBackground
                     source={require('../styles/Visa_Card.jpg')}
                     style={styles.cards}>
-
                 {/*<InputField text="Card Holder Name" />*/}
-
                 </ImageBackground>
-                {/*<InputField text="Card Number" />*/}
-                {/*<InputField text="Expired Date" />*/}
-
             </View>
 
             <View style={styles.addButtonContainer}>
-                <Image source={require('../styles/Add_Button.png')}
-                   style={{ width: 50, height: 50,}} onPress={btnClick} />
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('EnterCardDetails')}>
+                    <Image source={require('../styles/Add_Button.png')}
+                       style={{ width: 50, height: 50,}} onPress={btnClick} />
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
             </View>
 
         </View>
@@ -52,6 +54,10 @@ const styles = StyleSheet.create({
     addButtonContainer:{
         paddingTop: 300,
         marginLeft: width / 1.25,
+    },
+    bottomContainer: {
+        paddingTop:40,
+        alignItems: 'center'
     }
 })
 
