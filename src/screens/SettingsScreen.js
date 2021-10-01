@@ -1,33 +1,39 @@
 import React from "react";
 import {View, Text, StyleSheet} from "react-native";
-import { PrimaryButton, InputField } from "../components";
-import {Image} from "react-native-animatable";
 
 
+const SettingsScreen = ({navigation}) => {
 
-
-const SettingsScreen = () => {
-
-    const btnClick = () => {
-        console.log('button clicked');
+    const historyClick = () => {
+        console.log('history clicked');
+        navigation.navigate('TransactionHistory')
     }
+    const changePinClick = () => {
+        console.log('ChangePINScreen clicked');
+        navigation.navigate('ChangePINScreen')
+    }
+    const profileClick = () => {
+        console.log('button clicked');
+        navigation.navigate('CustomerProfileScreen')
+    }
+
 
     return(
         <View style={styles.mainContainer}>
             <View style={styles.inputContainer}>
                 <View style={styles.textContainer}>
                     <Text style={styles.rightText}>[ ]</Text>
-                    <Text style={styles.text}>Transaction History</Text>
+                    <Text style={styles.text} onPress={historyClick} >Transaction History</Text>
                     <Text style={styles.rightText}> > </Text>
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.rightText}>[ ]</Text>
-                    <Text style={styles.text}>Change PIN</Text>
+                    <Text style={styles.text} onPress={changePinClick}>Change PIN</Text>
                     <Text style={styles.rightText}> > </Text>
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.rightText}>[ ]</Text>
-                    <Text style={styles.text}>Customer Profile</Text>
+                    <Text style={styles.text} onPress={profileClick}>Customer Profile</Text>
                     <Text style={styles.rightText}>  > </Text>
                 </View>
                 <View style={styles.textContainer}>
