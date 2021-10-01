@@ -1,10 +1,10 @@
 import React from "react";
-import {View, Text, StyleSheet, Image, TouchableOpacity} from "react-native";
+import {View, Text, StyleSheet, Image} from "react-native";
 import { PrimaryButton, InputField } from "../components";
 
 const LoginScreen = ({navigation}) => {
 
-    const btnClick = () => {
+    const loginClick = () => {
         console.log('button clicked');
         navigation.navigate('MakePaymentScreen')
     }
@@ -27,12 +27,12 @@ const LoginScreen = ({navigation}) => {
                     {/*<Image source={require('../styles/UEE_Background.jpg')} />*/}
                         <InputField text="Email"/>
                         <InputField text="Password"/>
-                    <Text style={styles.forgotpassword} onPress={ForgotClick} >Forgot Password?</Text>
-                    <Text style={styles.termsandcondition}>I Accept The <Text style={styles.termsandcondition}>Terms And Condition</Text> </Text>
-                        <PrimaryButton onPress={btnClick} text="Login"/>
+                    <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot Password? </Text>
+                    <Text style={styles.termsCondition}>I Accept The <Text style={styles.termsCondition}>Terms And Condition</Text> </Text>
+                        <PrimaryButton onPress={loginClick} text="Login"/>
                     <Text style={styles.contact}>Forgot User ID?Please Contact </Text>
                     <Text style={styles.contact}>0117569835</Text>
-                    <Text style={styles.daccount}>Don't Have an Account?
+                    <Text style={styles.dAccount}>Don't Have an Account?
                             <Text style={styles.Signup} onPress={SignupClick}>Signup</Text>
                     </Text>
                 </View>
@@ -55,14 +55,14 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 17,
     },
-    forgotpassword: {
+    forgotPassword: {
         color: '#0000FF',
         fontSize: 17,
         padding: 2,
         margin: 3,
         paddingLeft:160
     },
-    termsandcondition: {
+    termsCondition: {
         fontSize: 17,
         padding: 2,
         margin: 3,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         color: '#0000FF',
         fontSize: 17,
     },
-    daccount: {
+    dAccount: {
         fontSize: 17,
     },
 
