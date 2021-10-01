@@ -1,7 +1,6 @@
 import React from "react";
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet,Image} from "react-native";
 import { PrimaryButton, InputField } from "../components";
-import {Image} from "react-native-animatable";
 
 
 
