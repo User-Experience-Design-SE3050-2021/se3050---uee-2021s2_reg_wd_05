@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         height: 200,
     },
     addButtonContainer:{
-        paddingTop: 300,
+        paddingTop: 225,
         marginLeft: width / 1.25,
     },
     bottomContainer: {
