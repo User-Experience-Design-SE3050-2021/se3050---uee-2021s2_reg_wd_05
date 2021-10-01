@@ -1,11 +1,21 @@
 import React from "react";
-import {View, Text, StyleSheet, Image} from "react-native";
+import {View, Text, StyleSheet, Image, TouchableOpacity} from "react-native";
 import { PrimaryButton, InputField } from "../components";
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('button clicked');
+        navigation.navigate('MakePaymentScreen')
+    }
+    const SignupClick = () => {
+        console.log('SignUpScreen clicked');
+        navigation.navigate('SignUpScreen')
+    }
+
+    const ForgotClick = () => {
+        console.log('ForgotPINScreen clicked');
+        navigation.navigate('ForgotPINScreen')
     }
 
     return(
@@ -17,12 +27,14 @@ const LoginScreen = () => {
                     {/*<Image source={require('../styles/UEE_Background.jpg')} />*/}
                         <InputField text="Email"/>
                         <InputField text="Password"/>
-                    <Text style={styles.forgotpassword}>Forgot Password?</Text>
+                    <Text style={styles.forgotpassword} onPress={ForgotClick} >Forgot Password?</Text>
                     <Text style={styles.termsandcondition}>I Accept The <Text style={styles.termsandcondition}>Terms And Condition</Text> </Text>
                         <PrimaryButton onPress={btnClick} text="Login"/>
                     <Text style={styles.contact}>Forgot User ID?Please Contact </Text>
                     <Text style={styles.contact}>0117569835</Text>
-                    <Text style={styles.daccount}>Don't Have an Account?<Text style={styles.Signup}>Signup</Text></Text>
+                    <Text style={styles.daccount}>Don't Have an Account?
+                            <Text style={styles.Signup} onPress={SignupClick}>Signup</Text>
+                    </Text>
                 </View>
         </View>
     )
