@@ -1,7 +1,6 @@
 import React from "react";
-import {View, Text, StyleSheet, TextInput, Dimensions} from "react-native";
-import {PrimaryButton, InputField} from "../components";
-import NavigationBar from "./NavigationBar";
+import {View, Text, StyleSheet} from "react-native";
+import {PrimaryButton, InputField,NavigationBar} from "../components";
 
 const MakePaymentScreen = ({navigation}) => {
 

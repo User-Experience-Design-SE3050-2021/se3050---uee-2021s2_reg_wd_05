@@ -1,7 +1,6 @@
 import React from "react";
 import {View, StyleSheet} from "react-native";
-import {InputField, PrimaryButton} from "../components";
-import NavigationBar from "./NavigationBar";
+import {InputField, PrimaryButton,NavigationBar} from "../components";
 
 const EnterTransactionDetailScreen = ({navigation}) => {
 

@@ -4,7 +4,7 @@ import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
 const NavigationBar = ({navigation}) => {
     return (
       <View style={styles.mainContainer}>
-          <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('MakePaymentScreen')}>
+          <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('BillCategoryScreen')}>
               <Image source={require('../assets/images/file.png')} style={styles.icon}/>
               <Text style={styles.text}>Bill Payment</Text>
           </TouchableOpacity>
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default NavigationBar;
+export {NavigationBar};

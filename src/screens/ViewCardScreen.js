@@ -1,8 +1,8 @@
 import React from "react";
 import {View, StyleSheet, ImageBackground, Image, Dimensions, TouchableOpacity} from "react-native";
-import NavigationBar from "./NavigationBar";
+import {NavigationBar} from "../components";
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const ViewCardScreen = ({navigation}) => {
 
@@ -10,53 +10,53 @@ const ViewCardScreen = ({navigation}) => {
         console.log('Proceed button clicked');
     }
 
-    return(
-        <View style={styles.mainContainer}>
+    return (
+      <View style={styles.mainContainer}>
 
-            <View style={styles.inputContainer}>
-                <ImageBackground
-                    source={require('../assets/images/Visa_Card.jpg')}
-                    style={styles.cards}>
-                {/*<InputField text="Card Holder Name" />*/}
-                </ImageBackground>
-            </View>
+          <View style={styles.inputContainer}>
+              <ImageBackground
+                source={require('../assets/images/Visa_Card.jpg')}
+                style={styles.cards}>
+                  {/*<InputField text="Card Holder Name" />*/}
+              </ImageBackground>
+          </View>
 
-            <View style={styles.addButtonContainer}>
-                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('EnterCardDetails')}>
-                    <Image source={require('../assets/images/Add_Button.png')}
-                       style={{ width: 50, height: 50,}} onPress={btnClick} />
-                </TouchableOpacity>
-            </View>
+          <View style={styles.addButtonContainer}>
+              <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('EnterCardDetails')}>
+                  <Image source={require('../assets/images/Add_Button.png')}
+                         style={{width: 50, height: 50,}} onPress={btnClick}/>
+              </TouchableOpacity>
+          </View>
 
-            <View style={styles.bottomContainer}>
-                <NavigationBar navigation={navigation}/>
-            </View>
+          <View style={styles.bottomContainer}>
+              <NavigationBar navigation={navigation}/>
+          </View>
 
-        </View>
+      </View>
     )
 }
 
 const styles = StyleSheet.create({
-    mainContainer:{
-        padding:10,
+    mainContainer: {
+        padding: 10,
     },
-    inputContainer:{
-        height:'auto',
-        backgroundColor:'white',
-        padding:10,
-        alignItems:'center',
-        borderRadius:10,
+    inputContainer: {
+        height: 'auto',
+        backgroundColor: 'white',
+        padding: 10,
+        alignItems: 'center',
+        borderRadius: 10,
     },
-    cards:{
+    cards: {
         width: 380,
         height: 200,
     },
-    addButtonContainer:{
+    addButtonContainer: {
         paddingTop: 225,
         marginLeft: width / 1.25,
     },
     bottomContainer: {
-        paddingTop:40,
+        paddingTop: 40,
         alignItems: 'center'
     }
 })
