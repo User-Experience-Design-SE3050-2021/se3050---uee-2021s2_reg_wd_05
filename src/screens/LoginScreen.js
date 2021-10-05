@@ -21,10 +21,10 @@ const LoginScreen = ({navigation}) => {
     return(
         <View style={styles.mainContainer}>
                 <View style={styles.container}>
-                    <Image source={require('../styles/logo.png')}
+                    <Image source={require('../assets/images/logo.png')}
                            style={{width: 100, height: 100}} />
-                    {/*<Text style={styles.heading}>Login</Text>*/}
-                    {/*<Image source={require('../styles/UEE_Background.jpg')} />*/}
+                    {/*<Text style={assets.heading}>Login</Text>*/}
+                    {/*<Image source={require('../assets/UEE_Background.jpg')} />*/}
                         <InputField text="Email"/>
                         <InputField text="Password"/>
                     <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot Password? </Text>

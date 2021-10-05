@@ -5,27 +5,27 @@ const NavigationBar = ({navigation}) => {
     return (
       <View style={styles.mainContainer}>
           <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('MakePaymentScreen')}>
-              <Image source={require('../styles/file.png')} style={styles.icon}/>
+              <Image source={require('../assets/images/file.png')} style={styles.icon}/>
               <Text style={styles.text}>Bill Payment</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('ViewCard')}>
-              <Image source={require('../styles/creditCard.png')} style={styles.icon}/>
+              <Image source={require('../assets/images/creditCard.png')} style={styles.icon}/>
               <Text style={styles.text}>Cards</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconContainer}>
-              <Image source={require('../styles/camera.png')} style={styles.icon}/>
+              <Image source={require('../assets/images/camera.png')} style={styles.icon}/>
               <Text style={styles.text}>Scan & Pay</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Transaction')}>
-              <Image source={require('../styles/bank.png')} style={styles.icon}/>
+              <Image source={require('../assets/images/bank.png')} style={styles.icon}/>
               <Text style={styles.text}>Transaction</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('ComplaintsHistoryScreen')}>
-              <Image source={require('../styles/complaint.png')} style={styles.icon}/>
+              <Image source={require('../assets/images/complaint.png')} style={styles.icon}/>
               <Text style={styles.text}>Complaints</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Settings')}>
-              <Image source={require('../styles/menu.png')} style={styles.icon}/>
+              <Image source={require('../assets/images/menu.png')} style={styles.icon}/>
               <Text style={styles.text}>Settings</Text>
           </TouchableOpacity>
       </View>

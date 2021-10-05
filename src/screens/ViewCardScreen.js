@@ -15,7 +15,7 @@ const ViewCardScreen = ({navigation}) => {
 
             <View style={styles.inputContainer}>
                 <ImageBackground
-                    source={require('../styles/Visa_Card.jpg')}
+                    source={require('../assets/images/Visa_Card.jpg')}
                     style={styles.cards}>
                 {/*<InputField text="Card Holder Name" />*/}
                 </ImageBackground>
@@ -23,7 +23,7 @@ const ViewCardScreen = ({navigation}) => {
 
             <View style={styles.addButtonContainer}>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('EnterCardDetails')}>
-                    <Image source={require('../styles/Add_Button.png')}
+                    <Image source={require('../assets/images/Add_Button.png')}
                        style={{ width: 50, height: 50,}} onPress={btnClick} />
                 </TouchableOpacity>
             </View>

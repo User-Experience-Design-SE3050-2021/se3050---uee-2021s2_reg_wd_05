@@ -42,7 +42,7 @@ const EnterCardDetailScreen = () => {
                     {/*<CheckBox*/}
                     {/*    value={isSelected}*/}
                     {/*    onValueChange={setSelection}*/}
-                    {/*    style={styles.checkbox}*/}
+                    {/*    style={assets.checkbox}*/}
                     {/*/>*/}
                     <Text style={styles.checkBoxText}>Make this Card as Primary Card</Text>
                 </View>

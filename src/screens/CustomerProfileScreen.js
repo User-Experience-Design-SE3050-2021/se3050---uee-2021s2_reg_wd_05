@@ -1,8 +1,5 @@
 import React from "react";
 import {View, Text, StyleSheet,Image} from "react-native";
-import { PrimaryButton, InputField } from "../components";
-
-
 
 
 const CustomerProfileScreen = () => {
@@ -14,7 +11,7 @@ const CustomerProfileScreen = () => {
     return(
         <View style={styles.mainContainer}>
             <View style={styles.imageview}>
-                <Image source={require('../styles/profile.png')}
+                <Image source={require('../assets/images/profile.png')}
                          style={styles.image} />
             </View>
             <View style={styles.inputContainer}>
