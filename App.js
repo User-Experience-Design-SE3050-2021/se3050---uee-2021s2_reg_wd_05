@@ -30,6 +30,8 @@ import ViewComplaintsScreen from "./src/screens/ViewComplaintsScreen";
 import ComplaintsHistoryScreen from "./src/screens/ComplaintsHistoryScreen";
 import TransactionHistoryScreen from "./src/screens/TransactionHistoryScreen";
 import BillCategoryScreen from "./src/screens/BillCategoryScreen";
+import Notification from "./src/screens/Notification";
+import SelectCardForPayment from "./src/screens/SelectCardForPayment";
 
 
 const Stack = createNativeStackNavigator();
@@ -50,9 +52,11 @@ const App = () => {
         style={{width: '100%', height: '100%'}}>
           <NavigationContainer theme={MyTheme}>
               <Stack.Navigator>
-                  <Stack.Screen name="BillCategoryScreen" component={BillCategoryScreen}/>
                   <Stack.Screen name="LoginScreen" component={LoginScreen}/>
                   <Stack.Screen name="SignUpScreen" component={SignupScreen}/>
+                  <Stack.Screen name="BillCategoryScreen" component={BillCategoryScreen}/>
+                  <Stack.Screen name="Select Card" component={SelectCardForPayment}/>
+                  <Stack.Screen name="Notification" component={Notification}/>
                   <Stack.Screen name="MakePaymentScreen" component={MakePaymentScreen}/>
                   <Stack.Screen name="BillPaymentDetailScreen" component={BillPaymentDetailScreen}/>
                   <Stack.Screen name="EnterCardDetails" component={EnterCardDetailScreen}/>
