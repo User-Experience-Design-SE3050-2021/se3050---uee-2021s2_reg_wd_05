@@ -6,6 +6,7 @@ const TransactionEnterDetailScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('Proceed button clicked');
+        navigation.navigate('TransactionConfirmScreen');
     }
 
     return(
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
         borderRadius:10,
     },
     bottomContainer: {
-        paddingTop:40,
+        // paddingTop:40,
         alignItems: 'center'
     }
 })
