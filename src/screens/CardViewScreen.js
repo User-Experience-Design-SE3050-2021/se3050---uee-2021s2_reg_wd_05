@@ -22,16 +22,32 @@ const CardViewScreen = ({navigation}) => {
                         <Text style={styles.textName}>Zayan Malik</Text>
                         <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
                     </ImageBackground>
+                    <ImageBackground
+                        source={require('../assets/images/Visa_Card.jpg')}
+                        style={styles.cards}>
+                        {/*<InputField text="Card Holder Name" />*/}
+                        <Text style={styles.textType}>Credit</Text>
+                        <Text style={styles.textName}>Zayan Malik</Text>
+                        <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
+                    </ImageBackground>
+                    <ImageBackground
+                        source={require('../assets/images/Visa_Card.jpg')}
+                        style={styles.cards}>
+                        {/*<InputField text="Card Holder Name" />*/}
+                        <Text style={styles.textType}>Credit</Text>
+                        <Text style={styles.textName}>Zayan Malik</Text>
+                        <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
+                    </ImageBackground>
                 </View>
 
-                <View style={styles.addButtonContainer}>
-                    <TouchableOpacity style={styles.iconContainer}
-                                      onPress={() => navigation.navigate('EnterCardDetails')}>
-                        <Image source={require('../assets/images/Add_Button.png')}
-                               style={{width: 50, height: 50,}} onPress={btnClick}/>
-                    </TouchableOpacity>
-                </View>
             </ScrollView>
+            <View style={styles.addButtonContainer}>
+                <TouchableOpacity style={styles.iconContainer}
+                                  onPress={() => navigation.navigate('EnterCardDetails')}>
+                    <Image source={require('../assets/images/Add_Button.png')}
+                           style={{width: 50, height: 50,}} onPress={btnClick}/>
+                </TouchableOpacity>
+            </View>
             <View style={styles.bottomContainer}>
                 <NavigationBar navigation={navigation}/>
             </View>
@@ -56,11 +72,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 10,
     },
+    addButtonContainer: {
+        paddingTop: 20,
+        flexDirection: 'row',
+        marginLeft: width / 1.2,
+    },
     bottomContainer: {
         paddingTop: 20,
         alignItems: 'center'
     },
     cards: {
+        margin:5,
         width: 380,
         height: 200,
     },
@@ -84,10 +106,6 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         marginRight: 'auto',
         color: 'white',
-    },
-    addButtonContainer: {
-        paddingTop: 225,
-        marginLeft: width / 1.25,
     },
 })
 
