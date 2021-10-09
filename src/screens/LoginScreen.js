@@ -6,7 +6,7 @@ const LoginScreen = ({navigation}) => {
 
     const loginClick = () => {
         console.log('button clicked');
-        navigation.navigate('MakePaymentScreen')
+        navigation.navigate('BillCategoryScreen')
     }
     const SignupClick = () => {
         console.log('SignUpScreen clicked');
