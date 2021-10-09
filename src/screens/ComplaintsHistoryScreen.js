@@ -1,8 +1,8 @@
 import React from "react";
-import {View, Text, StyleSheet, Dimensions} from "react-native";
+import {View, Text, StyleSheet, Dimensions, TouchableOpacity, Image} from "react-native";
 import {PrimaryButton, InputField} from "../components";
 
-const ComplaintsHistoryScreen = () => {
+const ComplaintsHistoryScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('button clicked');
@@ -46,6 +46,12 @@ const ComplaintsHistoryScreen = () => {
                     <PrimaryButton onPress={btnClick} text="Proceed"/>
                 </View>
             </View>
+            <View style={styles.addButtonContainer}>
+                <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('AddComplaint')}>
+                    <Image source={require('../assets/images/Add_Button.png')}
+                           style={{width: 50, height: 50,}} onPress={btnClick}/>
+                </TouchableOpacity>
+            </View>
         </View>
 
     )
@@ -87,7 +93,11 @@ const styles = StyleSheet.create({
         padding: 10,
         textAlign: 'right',
         alignSelf:'stretch'
-    }
+    },
+    addButtonContainer: {
+        paddingTop: 100,
+        marginLeft:320,
+    },
 })
 
 export default ComplaintsHistoryScreen;
