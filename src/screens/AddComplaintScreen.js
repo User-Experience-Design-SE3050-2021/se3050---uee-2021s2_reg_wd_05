@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
-import { PrimaryButton, InputField } from "../components";
+import {PrimaryButton, InputField, NavigationBar} from "../components";
 
 
 
@@ -53,6 +53,9 @@ const AddComplaintScreen = ({navigation}) =>  {
                     <PrimaryButton onPress={btnClick} text="Submit"/>
                 </View>
             </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
+            </View>
         </View>
     )
 }
@@ -90,7 +93,11 @@ const styles = StyleSheet.create({
     buttonContainer: {
         alignItems: 'center',
         padding: 10,
-    }
+    },
+    bottomContainer: {
+        paddingTop: 118,
+        alignItems: 'center'
+    },
 })
 
 export default AddComplaintScreen;

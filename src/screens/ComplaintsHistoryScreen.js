@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text, StyleSheet, Dimensions, TouchableOpacity, Image} from "react-native";
-import {PrimaryButton, InputField} from "../components";
+import {PrimaryButton, InputField, NavigationBar} from "../components";
 
 const ComplaintsHistoryScreen = ({navigation}) => {
 
@@ -52,6 +52,9 @@ const ComplaintsHistoryScreen = ({navigation}) => {
                            style={{width: 50, height: 50,}} onPress={btnClick}/>
                 </TouchableOpacity>
             </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
+            </View>
         </View>
 
     )
@@ -98,6 +101,10 @@ const styles = StyleSheet.create({
         paddingTop: 100,
         marginLeft:320,
     },
+    bottomContainer: {
+    paddingTop: 50,
+        alignItems: 'center'
+},
 })
 
 export default ComplaintsHistoryScreen;

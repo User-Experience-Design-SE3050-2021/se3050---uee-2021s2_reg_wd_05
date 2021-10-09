@@ -1,5 +1,6 @@
 import React from "react";
 import {View, Text, StyleSheet} from "react-native";
+import {NavigationBar} from "../components";
 
 
 const SettingsScreen = ({navigation}) => {
@@ -24,6 +25,7 @@ const SettingsScreen = ({navigation}) => {
 
     return(
         <View style={styles.mainContainer}>
+
             <View style={styles.inputContainer}>
                 <View style={styles.textContainer}>
                     <Text style={styles.rightText}>[ ]</Text>
@@ -47,6 +49,9 @@ const SettingsScreen = ({navigation}) => {
                 </View>
 
 
+            </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
             </View>
         </View>
     )
@@ -90,7 +95,11 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
 
-    }
+    },
+    bottomContainer: {
+        paddingTop: 102,
+        alignItems: 'center'
+    },
 })
 
 export default SettingsScreen;
