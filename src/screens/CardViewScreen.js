@@ -17,7 +17,6 @@ const CardViewScreen = ({navigation}) => {
                     <ImageBackground
                         source={require('../assets/images/Visa_Card.jpg')}
                         style={styles.cards}>
-                        {/*<InputField text="Card Holder Name" />*/}
                         <Text style={styles.textType}>Credit</Text>
                         <Text style={styles.textName}>Zayan Malik</Text>
                         <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
@@ -25,7 +24,6 @@ const CardViewScreen = ({navigation}) => {
                     <ImageBackground
                         source={require('../assets/images/Visa_Card.jpg')}
                         style={styles.cards}>
-                        {/*<InputField text="Card Holder Name" />*/}
                         <Text style={styles.textType}>Credit</Text>
                         <Text style={styles.textName}>Zayan Malik</Text>
                         <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
@@ -33,7 +31,6 @@ const CardViewScreen = ({navigation}) => {
                     <ImageBackground
                         source={require('../assets/images/Visa_Card.jpg')}
                         style={styles.cards}>
-                        {/*<InputField text="Card Holder Name" />*/}
                         <Text style={styles.textType}>Credit</Text>
                         <Text style={styles.textName}>Zayan Malik</Text>
                         <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
