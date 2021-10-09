@@ -1,43 +1,66 @@
-import React from "react";
-import {View, Text, StyleSheet} from "react-native";
-import {NavigationBar, PrimaryButton} from "../components";
+import React, {useEffect, useState} from "react";
+import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {NavigationBar, PrimaryButton, RadioButton} from "../components";
 
-const values = [
+const VALUES = [
     {
+        id: 1,
         cardName: 'Credit card',
-        cardNo: '5427-8458-9574-6952'
+        cardNo: '5427-8458-9574-6952',
+        selected: false
     },
     {
+        id: 2,
         cardName: 'Debit card',
-        cardNo: '1541-3579-5217-5264'
+        cardNo: '1541-3579-5217-5264',
+        selected: false
     }
 ]
 
 const SelectCardForPayment = ({navigation}) => {
+    const [cards, setCards] = useState([]);
+    const [card, setCard] = useState({});
+    const [isSelected, setIsSelected] = useState('');
 
-    const CardHolder = ({cardName, cardNo}) => {
+    useEffect(() => {
+        setCards(VALUES);
+    }, [])
+
+    const CardHolder = ({id, card, onPress}) => {
         return (
-          <View style={styles.textContainer}>
-              <Text style={styles.text}>{cardNo}</Text>
-              <Text style={styles.text}>{cardName}</Text>
-          </View>
+          <TouchableOpacity style={styles.cardContainer} activeOpacity={0.7} onPress={() => onPress(id)}>
+              <View style={styles.textContainer}>
+                  <Text style={styles.textStyle}>{card.cardNo}</Text>
+                  <Text style={styles.textStyle}>{card.cardName}</Text>
+              </View>
+              <View>
+                  <RadioButton selected={card.selected}/>
+              </View>
+          </TouchableOpacity>
         )
     }
 
-    const btnClick = () => {
+    const onPressSelect = () => {
         console.log('button clicked');
+        navigation.navigate('SelectCard')
     }
 
+    const onSelectCard = async (id) => {
+        let clone = [...cards];
+        setCard(clone[id]);
+        clone[id].selected = true;
+        setCards(clone);
+    }
     return (
       <View style={styles.mainContainer}>
           <View style={styles.inputContainer}>
               {
-                  values.map((item,index) =>{
-                      return <CardHolder cardNo={item.cardNo} cardName={item.cardName}/>
+                  cards.map((item, index) => {
+                      return <CardHolder key={index} id={index} card={item} onPress={onSelectCard}/>
                   })
               }
               <View style={styles.buttonContainer}>
-                  <PrimaryButton onPress={btnClick} text="Select Card"/>
+                  <PrimaryButton onPress={onPressSelect} text="Select Card"/>
               </View>
           </View>
           <View style={styles.bottomContainer}>
@@ -62,23 +85,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
     },
-    textContainer: {
-        backgroundColor: '#cbcbcb',
+    cardContainer: {
+        backgroundColor: '#e7e6e6',
         padding: 10,
         marginTop: 5,
         marginBottom: 5,
+        alignItems: 'center',
+        flexDirection: 'row',
+
     },
-    text: {
+    textContainer: {
+        flex: 1,
         fontSize: 18,
     },
-    rightText: {
+    textStyle: {
         fontSize: 18,
-        padding: 10,
-        textAlign: 'right',
-        alignSelf: 'stretch'
     },
     bottomContainer: {
-        paddingTop:40,
+        paddingTop: 40,
         alignItems: 'center'
     }
 })

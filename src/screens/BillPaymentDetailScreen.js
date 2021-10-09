@@ -6,7 +6,7 @@ const BillPaymentDetailScreen = ({navigation}) => {
 
     const OnPressProceed = () => {
         console.log('button clicked');
-        navigation.navigate('MakePayment')
+        navigation.navigate('SelectCard')
     }
 
     return (

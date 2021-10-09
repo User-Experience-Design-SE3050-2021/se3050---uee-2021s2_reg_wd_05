@@ -35,6 +35,7 @@ import Notification from "./src/screens/Notification";
 import SelectCardForPayment from "./src/screens/SelectCardForPayment";
 import TransactionConfirmScreen from "./src/screens/TransactionConfirmScreen";
 import UtilityCategoryScreen from "./src/screens/UtilityCategoryScreen";
+import {GestureHandlerRootView} from "react-native-gesture-handler";
 
 
 const Stack = createNativeStackNavigator();
@@ -59,6 +60,7 @@ const App = () => {
     }
 
     return (
+      <GestureHandlerRootView>
       <ImageBackground
         source={require('./src/assets/images/UEE_Background.jpg')}
         style={{width: '100%', height: '100%'}}>
@@ -67,7 +69,7 @@ const App = () => {
                   <Stack.Screen name="Login" component={LoginScreen}/>
                   <Stack.Screen name="SignUp" component={SignupScreen}/>
                   <Stack.Screen name="BillCategory" component={BillCategoryScreen} options={{headerRight:notificationRoute}}/>
-                  <Stack.Screen name="Select Card" component={SelectCardForPayment} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="SelectCard" component={SelectCardForPayment} options={{headerRight:notificationRoute}}/>
                   <Stack.Screen name="Notification" component={Notification}/>
                   <Stack.Screen name="MakePayment" component={MakePaymentScreen} options={{headerRight:notificationRoute}}/>
                   <Stack.Screen name="BillPaymentDetails" component={BillPaymentDetailScreen} options={{headerRight:notificationRoute}}/>
@@ -87,6 +89,7 @@ const App = () => {
               </Stack.Navigator>
           </NavigationContainer>
       </ImageBackground>
+      </GestureHandlerRootView>
     );
 };
 

@@ -1,35 +1,60 @@
-import React from "react";
-import {Text, View, StyleSheet, ScrollView} from "react-native";
+import React, {useEffect, useState} from "react";
+import {Text, View, StyleSheet, ScrollView, TouchableOpacity, Image} from "react-native";
+import SwipeAble from 'react-native-gesture-handler/Swipeable';
 import {NavigationBar} from "../components";
 
-const values = [
+const VALUES = [
     {
+        id: 1,
         name: 'CEB',
         amount: '1750.0'
     },
     {
+        id: 2,
         name: 'WaterBill',
         amount: '1500.0'
     }
 ]
 
 const Notification = ({navigation}) => {
+    const [notification, setNotification] = useState([])
 
-    const NotificationHolder = ({name, amount}) => {
+    useEffect(() => {
+        setNotification(VALUES)
+    })
+
+    const NotificationHolder = ({name, amount, id, onPress}) => {
+        const rightSwipe = () => {
+            return (
+              <TouchableOpacity activeOpacity={0.6} style={styles.deleteContainer} onPress={()=> onPress(id)}>
+                  <View style={styles.deleteBox}>
+                      <Image source={require('../assets/images/Delete.png')} style={styles.deleteIcon}/>
+                  </View>
+              </TouchableOpacity>
+            );
+        };
+
         return (
-          <View style={styles.textContainer}>
-              <Text style={styles.text}>Dear customer, Your Transaction to {name} LKR Rs.{amount} completed
-                  successfully </Text>
-          </View>
+          <SwipeAble renderRightActions={rightSwipe}>
+              <View style={styles.textContainer}>
+                  <Text style={styles.text}>Dear customer, Your Transaction to {name} LKR Rs.{amount} completed
+                      successfully </Text>
+              </View>
+          </SwipeAble>
         )
+    }
+
+    const deleteNotification = (id) => {
+        console.log('Hello',id)
     }
 
     return (
       <View>
           <ScrollView contentContainerStyle={styles.mainContainer}>
               {
-                  values.map((item, index) => {
-                      return <NotificationHolder key={index} name={item.name} amount={item.amount}/>
+                  notification.map((item, index) => {
+                      return <NotificationHolder key={index} id={index} name={item.name} amount={item.amount}
+                                                 onPress={deleteNotification}/>
                   })
               }
           </ScrollView>
@@ -63,6 +88,21 @@ const styles = StyleSheet.create({
     bottomContainer: {
         paddingTop: 20,
         alignItems: 'center'
+    },
+    deleteContainer: {
+        padding: 5
+    },
+    deleteBox: {
+        backgroundColor: '#FE0404',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 80,
+        height: 60,
+        borderRadius: 5,
+    },
+    deleteIcon: {
+        width: 40,
+        height: 40
     }
 })
 
