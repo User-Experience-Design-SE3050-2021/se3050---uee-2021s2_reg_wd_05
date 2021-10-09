@@ -15,8 +15,8 @@ import {
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 import BillPaymentDetailScreen from "./src/screens/BillPaymentDetailScreen";
-import EnterCardDetailScreen from "./src/screens/EnterCardDetailScreen";
-import EnterTransactionDetailScreen from "./src/screens/EnterTransactionDetailScreen";
+import CardEnterDetailScreen from "./src/screens/CardEnterDetailScreen";
+import TransactionEnterDetailScreen from "./src/screens/TransactionEnterDetailScreen";
 import MakePaymentScreen from "./src/screens/MakePaymentScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import SignupScreen from "./src/screens/SignupScreen";
@@ -59,9 +59,9 @@ const App = () => {
                   <Stack.Screen name="Notification" component={Notification}/>
                   <Stack.Screen name="MakePaymentScreen" component={MakePaymentScreen}/>
                   <Stack.Screen name="BillPaymentDetailScreen" component={BillPaymentDetailScreen}/>
-                  <Stack.Screen name="EnterCardDetails" component={EnterCardDetailScreen}/>
+                  <Stack.Screen name="EnterCardDetails" component={CardEnterDetailScreen}/>
                   <Stack.Screen name="ViewCard" component={ViewCardScreen}/>
-                  <Stack.Screen name="Transaction" component={EnterTransactionDetailScreen}/>
+                  <Stack.Screen name="Transaction" component={TransactionEnterDetailScreen}/>
                   <Stack.Screen name="TransactionHistory" component={TransactionHistoryScreen}/>
                   <Stack.Screen name="AddComplaint" component={AddComplaintScreen}/>
                   <Stack.Screen name="ViewComplaints" component={ViewComplaintsScreen}/>
