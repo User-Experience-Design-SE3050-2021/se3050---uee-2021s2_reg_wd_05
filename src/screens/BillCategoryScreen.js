@@ -26,7 +26,7 @@ const BillCategoryScreen = ({navigation}) => {
                   </View>
                   <View style={styles.imageContainer}>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/Utility.png')}
-                                      text={'Utility'} onPress={() => navigation.navigate('UtilityCategoryScreen')}/>
+                                      text={'Utility'} onPress={() => navigation.navigate('UtilityCategory')}/>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/Cards.png')}
                                       text={'Cards'}/>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/MobileWallet.png')}

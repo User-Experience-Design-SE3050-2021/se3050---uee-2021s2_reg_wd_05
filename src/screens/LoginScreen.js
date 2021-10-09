@@ -6,16 +6,16 @@ const LoginScreen = ({navigation}) => {
 
     const loginClick = () => {
         console.log('button clicked');
-        navigation.navigate('BillCategoryScreen')
+        navigation.navigate('BillCategory')
     }
     const SignupClick = () => {
         console.log('SignUpScreen clicked');
-        navigation.navigate('SignUpScreen')
+        navigation.navigate('SignUp')
     }
 
     const ForgotClick = () => {
         console.log('ForgotPINScreen clicked');
-        navigation.navigate('ForgotPINScreen')
+        navigation.navigate('ForgotPin')
     }
 
     return(

@@ -4,7 +4,7 @@ const {width} = Dimensions.get('window');
 const NavigationBar = ({navigation}) => {
     return (
       <View style={styles.mainContainer}>
-          <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('BillCategoryScreen')}>
+          <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('BillCategory')}>
               <Image source={require('../assets/images/file.png')} style={styles.icon}/>
               <Text style={styles.text}>Bill Payment</Text>
           </TouchableOpacity>
@@ -20,7 +20,7 @@ const NavigationBar = ({navigation}) => {
               <Image source={require('../assets/images/bank.png')} style={styles.icon}/>
               <Text style={styles.text}>Transaction</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('ComplaintsHistoryScreen')}>
+          <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('ComplaintsHistory')}>
               <Image source={require('../assets/images/complaint.png')} style={styles.icon}/>
               <Text style={styles.text}>Complaints</Text>
           </TouchableOpacity>

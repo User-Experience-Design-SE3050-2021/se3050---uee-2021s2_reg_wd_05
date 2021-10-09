@@ -1,5 +1,6 @@
 import React from "react";
 import {Text, View, StyleSheet, ScrollView} from "react-native";
+import {NavigationBar} from "../components";
 
 const values = [
     {
@@ -24,15 +25,19 @@ const Notification = ({navigation}) => {
     }
 
     return (
-      <ScrollView contentContainerStyle={styles.mainContainer}>
-          {
-              values.map((item,index) => {
-                 return <NotificationHolder key={index} name={item.name} amount={item.amount}/>
-              })
-          }
+      <View>
+          <ScrollView contentContainerStyle={styles.mainContainer}>
+              {
+                  values.map((item, index) => {
+                      return <NotificationHolder key={index} name={item.name} amount={item.amount}/>
+                  })
+              }
+          </ScrollView>
+          <View style={styles.bottomContainer}>
+              <NavigationBar navigation={navigation}/>
+          </View>
+      </View>
 
-
-      </ScrollView>
     )
 }
 
@@ -55,6 +60,10 @@ const styles = StyleSheet.create({
     list: {
         padding: 20,
     },
+    bottomContainer: {
+        paddingTop: 20,
+        alignItems: 'center'
+    }
 })
 
 export default Notification;

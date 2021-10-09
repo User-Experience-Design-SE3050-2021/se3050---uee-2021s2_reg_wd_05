@@ -4,8 +4,9 @@ import {PrimaryButton, InputField, NavigationBar} from "../components";
 
 const BillPaymentDetailScreen = ({navigation}) => {
 
-    const btnClick = () => {
+    const OnPressProceed = () => {
         console.log('button clicked');
+        navigation.navigate('MakePayment')
     }
 
     return (
@@ -22,7 +23,7 @@ const BillPaymentDetailScreen = ({navigation}) => {
               <View style={styles.inputContainer}>
                   <InputField text="Account Number"/>
                   <InputField text="Bill Amount"/>
-                  <PrimaryButton onPress={btnClick} text="Proceed"/>
+                  <PrimaryButton onPress={OnPressProceed} text="Proceed"/>
               </View>
           </View>
           <View style={styles.bottomContainer}>
