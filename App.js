@@ -8,12 +8,13 @@
 
 import React from 'react';
 import {
-    ImageBackground
+    Image,
+    ImageBackground, TouchableOpacity
 } from 'react-native';
 
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme, useNavigation} from '@react-navigation/native';
 import BillPaymentDetailScreen from "./src/screens/BillPaymentDetailScreen";
 import CardEnterDetailScreen from "./src/screens/CardEnterDetailScreen";
 import TransactionEnterDetailScreen from "./src/screens/TransactionEnterDetailScreen";
@@ -33,6 +34,7 @@ import BillCategoryScreen from "./src/screens/BillCategoryScreen";
 import Notification from "./src/screens/Notification";
 import SelectCardForPayment from "./src/screens/SelectCardForPayment";
 import TransactionConfirmScreen from "./src/screens/TransactionConfirmScreen";
+import UtilityCategoryScreen from "./src/screens/UtilityCategoryScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -47,6 +49,15 @@ const App = () => {
         },
     };
 
+    const notificationRoute = () =>{
+        const navigation = useNavigation();
+        return(
+          <TouchableOpacity onPress={()=> navigation.navigate('Notification')}>
+              <Image source={require('./src/assets/images/Notification.png')} style={{width:35,height:35}}/>
+          </TouchableOpacity>
+        )
+    }
+
     return (
       <ImageBackground
         source={require('./src/assets/images/UEE_Background.jpg')}
@@ -55,23 +66,24 @@ const App = () => {
               <Stack.Navigator>
                   <Stack.Screen name="LoginScreen" component={LoginScreen}/>
                   <Stack.Screen name="SignUpScreen" component={SignupScreen}/>
-                  <Stack.Screen name="BillCategoryScreen" component={BillCategoryScreen}/>
-                  <Stack.Screen name="Select Card" component={SelectCardForPayment}/>
+                  <Stack.Screen name="BillCategoryScreen" component={BillCategoryScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="Select Card" component={SelectCardForPayment} options={{headerRight:notificationRoute}}/>
                   <Stack.Screen name="Notification" component={Notification}/>
-                  <Stack.Screen name="MakePaymentScreen" component={MakePaymentScreen}/>
-                  <Stack.Screen name="BillPaymentDetailScreen" component={BillPaymentDetailScreen}/>
-                  <Stack.Screen name="EnterCardDetails" component={CardEnterDetailScreen}/>
-                  <Stack.Screen name="ViewCard" component={CardViewScreen}/>
-                  <Stack.Screen name="Transaction" component={TransactionEnterDetailScreen}/>
-                  <Stack.Screen name="TransactionConfirmScreen" component={TransactionConfirmScreen}/>
-                  <Stack.Screen name="TransactionHistory" component={TransactionHistoryScreen}/>
-                  <Stack.Screen name="AddComplaint" component={AddComplaintScreen}/>
-                  <Stack.Screen name="ViewComplaints" component={ViewComplaintsScreen}/>
-                  <Stack.Screen name="ChangePINScreen" component={ChangePinScreen}/>
-                  <Stack.Screen name="CustomerProfileScreen" component={CustomerProfileScreen}/>
+                  <Stack.Screen name="MakePaymentScreen" component={MakePaymentScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="BillPaymentDetailScreen" component={BillPaymentDetailScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="EnterCardDetails" component={CardEnterDetailScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="ViewCard" component={CardViewScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="Transaction" component={TransactionEnterDetailScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="TransactionConfirmScreen" component={TransactionConfirmScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="TransactionHistory" component={TransactionHistoryScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="AddComplaint" component={AddComplaintScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="ViewComplaints" component={ViewComplaintsScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="ChangePINScreen" component={ChangePinScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="CustomerProfileScreen" component={CustomerProfileScreen} options={{headerRight:notificationRoute}}/>
                   <Stack.Screen name="ForgotPINScreen" component={ForgotPinScreen}/>
-                  <Stack.Screen name="Settings" component={SettingsScreen}/>
-                  <Stack.Screen name="ComplaintsHistoryScreen" component={ComplaintsHistoryScreen}/>
+                  <Stack.Screen name="Settings" component={SettingsScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="ComplaintsHistoryScreen" component={ComplaintsHistoryScreen} options={{headerRight:notificationRoute}}/>
+                  <Stack.Screen name="UtilityCategoryScreen" component={UtilityCategoryScreen} options={{headerRight:notificationRoute}}/>
               </Stack.Navigator>
           </NavigationContainer>
       </ImageBackground>

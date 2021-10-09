@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, View, StyleSheet, ScrollView, FlatList} from "react-native";
+import {Text, View, StyleSheet, ScrollView} from "react-native";
 
 const values = [
     {
@@ -12,7 +12,7 @@ const values = [
     }
 ]
 
-const Notification = () => {
+const Notification = ({navigation}) => {
 
     const NotificationHolder = ({name, amount}) => {
         return (
