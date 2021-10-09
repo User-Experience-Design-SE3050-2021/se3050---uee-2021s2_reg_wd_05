@@ -6,7 +6,7 @@ const TransactionEnterDetailScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('Proceed button clicked');
-        navigation.navigate('TransactionConfirmScreen');
+        navigation.navigate('TransactionConfirm');
     }
 
     return (
