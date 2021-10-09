@@ -1,6 +1,6 @@
 import React from "react";
-import {Image, Text, TouchableOpacity, View, StyleSheet} from "react-native";
-
+import {Image, Text, TouchableOpacity, View, StyleSheet, Dimensions} from "react-native";
+const {width} = Dimensions.get('window');
 const NavigationBar = ({navigation}) => {
     return (
       <View style={styles.mainContainer}>
@@ -34,6 +34,7 @@ const NavigationBar = ({navigation}) => {
 
 const styles = StyleSheet.create({
     mainContainer: {
+        width: width,
         flexDirection: 'row',
         backgroundColor: 'white',
         justifyContent:'center'
