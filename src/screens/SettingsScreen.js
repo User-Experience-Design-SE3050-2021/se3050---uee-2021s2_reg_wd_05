@@ -16,6 +16,10 @@ const SettingsScreen = ({navigation}) => {
         console.log('button clicked');
         navigation.navigate('CustomerProfile')
     }
+    const logoutClick = () => {
+        console.log('button clicked');
+        navigation.navigate('LoginScreen')
+    }
 
 
     return(
@@ -38,7 +42,7 @@ const SettingsScreen = ({navigation}) => {
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.rightText}>[ ]</Text>
-                    <Text style={styles.text}>Logout</Text>
+                    <Text style={styles.text}onPress={logoutClick}>Logout</Text>
                     <Text style={styles.rightText}> > </Text>
                 </View>
 
