@@ -1,8 +1,8 @@
 import React from "react";
-import {View, StyleSheet, Text, TextInput, Dimensions} from "react-native";
-import {InputField, PrimaryButton,NavigationBar} from "../components";
+import {View, StyleSheet, Text, TextInput, Dimensions, ScrollView} from "react-native";
+import {InputField, PrimaryButton, NavigationBar} from "../components";
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const TransactionConfirmScreen = ({navigation}) => {
 
@@ -10,22 +10,51 @@ const TransactionConfirmScreen = ({navigation}) => {
         console.log('Proceed button clicked');
     }
 
-    return(
+    return (
         <View style={styles.mainContainer}>
-            <View style={styles.inputContainer}>
-                <InputField text="From Account" />
-                {/*<InputField text="Account No" />*/}
-                <Text style={styles.text}>Account No</Text>
-                <TextInput
-                    style={styles.input}
-                    // value={'1234567890'}
-                    keyboardType="default"
-                />
-                <InputField text="Account Holder Name" />
-                <InputField text="Amount" />
-                <InputField text="Description" />
-                <PrimaryButton onPress={btnClick} text="Proceed"/>
-            </View>
+            <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={styles.scrollContainer}>
+                <View style={styles.inputContainer}>
+                    <View style={styles.fromAccountContainer}>
+                        <Text style={styles.text}>XXXX - XXXX - 2563</Text>
+                        <Text style={styles.text}>Zayan Malik</Text>
+                        {/*<CheckBox*/}
+                        {/*    title='Click Here'*/}
+                        {/*    // checked={this.state.checked}*/}
+                        {/*/>*/}
+                    </View>
+
+                    {/*<InputField text="Account No" />*/}
+                    <Text style={styles.text}>Account No</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={'1234567890'}
+                        keyboardType="default"
+                    />
+                    {/*<InputField text="Account Holder Name" />*/}
+                    <Text style={styles.text}>Account Holder Name</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={'Zayan'}
+                        keyboardType="default"
+                    />
+                    {/*<InputField text="Amount" />*/}
+                    <Text style={styles.text}>Amount</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={'Rs.5500.00'}
+                        keyboardType="number-pad"
+                    />
+                    {/*<InputField text="Description" />*/}
+                    <Text style={styles.text}>Description</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={'Description'}
+                        keyboardType="default"
+                    />
+                    <InputField text="CVV"/>
+                    <PrimaryButton onPress={btnClick} text="Proceed"/>
+                </View>
+            </ScrollView>
             <View style={styles.bottomContainer}>
                 <NavigationBar navigation={navigation}/>
             </View>
@@ -35,32 +64,49 @@ const TransactionConfirmScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        padding:10,
+        flex: 1
+    },
+    scrollContainer: {
+        flex: 1,
+        padding: 10,
     },
     inputContainer: {
-        height:'auto',
-        backgroundColor:'white',
-        padding:10,
-        alignItems:'center',
-        borderRadius:10,
+        height: 'auto',
+        backgroundColor: 'white',
+        padding: 10,
+        marginBottom: 10,
+        alignItems: 'center',
+        borderRadius: 10,
     },
     bottomContainer: {
-        paddingTop:40,
-        alignItems: 'center'
+        paddingTop: 20,
+        alignItems: 'center',
+    },
+    fromAccountContainer: {
+        width: width / 1.15,
+        height: 90,
+        margin: 2,
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 5,
+        backgroundColor: '#DCDCDC',
+        borderColor: '#DCDCDC',
     },
     input: {
         width: width / 1.15,
         height: 45,
         margin: 12,
         borderWidth: 1,
-        borderRadius:5,
+        borderRadius: 5,
         padding: 10,
-        backgroundColor:'white',
+        backgroundColor: '#f5f5f5',
+        borderColor: '#F9F9F9',
     },
     text: {
-        fontSize:18,
+        marginRight: 'auto',
+        fontSize: 18,
         paddingTop: 10,
-        paddingLeft:15,
+        paddingLeft: 15,
     }
 })
 
