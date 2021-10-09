@@ -4,7 +4,7 @@ import {NavigationBar} from "../components";
 
 const {width} = Dimensions.get('window');
 
-const ViewCardScreen = ({navigation}) => {
+const CardViewScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('Proceed button clicked');
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ViewCardScreen;
+export default CardViewScreen;
