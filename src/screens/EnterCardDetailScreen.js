@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {View, StyleSheet, TextInput, Text} from "react-native";
-import {InputField, PrimaryButton} from "../components";
+import {InputField, NavigationBar, PrimaryButton} from "../components";
 
 // const { width } = Dimensions.get('window');
 
-const EnterCardDetailScreen = () => {
+const EnterCardDetailScreen = ({navigation}) => {
 
     const [isSelected, setSelection] = useState(false);
 
@@ -49,6 +49,9 @@ const EnterCardDetailScreen = () => {
 
                 <PrimaryButton onPress={btnClick} text="Proceed"/>
             </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
+            </View>
         </View>
     )
 }
@@ -63,6 +66,10 @@ const styles = StyleSheet.create({
         padding:10,
         alignItems:'center',
         borderRadius:10,
+    },
+    bottomContainer: {
+        // paddingTop: 'auto',
+        alignItems: 'center'
     },
     input: {
         width: 190 / 1.15,
