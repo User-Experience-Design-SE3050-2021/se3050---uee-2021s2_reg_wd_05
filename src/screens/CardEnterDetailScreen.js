@@ -4,10 +4,9 @@ import {InputField, NavigationBar, PrimaryButton} from "../components";
 
 // const { width } = Dimensions.get('window');
 
-const EnterCardDetailScreen = ({navigation}) => {
+const CardEnterDetailScreen = ({navigation}) => {
 
     const [isSelected, setSelection] = useState(false);
-
 
     const btnClick = () => {
         console.log('Proceed button clicked');
@@ -114,4 +113,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default EnterCardDetailScreen;
+export default CardEnterDetailScreen;

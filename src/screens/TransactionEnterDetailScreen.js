@@ -2,7 +2,7 @@ import React from "react";
 import {View, StyleSheet} from "react-native";
 import {InputField, PrimaryButton,NavigationBar} from "../components";
 
-const EnterTransactionDetailScreen = ({navigation}) => {
+const TransactionEnterDetailScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('Proceed button clicked');
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default EnterTransactionDetailScreen;
+export default TransactionEnterDetailScreen;
