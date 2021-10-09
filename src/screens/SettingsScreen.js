@@ -10,11 +10,11 @@ const SettingsScreen = ({navigation}) => {
     }
     const changePinClick = () => {
         console.log('ChangePINScreen clicked');
-        navigation.navigate('ChangePINScreen')
+        navigation.navigate('ChangePin')
     }
     const profileClick = () => {
         console.log('button clicked');
-        navigation.navigate('CustomerProfileScreen')
+        navigation.navigate('CustomerProfile')
     }
 
 
