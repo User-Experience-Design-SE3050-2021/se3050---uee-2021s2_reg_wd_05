@@ -20,7 +20,7 @@ import TransactionEnterDetailScreen from "./src/screens/TransactionEnterDetailSc
 import MakePaymentScreen from "./src/screens/MakePaymentScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import SignupScreen from "./src/screens/SignupScreen";
-import ViewCardScreen from "./src/screens/ViewCardScreen";
+import CardViewScreen from "./src/screens/CardViewScreen";
 import AddComplaintScreen from "./src/screens/AddComplaintScreen";
 import ChangePinScreen from "./src/screens/ChangePinScreen";
 import CustomerProfileScreen from "./src/screens/CustomerProfileScreen";
@@ -32,6 +32,7 @@ import TransactionHistoryScreen from "./src/screens/TransactionHistoryScreen";
 import BillCategoryScreen from "./src/screens/BillCategoryScreen";
 import Notification from "./src/screens/Notification";
 import SelectCardForPayment from "./src/screens/SelectCardForPayment";
+import TransactionConfirmScreen from "./src/screens/TransactionConfirmScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -60,8 +61,9 @@ const App = () => {
                   <Stack.Screen name="MakePaymentScreen" component={MakePaymentScreen}/>
                   <Stack.Screen name="BillPaymentDetailScreen" component={BillPaymentDetailScreen}/>
                   <Stack.Screen name="EnterCardDetails" component={CardEnterDetailScreen}/>
-                  <Stack.Screen name="ViewCard" component={ViewCardScreen}/>
+                  <Stack.Screen name="ViewCard" component={CardViewScreen}/>
                   <Stack.Screen name="Transaction" component={TransactionEnterDetailScreen}/>
+                  <Stack.Screen name="TransactionConfirmScreen" component={TransactionConfirmScreen}/>
                   <Stack.Screen name="TransactionHistory" component={TransactionHistoryScreen}/>
                   <Stack.Screen name="AddComplaint" component={AddComplaintScreen}/>
                   <Stack.Screen name="ViewComplaints" component={ViewComplaintsScreen}/>
