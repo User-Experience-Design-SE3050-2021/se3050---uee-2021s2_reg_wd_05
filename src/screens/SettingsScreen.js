@@ -18,7 +18,7 @@ const SettingsScreen = ({navigation}) => {
     }
     const logoutClick = () => {
         console.log('button clicked');
-        navigation.navigate('LoginScreen')
+        navigation.navigate('Login')
     }
 
 

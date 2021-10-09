@@ -10,11 +10,12 @@ const CustomerProfileScreen = () => {
 
     return(
         <View style={styles.mainContainer}>
-            <View style={styles.imageview}>
-                <Image source={require('../assets/images/profile.png')}
-                         style={styles.image} />
-            </View>
+
             <View style={styles.inputContainer}>
+                <View style={styles.imageview}>
+                    <Image source={require('../assets/images/profile.png')}
+                           style={styles.image} />
+                </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>User ID:</Text>
                     <Text style={styles.rightText}>1259</Text>

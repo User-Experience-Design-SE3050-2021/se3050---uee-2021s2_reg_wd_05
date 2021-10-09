@@ -2,10 +2,11 @@ import React from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
 import { PrimaryButton, InputField } from "../components";
 
-const ChangePinScreen = () => {
+const ChangePinScreen = ({navigation}) =>  {
 
     const btnClick = () => {
         console.log('button clicked');
+        navigation.navigate('Login')
     }
 
     return(

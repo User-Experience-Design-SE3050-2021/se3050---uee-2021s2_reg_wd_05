@@ -5,10 +5,11 @@ import { PrimaryButton, InputField } from "../components";
 
 
 
-const AddComplaintScreen = () => {
+const AddComplaintScreen = ({navigation}) =>  {
 
     const btnClick = () => {
         console.log('button clicked');
+        navigation.navigate('ViewComplaints')
     }
 
     return(
