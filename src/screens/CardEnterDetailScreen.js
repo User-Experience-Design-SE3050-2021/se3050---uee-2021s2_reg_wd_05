@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import {View, StyleSheet, TextInput, Text, ScrollView} from "react-native";
-import {InputField, NavigationBar, PrimaryButton} from "../components";
-
-// const { width } = Dimensions.get('window');
+import {InputField, NavigationBar, PrimaryButton, RadioButton} from "../components";
 
 const CardEnterDetailScreen = ({navigation}) => {
 
@@ -39,11 +37,9 @@ const CardEnterDetailScreen = ({navigation}) => {
                     />
 
                     <View style={styles.checkboxContainer}>
-                        {/*<CheckBox*/}
-                        {/*    value={isSelected}*/}
-                        {/*    onValueChange={setSelection}*/}
-                        {/*    style={assets.checkbox}*/}
-                        {/*/>*/}
+                        <View style={styles.radioButton}>
+                            <RadioButton selected={isSelected}/>
+                        </View>
                         <Text style={styles.checkBoxText}>Make this Card as Primary Card</Text>
                     </View>
 
@@ -70,7 +66,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         padding: 10,
         marginBottom: 10,
-        alignItems: 'center',
         borderRadius: 10,
     },
     bottomContainer: {
@@ -108,15 +103,16 @@ const styles = StyleSheet.create({
         fontSize: 15,
         paddingTop: 10,
         paddingBottom: 10,
-        // paddingLeft:'auto',
+        paddingLeft: 10,
         marginRight: 'auto',
     },
     checkboxContainer: {
         flexDirection: "row",
         marginBottom: 20,
     },
-    checkbox: {
+    radioButton: {
         alignSelf: "center",
+        paddingLeft: 15
     },
 })
 
