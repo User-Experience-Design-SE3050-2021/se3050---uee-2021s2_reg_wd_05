@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     Text,
     ScrollView,
-    Button, Modal, Animated
+    Modal, Animated
 } from "react-native";
 import {NavigationBar} from "../components";
 
@@ -93,7 +93,6 @@ const CardViewScreen = ({navigation}) => {
                         <Text style={styles.textName}>Zayan Malik</Text>
                         <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
                     </ImageBackground>
-                    {/*<Button title={"open"} onPress={() => setVisible(true)}/>*/}
                     <ImageBackground
                         source={require('../assets/images/VisaCard.png')}
                         style={styles.cards}>
@@ -143,13 +142,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     addButtonContainer: {
-        paddingTop: 20,
-        flexDirection: 'row',
+        paddingTop: 10,
         marginLeft: width / 1.2,
-        // width : '100%',
-        // height: 40,
-        // alignItems: 'flex-end',
-        // justifyContent: 'center',
+        justifyContent: 'flex-end',
     },
     bottomContainer: {
         paddingTop: 20,
