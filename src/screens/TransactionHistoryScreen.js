@@ -29,17 +29,26 @@ const TransactionHistoryScreen = ({navigation}) => {
                         </View>
 
                         <View style={{justifyContent: 'flex-end', flexDirection: 'row', padding: 10}}>
-                            <View style={{paddingRight: 75, paddingTop: 10}}>
-                                <View style={styles.textSuccessContainer}>
-                                    <Text style={styles.textSuccess}> Success </Text>
+
+                            <View style={{padding:5}}>
+                                <View style={{paddingRight: 55, paddingTop: 5}}>
+                                    <View style={styles.textSuccessContainer}>
+                                        <Text style={styles.textSuccess}> Success </Text>
+                                    </View>
                                 </View>
                             </View>
-                            <Image source={require('../assets/images/download.png')}
-                                   style={{width: 50, height: 50}}/>
-                            <Image source={require('../assets/images/Share.png')}
-                                   style={{width: 50, height: 50}}/>
-                            <Image source={require('../assets/images/View.png')}
-                                   style={{width: 50, height: 50}}/>
+                            <View style={{padding:5}}>
+                                <Image source={require('../assets/images/download.png')}
+                                       style={{width: 40, height: 40}}/>
+                            </View>
+                            <View style={{padding:5}}>
+                                <Image source={require('../assets/images/Share.png')}
+                                         style={{width: 40, height: 40}}/>
+                            </View>
+                            <View style={{padding:5}}>
+                                <Image source={require('../assets/images/View.png')}
+                                       style={{width: 40, height: 40}}/>
+                            </View>
                         </View>
                     </View>
 
