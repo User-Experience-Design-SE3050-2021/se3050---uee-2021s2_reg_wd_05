@@ -1,18 +1,51 @@
 import React, {useState} from "react";
 import {View, StyleSheet, TextInput, Text, ScrollView} from "react-native";
 import {AlertBox, InputField, NavigationBar, PrimaryButton, RadioButton} from "../components";
+import CardService from "../services/CardService";
 
 const CardEnterDetailScreen = ({navigation}) => {
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(false);
     const [isSelected, setSelection] = useState(false);
+    const [name, setName] = useState('');
+    const [cardNumber, setCardNumber] = useState('');
+    const [month, setMonth] = useState('');
+    const [year, setYear] = useState('');
+    const [cvv, setCvv] = useState('');
 
     const RadioBtn = () => {
         setSelection(true)
     }
 
-    const onPressCard = () => {
-        console.log('Proceed button clicked');
-        setIsVisible(true)
+    const onPressCard = async() => {
+        const card = {
+            name: name,
+            cardNumber: cardNumber,
+            month: month,
+            year: year,
+            cvv: cvv
+        }
+
+        if (card.name === "") {
+            alert("Enter Card Holder Name")
+        } else if (card.cardNumber === "") {
+            alert("Enter Card Number")
+        } else if (card.month === "" || card.year === "") {
+            alert("Enter Expired Date")
+        } else if (card.cvv === "") {
+            alert("Enter CVV Number")
+        } else {
+            await CardService.addCard(card)
+                .then((response) => {
+                    console.log("response",response);
+                    if(response.status === 200){
+                        setIsVisible(true);
+                    }else{
+                        alert('Something went wrong!! Try again.');
+                        throw Error('Something went wrong!! Try again.' + response);
+                    }
+                })
+        }
+
     }
 
     const backToViewCard = () => {
@@ -23,30 +56,34 @@ const CardEnterDetailScreen = ({navigation}) => {
         <View style={styles.mainContainer}>
             <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={styles.scrollContainer}>
                 <View style={styles.inputContainer}>
-                    <InputField text="Card Holder Name"/>
-                    <InputField text="Card Number"/>
+                    <InputField text="Card Holder Name" onChangeText={setName}/>
+                    <InputField text="Card Number" keyboardType="numeric" size={16} onChangeText={setCardNumber}/>
                     <Text style={styles.text}>Expired Date</Text>
                     <TextInput
                         style={styles.input}
                         keyboardType="numeric"
-                        size={2}
+                        maxLength={2}
                         placeholder="MM"
+                        onChangeText={setMonth}
                     />
                     <TextInput
                         style={styles.input01}
                         keyboardType="numeric"
-                        size={2}
+                        maxLength={2}
                         placeholder="YY"
+                        onChangeText={setYear}
                     />
+
                     <Text style={styles.text}>CVV</Text>
                     <TextInput
                         style={styles.input}
                         keyboardType="numeric"
-                        size={3}
+                        maxLength={3}
+                        onChangeText={setCvv}
                     />
                     <View style={styles.checkboxContainer}>
                         <View style={styles.radioButton} onTouchStart={RadioBtn}>
-                            <RadioButton selected={isSelected} />
+                            <RadioButton selected={isSelected}/>
                         </View>
                         <Text style={styles.checkBoxText}>Make this Card as Primary Card</Text>
                     </View>
