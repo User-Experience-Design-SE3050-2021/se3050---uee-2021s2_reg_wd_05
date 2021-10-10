@@ -11,6 +11,8 @@ const VALUES = {
 const BillPaymentDetailScreen = ({navigation, route}) => {
     const categoryId = useState(route.params.id);
     const [billCategory, setBillCategory] = useState({});
+    const [accountNo, setAccountNo] = useState('')
+    const [amount, setAmount] = useState('')
 
     useEffect(() => {
         //fetchData().then();
@@ -27,9 +29,29 @@ const BillPaymentDetailScreen = ({navigation, route}) => {
         });
     }
 
-    const OnPressProceed = () => {
-        console.log('button clicked');
-        navigation.navigate('SelectCard')
+    const OnPressProceed = async () => {
+        const account = {
+            accountNo: accountNo,
+            amount: amount
+        }
+
+        if (account.accountNo === "") {
+            alert('Enter Account Number')
+        } else if (account.amount === "") {
+            alert('Enter Amount')
+        } else {
+            await BillPaymentService.verifyAccountDetails(account.accountNo)
+            .then((response) => {
+                if (account.accountNo === response.accountNo) {
+                    navigation.navigate('SelectCard', {account: account, category: billCategory})
+                } else {
+                    alert('Enter Valid Account Number')
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+        }
     }
 
     return (
@@ -44,8 +66,8 @@ const BillPaymentDetailScreen = ({navigation, route}) => {
                   <Text style={styles.rightText}>{billCategory.name}</Text>
               </View>
               <View style={styles.inputContainer}>
-                  <InputField text="Account Number"/>
-                  <InputField text="Bill Amount" keyboardType="numeric"/>
+                  <InputField text="Account Number" onChangeText={setAccountNo}/>
+                  <InputField text="Bill Amount" keyboardType="numeric" onChangeText={setAmount}/>
                   <PrimaryButton onPress={OnPressProceed} text="Proceed"/>
               </View>
           </View>

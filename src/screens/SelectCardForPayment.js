@@ -17,7 +17,9 @@ const VALUES = [
     }
 ]
 
-const SelectCardForPayment = ({navigation}) => {
+const SelectCardForPayment = ({route, navigation}) => {
+    const account = useState(route.params.account)
+    const category = useState(route.params.category)
     const [cards, setCards] = useState([]);
     const [card, setCard] = useState({});
     const [isSelected, setIsSelected] = useState('');
@@ -41,8 +43,7 @@ const SelectCardForPayment = ({navigation}) => {
     }
 
     const onPressSelect = () => {
-        console.log('button clicked');
-        navigation.navigate('MakePayment')
+        navigation.navigate('MakePayment',{card:card,category:category,account:account})
     }
 
     const onSelectCard = async (id) => {
