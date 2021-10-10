@@ -3,13 +3,14 @@ import {TextInput, StyleSheet, Dimensions, View,Text} from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-const InputField = ({text, width}) =>{
+const InputField = props =>{
 		return(
 			<View>
-					<Text style={styles.text}>{text}</Text>
+					<Text style={styles.text}>{props.text}</Text>
 					<TextInput
 						style={styles.input}
-						keyboardType="default"
+						keyboardType={props.keyboardType}
+						maxLength={props.size}
 					/>
 			</View>
 		)
