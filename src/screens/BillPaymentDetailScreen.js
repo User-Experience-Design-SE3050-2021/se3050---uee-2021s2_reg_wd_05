@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet, ScrollView} from "react-native";
 import {PrimaryButton, InputField, NavigationBar} from "../components";
 import BillPaymentService from "../services/BillPaymentService";
 
@@ -33,7 +33,7 @@ const BillPaymentDetailScreen = ({navigation, route}) => {
     }
 
     return (
-      <View style={styles.mainContainer}>
+      <ScrollView style={styles.mainContainer}>
           <View style={styles.mainContentContainer}>
               <View style={styles.textContainer}>
                   <Text style={styles.text}>Category</Text>
@@ -45,14 +45,14 @@ const BillPaymentDetailScreen = ({navigation, route}) => {
               </View>
               <View style={styles.inputContainer}>
                   <InputField text="Account Number"/>
-                  <InputField text="Bill Amount"/>
+                  <InputField text="Bill Amount" keyboardType="numeric"/>
                   <PrimaryButton onPress={OnPressProceed} text="Proceed"/>
               </View>
           </View>
           <View style={styles.bottomContainer}>
               <NavigationBar navigation={navigation}/>
           </View>
-      </View>
+      </ScrollView>
 
     )
 }
