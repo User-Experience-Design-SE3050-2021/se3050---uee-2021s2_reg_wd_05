@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, ScrollView, Image} from "react-native";
 import {NavigationBar} from "../components";
 
 const TransactionHistoryScreen = ({navigation}) => {
-    
+
     const TransactionHistoryHolder = () => {
         return (
             <View style={styles.contentContainer}>
@@ -22,7 +22,6 @@ const TransactionHistoryScreen = ({navigation}) => {
                 </View>
 
                 <View style={{justifyContent: 'flex-end', flexDirection: 'row', padding: 10}}>
-
                     <View style={{padding: 5}}>
                         <View style={{paddingRight: 55, paddingTop: 5}}>
                             <View style={styles.textSuccessContainer}>
