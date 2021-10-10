@@ -45,9 +45,10 @@ const AddComplaintScreen = ({navigation}) =>  {
                 </View>
 
                 <InputField text="Message"/>
-                <View style={styles.selectbuttonContainer}>
-                    <PrimaryButton onPress={btnClick} text="Select Complaint Type"/>
-                </View>
+                {/*<View style={styles.selectbuttonContainer}>*/}
+                    {/*<PrimaryButton onPress={btnClick} text="Select Complaint Type"/>*/}
+                    <InputField text="Complaint Type"/>
+                {/*</View>*/}
 
                 <View style={styles.buttonContainer}>
                     <PrimaryButton onPress={btnClick} text="Submit"/>

@@ -14,7 +14,7 @@ const CustomerProfileScreen = ({navigation}) =>{
 
             <View style={styles.inputContainer}>
                 <View style={styles.imageview}>
-                    <Image source={require('../assets/images/profile.png')}
+                    <Image source={require('../assets/images/SettingsScreen/profile.png')}
                            style={styles.image} />
                 </View>
                 <View style={styles.textContainer}>
