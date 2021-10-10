@@ -21,7 +21,7 @@ const NavigationBar = ({navigation}) => {
               <Text style={styles.text}>Transaction</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('ComplaintsHistory')}>
-              <Image source={require('../assets/images/SettingsScreen/complaint.png')} style={styles.icon}/>
+              <Image source={require('../assets/images/complaint.png')} style={styles.icon}/>
               <Text style={styles.text}>Complaints</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Settings')}>
