@@ -1,45 +1,64 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {View, Text, StyleSheet, ScrollView, Image} from "react-native";
 import {NavigationBar} from "../components";
+import TransactionService from "../services/TransactionService";
+import moment from "moment";
 
 const TransactionHistoryScreen = ({navigation}) => {
+    const [Transaction, setTransaction] = useState([]);
 
-    const TransactionHistoryHolder = () => {
+    useEffect(() => {
+        fetchData().then();
+    }, [])
+
+    const fetchData = async () => {
+        await TransactionService.getTransactions()
+            .then((transaction) => {
+                setTransaction(transaction);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
+
+    const TransactionHistoryHolder = ({transaction}) => {
         return (
-            <View style={styles.contentContainer}>
-                <Text
-                    style={styles.textHeading}>
-                    CEYLON ELECTRICITY BOARD
-                </Text>
-                <View style={styles.textContainer}>
-                    <Text style={styles.text}>From: 5142-XXXX-XXXX-2563</Text>
-                    <Text style={styles.TextAmount}>LKR 1,000.00</Text>
-                </View>
+            <View style={{padding: 5}}>
+                <View style={styles.contentContainer}>
+                    <Text
+                        style={styles.textHeading}>
+                        CEYLON ELECTRICITY BOARD
+                    </Text>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>From: {transaction.fromAccount.cardNumber}</Text>
+                        <Text style={styles.TextAmount}>LKR {transaction.amount}.00</Text>
+                    </View>
 
-                <View style={styles.textContainer}>
-                    <Text style={styles.text}>Reference: 123112595084 </Text>
-                    <Text style={styles.rightText}>Aug 20, 2021</Text>
-                </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>Reference: {transaction.reference} </Text>
+                        <Text style={styles.rightText}>{moment(transaction.Date).format("YYYY-MM-DD")}</Text>
+                    </View>
 
-                <View style={{justifyContent: 'flex-end', flexDirection: 'row', padding: 10}}>
-                    <View style={{padding: 5}}>
-                        <View style={{paddingRight: 55, paddingTop: 5}}>
-                            <View style={styles.textSuccessContainer}>
-                                <Text style={styles.textSuccess}> Success </Text>
+                    <View style={{justifyContent: 'flex-end', flexDirection: 'row', padding: 10}}>
+                        <View style={{padding: 5}}>
+                            <View style={{paddingRight: 55, paddingTop: 5}}>
+                                <View style={styles.textSuccessContainer}>
+                                    <Text style={styles.textSuccess}> Success </Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={{padding: 5}}>
-                        <Image source={require('../assets/images/download.png')}
-                               style={{width: 40, height: 40}}/>
-                    </View>
-                    <View style={{padding: 5}}>
-                        <Image source={require('../assets/images/Share.png')}
-                               style={{width: 40, height: 40}}/>
-                    </View>
-                    <View style={{padding: 5}}>
-                        <Image source={require('../assets/images/View.png')}
-                               style={{width: 40, height: 40}}/>
+                        <View style={{padding: 5}}>
+                            <Image source={require('../assets/images/download.png')}
+                                   style={{width: 40, height: 40}}/>
+                        </View>
+                        <View style={{padding: 5}}>
+                            <Image source={require('../assets/images/Share.png')}
+                                   style={{width: 40, height: 40}}/>
+                        </View>
+                        <View style={{padding: 5}}>
+                            <Image source={require('../assets/images/View.png')}
+                                   style={{width: 40, height: 40}}/>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -51,9 +70,15 @@ const TransactionHistoryScreen = ({navigation}) => {
         <View style={styles.mainContainer}>
             <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={styles.scrollContainer}>
                 <View style={styles.inputContainer}>
-
-                    <TransactionHistoryHolder/>
-
+                    {
+                        Transaction.length > 0 ?
+                            Transaction.map(transaction => {
+                                return (
+                                    <TransactionHistoryHolder key={transaction._id} transaction={transaction}/>
+                                )
+                            })
+                            : <Text>Data not Found</Text>
+                    }
                 </View>
             </ScrollView>
             <View style={styles.bottomContainer}>
