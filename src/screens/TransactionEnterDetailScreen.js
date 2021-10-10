@@ -4,8 +4,7 @@ import {InputField, PrimaryButton, NavigationBar} from "../components";
 
 const TransactionEnterDetailScreen = ({navigation}) => {
 
-    const btnClick = () => {
-        console.log('Proceed button clicked');
+    const onPressTransaction = () => {
         navigation.navigate('TransactionConfirm');
     }
 
@@ -14,11 +13,13 @@ const TransactionEnterDetailScreen = ({navigation}) => {
             <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={styles.scrollContainer}>
                 <View style={styles.inputContainer}>
                     <InputField text="From Account"/>
-                    <InputField text="Account No"/>
+                    <InputField text="Account No" keyboardType="numeric"/>
                     <InputField text="Account Holder Name"/>
-                    <InputField text="Amount"/>
+                    <InputField text="Amount" keyboardType="numeric"/>
                     <InputField text="Description"/>
-                    <PrimaryButton onPress={btnClick} text="Proceed"/>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={onPressTransaction} text="Proceed"/>
+                    </View>
                 </View>
             </ScrollView>
             <View style={styles.bottomContainer}>
@@ -43,6 +44,10 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         alignItems: 'center',
         borderRadius: 10,
+    },
+    buttonContainer: {
+        alignItems: 'center',
+        padding: 10,
     },
     bottomContainer: {
         paddingTop: 20,

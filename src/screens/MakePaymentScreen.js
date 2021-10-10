@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, ScrollView} from "react-native";
 import {PrimaryButton, InputField, NavigationBar, AlertBox} from "../components";
 
 const MakePaymentScreen = ({navigation}) => {
-    const [isVisible,setIsVisible] = useState(false)
+    const [isVisible,setIsVisible] = useState(false);
 
     const onPressPayment = () => {
         setIsVisible(true)

@@ -1,13 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import {View, StyleSheet, Text, TextInput, Dimensions, ScrollView} from "react-native";
-import {InputField, PrimaryButton, NavigationBar, RadioButton} from "../components";
+import {InputField, PrimaryButton, NavigationBar, RadioButton, AlertBox} from "../components";
 
 const {width} = Dimensions.get('window');
 
 const TransactionConfirmScreen = ({navigation}) => {
+    const [isVisible, setIsVisible] = useState(false);
 
-    const btnClick = () => {
+    const onPressTransaction = () => {
         console.log('Proceed button clicked');
+        setIsVisible(true);
+    }
+
+    const backToMain = () => {
+        navigation.navigate('BillCategory');
     }
 
     return (
@@ -29,7 +35,7 @@ const TransactionConfirmScreen = ({navigation}) => {
                     <TextInput
                         style={styles.input}
                         value={'1234567890'}
-                        keyboardType="default"
+                        keyboardType="numeric"
                     />
                     <Text style={styles.text}>Account Holder Name</Text>
                     <TextInput
@@ -49,8 +55,15 @@ const TransactionConfirmScreen = ({navigation}) => {
                         value={'Description'}
                         keyboardType="default"
                     />
-                    <InputField text="CVV"/>
-                    <PrimaryButton onPress={btnClick} text="Proceed"/>
+                    <InputField text="CVV" keyboardType="numeric" size={3}/>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={onPressTransaction} text="Proceed"/>
+                    </View>
+                    <AlertBox
+                        image={require('../assets/images/Checked.png')} text="Successfully Transacted"
+                        buttonText="Back to Main" buttonColor="#13C39C" isVisible={isVisible}
+                        onPress={backToMain}/>
+
                 </View>
             </ScrollView>
             <View style={styles.bottomContainer}>
@@ -93,7 +106,7 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 18,
     },
-    fromAccountText:{
+    fromAccountText: {
         fontSize: 18,
         paddingTop: 5,
         paddingLeft: 15,
@@ -116,6 +129,10 @@ const styles = StyleSheet.create({
         fontSize: 18,
         paddingTop: 10,
         paddingLeft: 15,
+    },
+    buttonContainer: {
+        alignItems: 'center',
+        padding: 10,
     },
 })
 
