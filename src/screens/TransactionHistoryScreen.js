@@ -1,6 +1,6 @@
 import React from "react";
-import {View, Text, StyleSheet, ScrollView} from "react-native";
-import {PrimaryButton, NavigationBar} from "../components";
+import {View, Text, StyleSheet, ScrollView, Image} from "react-native";
+import {NavigationBar} from "../components";
 
 const TransactionHistoryScreen = ({navigation}) => {
 
@@ -14,18 +14,32 @@ const TransactionHistoryScreen = ({navigation}) => {
                 <View style={styles.inputContainer}>
 
                     <View style={styles.contentContainer}>
+                        <Text
+                            style={styles.textHeading}>
+                            CEYLON ELECTRICITY BOARD
+                        </Text>
                         <View style={styles.textContainer}>
-                            <Text style={styles.text}>Category</Text>
-                            <Text style={styles.rightText}>Utility</Text>
+                            <Text style={styles.text}>From: 5142-XXXX-XXXX-2563</Text>
+                            <Text style={styles.TextAmount}>LKR 1,000.00</Text>
                         </View>
 
                         <View style={styles.textContainer}>
-                            <Text style={styles.text}>Biller </Text>
-                            <Text style={styles.rightText}>Ceylon Electricity Board</Text>
+                            <Text style={styles.text}>Reference: 123112595084 </Text>
+                            <Text style={styles.rightText}>Aug 20, 2021</Text>
                         </View>
 
-                        <View style={styles.buttonContainer}>
-                            <PrimaryButton onPress={btnClick} text="Proceed"/>
+                        <View style={{justifyContent: 'flex-end', flexDirection: 'row', padding: 10}}>
+                            <View style={{paddingRight: 75, paddingTop: 10}}>
+                                <View style={styles.textSuccessContainer}>
+                                    <Text style={styles.textSuccess}> Success </Text>
+                                </View>
+                            </View>
+                            <Image source={require('../assets/images/download.png')}
+                                   style={{width: 50, height: 50}}/>
+                            <Image source={require('../assets/images/Share.png')}
+                                   style={{width: 50, height: 50}}/>
+                            <Image source={require('../assets/images/View.png')}
+                                   style={{width: 50, height: 50}}/>
                         </View>
                     </View>
 
@@ -61,26 +75,56 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         backgroundColor: '#E8E6E6',
-    },
-    buttonContainer: {
-        // alignItems: 'center',
-        padding: 8,
-        width: 200,
-        height: 80,
+        borderRadius: 10,
+        width: '100%'
     },
     textContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    text: {
+    textMain: {
         fontSize: 18,
-        padding: 10,
+        fontWeight: 'bold',
+        padding: 5,
+    },
+    text: {
+        fontSize: 16,
+        padding: 5,
+        paddingLeft: 10
     },
     rightText: {
-        fontSize: 18,
-        padding: 10,
+        fontSize: 16,
+        paddingRight: 10,
         textAlign: 'right',
         alignSelf: 'stretch'
+    },
+    TextAmount: {
+        fontSize: 18,
+        paddingRight: 10,
+        fontWeight: 'bold',
+        textAlign: 'right',
+        alignSelf: 'stretch'
+    },
+    textHeading: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        padding: 5,
+        paddingLeft: 10,
+        textTransform: 'uppercase',
+    },
+    textSuccessContainer: {
+        backgroundColor: '#13C39C',
+        borderRadius: 10,
+        width: 120,
+        height: 35,
+        justifyContent: 'center',
+        alignItems: "center"
+    },
+    textSuccess: {
+        fontSize: 18,
+        color: '#FFFFFF',
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 })
 
