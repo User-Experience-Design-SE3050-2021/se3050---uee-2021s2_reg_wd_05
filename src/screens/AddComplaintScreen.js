@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
 import {PrimaryButton, InputField, NavigationBar} from "../components";
+import ComplaintService from "../services/ComplaintService";
 
 
 
@@ -8,14 +9,26 @@ import {PrimaryButton, InputField, NavigationBar} from "../components";
 const AddComplaintScreen = ({navigation}) =>  {
     const [message, setmessage] = useState('');
     const [complaintType, setcomplaintType] = useState('');
+
+
     const btnClick = () => {
+        let complaint = {
+            message: message,
+            complaintType: complaintType,
+        };
+
         if (message === '') {
             alert('Enter Message ')
         }
         else if (complaintType === '') {
             alert('Enter Complaint Type ')
         }else{
-            navigation.navigate('ViewComplaints')
+            console.log(complaint);
+            ComplaintService.createComplaint(complaint).then(res => {
+                console.log('After', res);
+                navigation.navigate('ViewComplaints');
+            });
+            // navigation.navigate('ViewComplaints')
         }
         console.log('button clicked');
         // console.log('button clicked');

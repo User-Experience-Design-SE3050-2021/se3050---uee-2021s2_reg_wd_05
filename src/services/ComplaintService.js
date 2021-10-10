@@ -1,4 +1,4 @@
-const COMPLAINT_BASE_URI = "http://localhost:3000/complaints";
+const COMPLAINT_BASE_URI = "http://192.168.1.101:3000/complaints";
 
 class ComplaintService {
     /**
