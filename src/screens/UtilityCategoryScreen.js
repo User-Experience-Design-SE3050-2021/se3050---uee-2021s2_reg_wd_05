@@ -10,7 +10,7 @@ const UtilityCategoryScreen = ({navigation}) => {
               <View style={styles.imageMainContainer}>
                   <View style={styles.imageContainer}>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/CEB.jpg')}
-                                      text={'CEB'} onPress={()=> navigation.navigate('BillPaymentDetails')}/>
+                                      text={'CEB'} onPress={()=> navigation.navigate('BillPaymentDetails',{id:'U1'})}/>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/Water.jpg')}
                                       text={'Water'}/>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/LECO.jpg')}

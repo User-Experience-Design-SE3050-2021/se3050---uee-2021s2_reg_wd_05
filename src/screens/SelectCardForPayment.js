@@ -42,7 +42,7 @@ const SelectCardForPayment = ({navigation}) => {
 
     const onPressSelect = () => {
         console.log('button clicked');
-        navigation.navigate('SelectCard')
+        navigation.navigate('MakePayment')
     }
 
     const onSelectCard = async (id) => {

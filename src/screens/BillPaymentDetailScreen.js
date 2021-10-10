@@ -1,8 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {View, Text, StyleSheet} from "react-native";
 import {PrimaryButton, InputField, NavigationBar} from "../components";
+import BillPaymentService from "../services/BillPaymentService";
 
-const BillPaymentDetailScreen = ({navigation}) => {
+const VALUES = {
+    type: 'Utility',
+    name: 'Water'
+}
+
+const BillPaymentDetailScreen = ({navigation, route}) => {
+    const categoryId = useState(route.params.id);
+    const [billCategory, setBillCategory] = useState({});
+
+    useEffect(() => {
+        //fetchData().then();
+        setBillCategory(VALUES)
+    }, [])
+
+    const fetchData = async () => {
+        await BillPaymentService.getBillCategoryDetails(categoryId)
+        .then((category) => {
+            setBillCategory(category)
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    }
 
     const OnPressProceed = () => {
         console.log('button clicked');
@@ -14,11 +37,11 @@ const BillPaymentDetailScreen = ({navigation}) => {
           <View style={styles.mainContentContainer}>
               <View style={styles.textContainer}>
                   <Text style={styles.text}>Category</Text>
-                  <Text style={styles.rightText}>Utility</Text>
+                  <Text style={styles.rightText}>{billCategory.type}</Text>
               </View>
               <View style={styles.textContainer}>
                   <Text style={styles.text}>Biller </Text>
-                  <Text style={styles.rightText}>Ceylon Electricity Board</Text>
+                  <Text style={styles.rightText}>{billCategory.name}</Text>
               </View>
               <View style={styles.inputContainer}>
                   <InputField text="Account Number"/>
@@ -38,7 +61,7 @@ const styles = StyleSheet.create({
     mainContainer: {
         padding: 10,
     },
-    mainContentContainer:{
+    mainContentContainer: {
         backgroundColor: 'white',
         padding: 5,
         borderRadius: 10,

@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import {View, Text, StyleSheet} from "react-native";
-import {PrimaryButton, InputField,NavigationBar} from "../components";
+import {PrimaryButton, InputField, NavigationBar, AlertBox} from "../components";
 
 const MakePaymentScreen = ({navigation}) => {
+    const [isVisible,setIsVisible] = useState(false)
 
-    const btnClick = () => {
-        console.log('button clicked');
+    const onPressPayment = () => {
+        setIsVisible(true)
+    }
+
+    const backToMain = () =>{
+        navigation.navigate('BillCategory')
     }
 
     return (
@@ -41,12 +46,14 @@ const MakePaymentScreen = ({navigation}) => {
               </View>
               <InputField text="CVV"/>
               <View style={styles.buttonContainer}>
-                  <PrimaryButton onPress={btnClick} text="Make Payment"/>
+                  <PrimaryButton onPress={onPressPayment} text="Make Payment"/>
               </View>
           </View>
           <View style={styles.bottomContainer}>
               <NavigationBar navigation={navigation}/>
           </View>
+          <AlertBox image={require('../assets/images/Checked.png')} text="Bill Paid Successfully"
+                    buttonText="Back to Biller Category" buttonColor="#13C39C" isVisible={isVisible} onPress={backToMain}/>
       </View>
 
     )
