@@ -22,6 +22,19 @@ const CardViewScreen = ({navigation}) => {
         console.log('Proceed button clicked');
     };
 
+    const CardHolder = ({onTouchStart}) =>{
+      return(
+          <ImageBackground
+              source={require('../assets/images/VisaCard.png')}
+              onTouchStart={() => onTouchStart(true)}
+              style={styles.cards}>
+              <Text style={styles.textType}>Credit</Text>
+              <Text style={styles.textName}>Zayan Malik</Text>
+              <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
+          </ImageBackground>
+      );
+    };
+
     const CardPopup = ({visible, children}) => {
         const [showCard, setShowCard] = useState(visible);
         const scaleValue = useRef(new Animated.Value(0)).current;
@@ -45,7 +58,6 @@ const CardViewScreen = ({navigation}) => {
                 }).start();
             }
         };
-
         return (
             <Modal transparent visible={showCard}>
                 <View style={styles.modalBackground}>
@@ -85,28 +97,8 @@ const CardViewScreen = ({navigation}) => {
                         </View>
                     </CardPopup>
 
-                    <ImageBackground
-                        source={require('../assets/images/VisaCard.png')}
-                        onTouchStart={() => setVisible(true)}
-                        style={styles.cards}>
-                        <Text style={styles.textType}>Credit</Text>
-                        <Text style={styles.textName}>Zayan Malik</Text>
-                        <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
-                    </ImageBackground>
-                    <ImageBackground
-                        source={require('../assets/images/VisaCard.png')}
-                        style={styles.cards}>
-                        <Text style={styles.textType}>Credit</Text>
-                        <Text style={styles.textName}>Zayan Malik</Text>
-                        <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
-                    </ImageBackground>
-                    <ImageBackground
-                        source={require('../assets/images/VisaCard.png')}
-                        style={styles.cards}>
-                        <Text style={styles.textType}>Credit</Text>
-                        <Text style={styles.textName}>Zayan Malik</Text>
-                        <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
-                    </ImageBackground>
+                    <CardHolder onTouchStart={setVisible} />
+
                 </View>
 
             </ScrollView>
