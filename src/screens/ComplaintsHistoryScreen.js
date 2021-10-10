@@ -52,10 +52,8 @@ const ComplaintsHistoryScreen = ({navigation}) => {
                            style={{width: 50, height: 50,}} onPress={btnClick}/>
                 </TouchableOpacity>
             </View>
-            <View style={styles.bottomContainer}>
-                <NavigationBar navigation={navigation}/>
-            </View>
         </View>
+
 
     )
 }
@@ -98,7 +96,7 @@ const styles = StyleSheet.create({
         alignSelf:'stretch'
     },
     addButtonContainer: {
-        paddingTop: 100,
+        paddingTop: 80,
         marginLeft:320,
     },
     bottomContainer: {

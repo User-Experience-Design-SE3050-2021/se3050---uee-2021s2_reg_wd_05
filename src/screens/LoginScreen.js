@@ -21,11 +21,11 @@ const LoginScreen = ({navigation}) => {
     return(
         <View style={styles.mainContainer}>
                 <View style={styles.container}>
-                    <Image source={require('../assets/images/logo.png')}
+                    <Image source={require('../assets/images/SettingsScreen/logo.png')}
                            style={{width: 150, height: 150}} />
                     {/*<Text style={assets.heading}>Login</Text>*/}
                     {/*<Image source={require('../assets/UEE_Background.jpg')} />*/}
-                        <InputField text="Email"/>
+                        <InputField text="User ID"/>
                         <InputField text="Password"/>
                     <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot Password? </Text>
                     <Text style={styles.termsCondition}>I Accept The <Text style={styles.termsCondition}>Terms And Condition</Text> </Text>

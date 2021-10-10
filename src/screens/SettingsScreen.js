@@ -30,14 +30,14 @@ const SettingsScreen = ({navigation}) => {
                 <View style={styles.textContainer}>
                     <View style={styles.rightText}>
                         <View style={styles.imageview}>
-                            <Image source={require('../assets/images/ts.png')}
+                            <Image source={require('../assets/images/SettingsScreen/ts.png')}
                                    style={styles.image} />
                         </View>
                     </View>
                     <Text style={styles.text} onPress={historyClick} >Transaction History</Text>
                     <View style={styles.rightText}>
                         <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('TransactionHistory')}>
-                            <Image source={require('../assets/images/ga.png')}
+                            <Image source={require('../assets/images/SettingsScreen/ga.png')}
                                style={styles.image} />
                          </TouchableOpacity>
                     </View>
@@ -46,14 +46,14 @@ const SettingsScreen = ({navigation}) => {
                 <View style={styles.textContainer}>
                     <View style={styles.rightText}>
                         <View style={styles.imageview}>
-                            <Image source={require('../assets/images/changepin.png')}
+                            <Image source={require('../assets/images/SettingsScreen/changepin.png')}
                                    style={styles.image} />
                         </View>
                     </View>
                     <Text style={styles.text} onPress={changePinClick}>Change PIN</Text>
                     <View style={styles.rightText}>
                         <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('ChangePin')}>
-                        <Image source={require('../assets/images/ga.png')}
+                        <Image source={require('../assets/images/SettingsScreen/ga.png')}
                                style={styles.image} />
                     </TouchableOpacity>
                     </View>
@@ -62,14 +62,14 @@ const SettingsScreen = ({navigation}) => {
                 <View style={styles.textContainer}>
                     <View style={styles.rightText}>
                         <View style={styles.imageview}>
-                            <Image source={require('../assets/images/cp.png')}
+                            <Image source={require('../assets/images/SettingsScreen/cp.png')}
                                    style={styles.image} />
                         </View>
                     </View>
                     <Text style={styles.text} onPress={profileClick}>Customer Profile</Text>
                     <View style={styles.rightText}>
                         <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('CustomerProfile')}>
-                        <Image source={require('../assets/images/ga.png')}
+                        <Image source={require('../assets/images/SettingsScreen/ga.png')}
                                style={styles.image} />
                         </TouchableOpacity>
                     </View>
@@ -78,14 +78,14 @@ const SettingsScreen = ({navigation}) => {
                 <View style={styles.textContainer}>
                     <View style={styles.rightText}>
                         <View style={styles.imageview}>
-                            <Image source={require('../assets/images/lo.png')}
+                            <Image source={require('../assets/images/SettingsScreen/lo.png')}
                                    style={styles.image} />
                         </View>
                     </View>
                     <Text style={styles.text}onPress={logoutClick}>Logout</Text>
                     <View style={styles.rightText}>
                         <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
-                        <Image source={require('../assets/images/ga.png')}
+                        <Image source={require('../assets/images/SettingsScreen/ga.png')}
                                style={styles.image} />
                     </TouchableOpacity>
                     </View>
