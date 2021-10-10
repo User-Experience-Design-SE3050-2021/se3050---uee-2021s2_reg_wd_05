@@ -1,4 +1,4 @@
-const CARD_API_BASE_URI = "http://localhost:5000/card";
+const CARD_API_BASE_URI = "http://localhost:3000/card";
 
 class CardService {
 
