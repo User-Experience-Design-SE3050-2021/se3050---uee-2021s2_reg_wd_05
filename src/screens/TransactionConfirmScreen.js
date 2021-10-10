@@ -1,6 +1,6 @@
 import React from "react";
 import {View, StyleSheet, Text, TextInput, Dimensions, ScrollView} from "react-native";
-import {InputField, PrimaryButton, NavigationBar} from "../components";
+import {InputField, PrimaryButton, NavigationBar, RadioButton} from "../components";
 
 const {width} = Dimensions.get('window');
 
@@ -14,37 +14,35 @@ const TransactionConfirmScreen = ({navigation}) => {
         <View style={styles.mainContainer}>
             <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={styles.scrollContainer}>
                 <View style={styles.inputContainer}>
+
                     <View style={styles.fromAccountContainer}>
-                        <Text style={styles.text}>XXXX - XXXX - 2563</Text>
-                        <Text style={styles.text}>Zayan Malik</Text>
-                        {/*<CheckBox*/}
-                        {/*    title='Click Here'*/}
-                        {/*    // checked={this.state.checked}*/}
-                        {/*/>*/}
+                        <View style={styles.TransactionTextContainer}>
+                            <Text style={styles.fromAccountText}>XXXX - XXXX - 2563</Text>
+                            <Text style={styles.fromAccountText}>Zayan Malik</Text>
+                        </View>
+                        <View>
+                            <RadioButton selected={true}/>
+                        </View>
                     </View>
 
-                    {/*<InputField text="Account No" />*/}
                     <Text style={styles.text}>Account No</Text>
                     <TextInput
                         style={styles.input}
                         value={'1234567890'}
                         keyboardType="default"
                     />
-                    {/*<InputField text="Account Holder Name" />*/}
                     <Text style={styles.text}>Account Holder Name</Text>
                     <TextInput
                         style={styles.input}
                         value={'Zayan'}
                         keyboardType="default"
                     />
-                    {/*<InputField text="Amount" />*/}
                     <Text style={styles.text}>Amount</Text>
                     <TextInput
                         style={styles.input}
                         value={'Rs.5500.00'}
                         keyboardType="number-pad"
                     />
-                    {/*<InputField text="Description" />*/}
                     <Text style={styles.text}>Description</Text>
                     <TextInput
                         style={styles.input}
@@ -83,14 +81,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     fromAccountContainer: {
-        width: width / 1.15,
-        height: 90,
-        margin: 2,
-        borderWidth: 1,
         borderRadius: 5,
-        padding: 5,
-        backgroundColor: '#DCDCDC',
-        borderColor: '#DCDCDC',
+        backgroundColor: '#e7e6e6',
+        padding: 10,
+        marginTop: 5,
+        marginBottom: 5,
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    TransactionTextContainer: {
+        flex: 1,
+        fontSize: 18,
+    },
+    fromAccountText:{
+        fontSize: 18,
+        paddingTop: 5,
+        paddingLeft: 15,
     },
     input: {
         width: width / 1.15,
@@ -99,7 +105,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         borderWidth: 1,
         borderRadius: 5,
-        paddingLeft:20,
+        paddingLeft: 20,
         padding: 10,
         color: '#8a8484',
         backgroundColor: '#f5f5f5',
@@ -110,7 +116,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         paddingTop: 10,
         paddingLeft: 15,
-    }
+    },
 })
 
 export default TransactionConfirmScreen;
