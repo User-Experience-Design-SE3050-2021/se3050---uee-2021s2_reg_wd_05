@@ -1,39 +1,36 @@
 import React, {useEffect, useState} from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {NavigationBar, PrimaryButton, RadioButton} from "../components";
-
-const VALUES = [
-    {
-        id: 1,
-        cardName: 'Credit card',
-        cardNo: '5427-8458-9574-6952',
-        selected: false
-    },
-    {
-        id: 2,
-        cardName: 'Debit card',
-        cardNo: '1541-3579-5217-5264',
-        selected: false
-    }
-]
+import CardService from "../services/CardService";
 
 const SelectCardForPayment = ({route, navigation}) => {
-    const account = useState(route.params.account)
-    const category = useState(route.params.category)
+    const [account] = useState(route.params.account)
+    const [category] = useState(route.params.category)
     const [cards, setCards] = useState([]);
-    const [card, setCard] = useState({});
+    const [card, setCard] = useState('');
     const [isSelected, setIsSelected] = useState('');
 
     useEffect(() => {
-        setCards(VALUES);
+        fetchData().then();
     }, [])
+
+    const fetchData = async () =>{
+        await CardService.getCards()
+        .then((cards) => {
+            console.log(cards)
+            setCards(cards)
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    }
 
     const CardHolder = ({id, card, onPress}) => {
         return (
           <TouchableOpacity style={styles.cardContainer} activeOpacity={0.7} onPress={() => onPress(id)}>
               <View style={styles.textContainer}>
-                  <Text style={styles.textStyle}>{card.cardNo}</Text>
-                  <Text style={styles.textStyle}>{card.cardName}</Text>
+                  <Text style={styles.textStyle}>{card.cardNumber}</Text>
+                  <Text style={styles.textStyle}>{card.name}</Text>
               </View>
               <View>
                   <RadioButton selected={card.selected}/>
@@ -41,9 +38,13 @@ const SelectCardForPayment = ({route, navigation}) => {
           </TouchableOpacity>
         )
     }
-
+    console.log(card)
     const onPressSelect = () => {
-        navigation.navigate('MakePayment',{card:card,category:category,account:account})
+        if(card === ''){
+            alert('Select a card')
+        }else{
+            navigation.navigate('MakePayment',{card:card,category:category,account:account})
+        }
     }
 
     const onSelectCard = async (id) => {

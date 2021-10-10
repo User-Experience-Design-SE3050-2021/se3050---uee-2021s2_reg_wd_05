@@ -2,26 +2,25 @@ import React, {useEffect, useState} from "react";
 import {Text, View, StyleSheet, ScrollView, TouchableOpacity, Image} from "react-native";
 import SwipeAble from 'react-native-gesture-handler/Swipeable';
 import {NavigationBar} from "../components";
-
-const VALUES = [
-    {
-        id: 1,
-        name: 'CEB',
-        amount: '1750.0'
-    },
-    {
-        id: 2,
-        name: 'WaterBill',
-        amount: '1500.0'
-    }
-]
+import NotificationService from "../services/NotificationService";
 
 const Notification = ({navigation}) => {
     const [notification, setNotification] = useState([])
 
     useEffect(() => {
-        setNotification(VALUES)
-    })
+        fetchData().then();
+    },[])
+
+    const fetchData = async () =>{
+        await NotificationService.getNotification()
+        .then((notification) => {
+            console.log(notification)
+            setNotification(notification)
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    }
 
     const NotificationHolder = ({name, amount, id, onPress}) => {
         const rightSwipe = () => {
@@ -45,7 +44,10 @@ const Notification = ({navigation}) => {
     }
 
     const deleteNotification = (id) => {
-        console.log('Hello',id)
+       NotificationService.removeNotificationById(id).
+       then(response =>{
+
+       })
     }
 
     return (
@@ -53,7 +55,7 @@ const Notification = ({navigation}) => {
           <ScrollView contentContainerStyle={styles.mainContainer}>
               {
                   notification.map((item, index) => {
-                      return <NotificationHolder key={index} id={index} name={item.name} amount={item.amount}
+                      return <NotificationHolder key={index} id={item._id} name={item.name} amount={item.amount}
                                                  onPress={deleteNotification}/>
                   })
               }

@@ -11,22 +11,23 @@ const BillCategoryScreen = ({navigation}) => {
                   <View style={styles.imageContainer}>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/Favorites.png')}
                                       text={'Favorites'}/>
+                      <ImageComponent image={require('../assets/images/billPaymentCategoryImg/Utility.png')}
+                                      text={'Utility'} onPress={() => navigation.navigate('UtilityCategory')}/>
+                      <ImageComponent image={require('../assets/images/billPaymentCategoryImg/FixedLine.png')}
+                                      text={'Fixed Line'}/>
+
+                  </View>
+                  <View style={styles.imageContainer}>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/DataReload.png')}
                                       text={'Dialog Reload'}/>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/MDataReload.png')}
                                       text={'Mobitel Reload'}/>
-                  </View>
-                  <View style={styles.imageContainer}>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/MobilePrepaid.png')}
                                       text={'Mobile Prepaid'}/>
-                      <ImageComponent image={require('../assets/images/billPaymentCategoryImg/MobilePostpaid.png')}
-                                      text={'Mobile Postpaid'}/>
-                      <ImageComponent image={require('../assets/images/billPaymentCategoryImg/FixedLine.png')}
-                                      text={'Fixed Line'}/>
                   </View>
                   <View style={styles.imageContainer}>
-                      <ImageComponent image={require('../assets/images/billPaymentCategoryImg/Utility.png')}
-                                      text={'Utility'} onPress={() => navigation.navigate('UtilityCategory')}/>
+                      <ImageComponent image={require('../assets/images/billPaymentCategoryImg/MobilePostpaid.png')}
+                                      text={'Mobile Postpaid'}/>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/Cards.png')}
                                       text={'Cards'}/>
                       <ImageComponent image={require('../assets/images/billPaymentCategoryImg/MobileWallet.png')}

@@ -18,6 +18,7 @@ const MakePaymentScreen = ({route, navigation}) => {
         } else {
             await CardService.getCardByID(card._id)
             .then((response) => {
+                console.log(response)
                 if (response.cvv === card.cvv) {
                     setIsVisible(true)
                 } else {
