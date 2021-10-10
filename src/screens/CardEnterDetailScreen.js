@@ -1,13 +1,22 @@
 import React, {useState} from "react";
 import {View, StyleSheet, TextInput, Text, ScrollView} from "react-native";
-import {InputField, NavigationBar, PrimaryButton, RadioButton} from "../components";
+import {AlertBox, InputField, NavigationBar, PrimaryButton, RadioButton} from "../components";
 
 const CardEnterDetailScreen = ({navigation}) => {
-
+    const [isVisible, setIsVisible] = useState(false)
     const [isSelected, setSelection] = useState(false);
 
-    const btnClick = () => {
+    const RadioBtn = () => {
+        setSelection(true)
+    }
+
+    const onPressCard = () => {
         console.log('Proceed button clicked');
+        setIsVisible(true)
+    }
+
+    const backToViewCard = () => {
+        navigation.navigate('ViewCard')
     }
 
     return (
@@ -16,34 +25,39 @@ const CardEnterDetailScreen = ({navigation}) => {
                 <View style={styles.inputContainer}>
                     <InputField text="Card Holder Name"/>
                     <InputField text="Card Number"/>
-                    {/*<InputField text="Expired Date" />*/}
-
                     <Text style={styles.text}>Expired Date</Text>
                     <TextInput
                         style={styles.input}
-                        keyboardType="default"
+                        keyboardType="numeric"
+                        size={2}
                         placeholder="MM"
                     />
                     <TextInput
                         style={styles.input01}
-                        keyboardType="default"
+                        keyboardType="numeric"
+                        size={2}
                         placeholder="YY"
                     />
-
                     <Text style={styles.text}>CVV</Text>
                     <TextInput
                         style={styles.input}
-                        keyboardType="default"
+                        keyboardType="numeric"
+                        size={3}
                     />
-
                     <View style={styles.checkboxContainer}>
-                        <View style={styles.radioButton}>
-                            <RadioButton selected={isSelected}/>
+                        <View style={styles.radioButton} onTouchStart={RadioBtn}>
+                            <RadioButton selected={isSelected} />
                         </View>
                         <Text style={styles.checkBoxText}>Make this Card as Primary Card</Text>
                     </View>
-
-                    <PrimaryButton onPress={btnClick} text="Proceed"/>
+                    <View style={styles.buttonContainer}>
+                        <PrimaryButton onPress={onPressCard} text="Proceed"/>
+                    </View>
+                    <AlertBox
+                        image={require('../assets/images/Checked.png')} text="Card Successfully added"
+                        buttonText="Back to View ard" buttonColor="#13C39C" isVisible={isVisible}
+                        onPress={backToViewCard}
+                    />
                 </View>
             </ScrollView>
             <View style={styles.bottomContainer}>
@@ -113,6 +127,10 @@ const styles = StyleSheet.create({
     radioButton: {
         alignSelf: "center",
         paddingLeft: 15
+    },
+    buttonContainer: {
+        alignItems: 'center',
+        padding: 10,
     },
 })
 
