@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, Image} from "react-native";
 import { PrimaryButton, InputField } from "../components";
 
 const LoginScreen = ({navigation}) => {
+     // const [userId, setuserId] = useState('');
+     // const [password, setpassword] = useState('');
 
     const loginClick = () => {
         console.log('button clicked');
@@ -22,13 +24,26 @@ const LoginScreen = ({navigation}) => {
         <View style={styles.mainContainer}>
                 <View style={styles.container}>
                     <Image source={require('../assets/images/SettingsScreen/logo.png')}
-                           style={{width: 150, height: 150}} />
+                           style={{width: 110, height: 110}} />
                     {/*<Text style={assets.heading}>Login</Text>*/}
                     {/*<Image source={require('../assets/UEE_Background.jpg')} />*/}
-                        <InputField text="User ID"/>
-                        <InputField text="Password"/>
+                        <InputField text="User ID" keyboardType="numeric"/>
+                        <InputField text="PIN" keyboardType="numeric"/>
                     <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot Password? </Text>
-                    <Text style={styles.termsCondition}>I Accept The <Text style={styles.termsCondition}>Terms And Condition</Text> </Text>
+                    {/*<View >*/}
+                    {/*    <View style={styles.img}>*/}
+                    {/*    <Image source={require('../assets/images/Right_Button.png')}*/}
+                    {/*            style={styles.img}/>*/}
+                    {/*    </View>*/}
+                    {/*<Text style={styles.termsCondition}>I Accept The Terms And Condition</Text>*/}
+                    {/*</View>*/}
+                    <View style={styles.rightText}>
+                        <View style={styles.imageview}>
+                            {/*<Image source={require('../assets/images/Right_Button.png')}*/}
+                            {/*       style={styles.image} />*/}
+                            <Text style={styles.termsCondition}>I Accept The Terms And Condition</Text>
+                        </View>
+                    </View>
                         <PrimaryButton onPress={loginClick} text="Login"/>
                     <Text style={styles.contact}>Forgot User ID?Please Contact </Text>
                     <Text style={styles.contact}>0117569835</Text>
@@ -48,7 +63,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         height:'auto',
         backgroundColor:'white',
-        padding:20,
+        padding:10,
         borderRadius:4
 
     },
@@ -64,8 +79,9 @@ const styles = StyleSheet.create({
     },
     termsCondition: {
         fontSize: 17,
-        padding: 2,
-        margin: 3,
+        margin: 5,
+        paddingLeft:48,
+        paddingBottom:10,
     },
     contact: {
         fontSize: 17,
@@ -80,6 +96,20 @@ const styles = StyleSheet.create({
     dAccount: {
         fontSize: 17,
     },
+    image: {
+        paddingTop:25,
+        // paddingRight:-100,
+        height: 25,
+        width:25,
+    },
+    rightText: {
+        fontSize: 25,
+        padding: 10,
+        textAlign: 'right',
+        alignSelf:'stretch',
+        color: '#0000FF',
+    },
+
 
 
 })
