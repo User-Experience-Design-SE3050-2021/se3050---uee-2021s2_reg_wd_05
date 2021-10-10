@@ -1,9 +1,9 @@
-const NOTIFICATION_API_BASE_URI = "http://localhost:5000/notification";
+const NOTIFICATION_API_BASE_URI = "http://192.168.1.4:3000/notification";
 
 class NotificationService {
 
-    async getNotificationByUser(id) {
-        return await fetch(NOTIFICATION_API_BASE_URI + "/" + id, {
+    async getNotification() {
+        return await fetch(NOTIFICATION_API_BASE_URI, {
             method: "GET",
         })
         .then((response) => {

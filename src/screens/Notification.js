@@ -2,31 +2,30 @@ import React, {useEffect, useState} from "react";
 import {Text, View, StyleSheet, ScrollView, TouchableOpacity, Image} from "react-native";
 import SwipeAble from 'react-native-gesture-handler/Swipeable';
 import {NavigationBar} from "../components";
-
-const VALUES = [
-    {
-        id: 1,
-        name: 'CEB',
-        amount: '1750.0'
-    },
-    {
-        id: 2,
-        name: 'WaterBill',
-        amount: '1500.0'
-    }
-]
+import NotificationService from "../services/NotificationService";
 
 const Notification = ({navigation}) => {
     const [notification, setNotification] = useState([])
 
     useEffect(() => {
-        setNotification(VALUES)
-    })
+        fetchData().then();
+    }, [])
+
+    const fetchData = async () => {
+        await NotificationService.getNotification()
+        .then((notification) => {
+            console.log(notification)
+            setNotification(notification)
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+    }
 
     const NotificationHolder = ({name, amount, id, onPress}) => {
         const rightSwipe = () => {
             return (
-              <TouchableOpacity activeOpacity={0.6} style={styles.deleteContainer} onPress={()=> onPress(id)}>
+              <TouchableOpacity activeOpacity={0.6} style={styles.deleteContainer} onPress={() => onPress(id)}>
                   <View style={styles.deleteBox}>
                       <Image source={require('../assets/images/Delete.png')} style={styles.deleteIcon}/>
                   </View>
@@ -45,7 +44,11 @@ const Notification = ({navigation}) => {
     }
 
     const deleteNotification = (id) => {
-        console.log('Hello',id)
+        NotificationService.removeNotificationById(id).then(response => {
+            if (response) {
+                fetchData().then();
+            }
+        })
     }
 
     return (
@@ -53,7 +56,7 @@ const Notification = ({navigation}) => {
           <ScrollView contentContainerStyle={styles.mainContainer}>
               {
                   notification.map((item, index) => {
-                      return <NotificationHolder key={index} id={index} name={item.name} amount={item.amount}
+                      return <NotificationHolder key={index} id={item._id} name={item.name} amount={item.amount}
                                                  onPress={deleteNotification}/>
                   })
               }
@@ -69,7 +72,7 @@ const Notification = ({navigation}) => {
 const styles = StyleSheet.create({
     mainContainer: {
         alignItems: 'center',
-        padding: 10,
+        padding: 10
     },
     textContainer: {
         width: 400,
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         paddingTop: 20,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     deleteContainer: {
         padding: 5
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     deleteIcon: {
         width: 40,
         height: 40
-    }
+    },
 })
 
 export default Notification;

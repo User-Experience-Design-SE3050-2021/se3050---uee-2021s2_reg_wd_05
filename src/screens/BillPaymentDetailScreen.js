@@ -50,27 +50,29 @@ const BillPaymentDetailScreen = ({navigation, route}) => {
     }
 
     return (
-      <ScrollView style={styles.mainContainer}>
-          <View style={styles.mainContentContainer}>
-              <View style={styles.textContainer}>
-                  <Text style={styles.text}>Category</Text>
-                  <Text style={styles.rightText}>{billCategory.type}</Text>
+      <View>
+          <ScrollView style={styles.mainContainer}>
+              <View style={styles.mainContentContainer}>
+                  <View style={styles.textContainer}>
+                      <Text style={styles.text}>Category</Text>
+                      <Text style={styles.rightText}>{billCategory.type}</Text>
+                  </View>
+                  <View style={styles.textContainer}>
+                      <Text style={styles.text}>Biller </Text>
+                      <Text style={styles.rightText}>{billCategory.name}</Text>
+                  </View>
+                  <View style={styles.inputContainer}>
+                      <InputField text="Account Number" onChangeText={setAccountNo}/>
+                      <InputField text="Bill Amount" keyboardType="numeric" onChangeText={setAmount}/>
+                      <PrimaryButton onPress={OnPressProceed} text="Proceed"/>
+                  </View>
               </View>
-              <View style={styles.textContainer}>
-                  <Text style={styles.text}>Biller </Text>
-                  <Text style={styles.rightText}>{billCategory.name}</Text>
-              </View>
-              <View style={styles.inputContainer}>
-                  <InputField text="Account Number" onChangeText={setAccountNo}/>
-                  <InputField text="Bill Amount" keyboardType="numeric" onChangeText={setAmount}/>
-                  <PrimaryButton onPress={OnPressProceed} text="Proceed"/>
-              </View>
-          </View>
+
+          </ScrollView>
           <View style={styles.bottomContainer}>
               <NavigationBar navigation={navigation}/>
           </View>
-      </ScrollView>
-
+      </View>
     )
 }
 
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch'
     },
     bottomContainer: {
-        paddingTop: 20,
+        paddingTop: 160,
         alignItems: 'center'
     }
 })
