@@ -22,7 +22,7 @@ const LoginScreen = ({navigation}) => {
         <View style={styles.mainContainer}>
                 <View style={styles.container}>
                     <Image source={require('../assets/images/logo.png')}
-                           style={{width: 100, height: 100}} />
+                           style={{width: 150, height: 150}} />
                     {/*<Text style={assets.heading}>Login</Text>*/}
                     {/*<Image source={require('../assets/UEE_Background.jpg')} />*/}
                         <InputField text="Email"/>

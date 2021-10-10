@@ -1,5 +1,6 @@
 import React from "react";
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet, Image, TouchableOpacity} from "react-native";
+import {NavigationBar} from "../components";
 
 
 const SettingsScreen = ({navigation}) => {
@@ -18,35 +19,82 @@ const SettingsScreen = ({navigation}) => {
     }
     const logoutClick = () => {
         console.log('button clicked');
-        navigation.navigate('LoginScreen')
+        navigation.navigate('Login')
     }
 
 
     return(
         <View style={styles.mainContainer}>
+
             <View style={styles.inputContainer}>
                 <View style={styles.textContainer}>
-                    <Text style={styles.rightText}>[ ]</Text>
+                    <View style={styles.rightText}>
+                        <View style={styles.imageview}>
+                            <Image source={require('../assets/images/ts.png')}
+                                   style={styles.image} />
+                        </View>
+                    </View>
                     <Text style={styles.text} onPress={historyClick} >Transaction History</Text>
-                    <Text style={styles.rightText}> > </Text>
+                    <View style={styles.rightText}>
+                        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('TransactionHistory')}>
+                            <Image source={require('../assets/images/ga.png')}
+                               style={styles.image} />
+                         </TouchableOpacity>
+                    </View>
                 </View>
+
                 <View style={styles.textContainer}>
-                    <Text style={styles.rightText}>[ ]</Text>
+                    <View style={styles.rightText}>
+                        <View style={styles.imageview}>
+                            <Image source={require('../assets/images/changepin.png')}
+                                   style={styles.image} />
+                        </View>
+                    </View>
                     <Text style={styles.text} onPress={changePinClick}>Change PIN</Text>
-                    <Text style={styles.rightText}> > </Text>
+                    <View style={styles.rightText}>
+                        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('ChangePin')}>
+                        <Image source={require('../assets/images/ga.png')}
+                               style={styles.image} />
+                    </TouchableOpacity>
+                    </View>
                 </View>
+
                 <View style={styles.textContainer}>
-                    <Text style={styles.rightText}>[ ]</Text>
+                    <View style={styles.rightText}>
+                        <View style={styles.imageview}>
+                            <Image source={require('../assets/images/cp.png')}
+                                   style={styles.image} />
+                        </View>
+                    </View>
                     <Text style={styles.text} onPress={profileClick}>Customer Profile</Text>
-                    <Text style={styles.rightText}>  > </Text>
+                    <View style={styles.rightText}>
+                        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('CustomerProfile')}>
+                        <Image source={require('../assets/images/ga.png')}
+                               style={styles.image} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
+
                 <View style={styles.textContainer}>
-                    <Text style={styles.rightText}>[ ]</Text>
+                    <View style={styles.rightText}>
+                        <View style={styles.imageview}>
+                            <Image source={require('../assets/images/lo.png')}
+                                   style={styles.image} />
+                        </View>
+                    </View>
                     <Text style={styles.text}onPress={logoutClick}>Logout</Text>
-                    <Text style={styles.rightText}> > </Text>
+                    <View style={styles.rightText}>
+                        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Login')}>
+                        <Image source={require('../assets/images/ga.png')}
+                               style={styles.image} />
+                    </TouchableOpacity>
+                    </View>
                 </View>
 
 
+            </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
             </View>
         </View>
     )
@@ -55,7 +103,7 @@ const SettingsScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     mainContainer:{
         padding:10,
-        paddingTop:100
+        paddingTop:50
 
     },
     inputContainer :{
@@ -72,8 +120,8 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        fontSize: 18,
-        padding: 5,
+        fontSize: 19,
+        padding: 18,
     },
     rightText: {
         fontSize: 25,
@@ -90,7 +138,11 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
 
-    }
+    },
+    bottomContainer: {
+        paddingTop: 85,
+        alignItems: 'center'
+    },
 })
 
 export default SettingsScreen;

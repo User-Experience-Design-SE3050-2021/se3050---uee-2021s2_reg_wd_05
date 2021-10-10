@@ -1,8 +1,9 @@
 import React from "react";
 import {View, Text, StyleSheet,Image} from "react-native";
+import {NavigationBar} from "../components";
 
 
-const CustomerProfileScreen = () => {
+const CustomerProfileScreen = ({navigation}) =>{
 
     const btnClick = () => {
         console.log('button clicked');
@@ -10,11 +11,12 @@ const CustomerProfileScreen = () => {
 
     return(
         <View style={styles.mainContainer}>
-            <View style={styles.imageview}>
-                <Image source={require('../assets/images/profile.png')}
-                         style={styles.image} />
-            </View>
+
             <View style={styles.inputContainer}>
+                <View style={styles.imageview}>
+                    <Image source={require('../assets/images/profile.png')}
+                           style={styles.image} />
+                </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>User ID:</Text>
                     <Text style={styles.rightText}>1259</Text>
@@ -35,6 +37,9 @@ const CustomerProfileScreen = () => {
                     <Text style={styles.text}>Last Login:</Text>
                     <Text style={styles.rightText}>2021-10-01 00:03:66</Text>
                 </View>
+            </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
             </View>
         </View>
     )
@@ -81,7 +86,11 @@ const styles = StyleSheet.create({
         paddingLeft:120,
 
 
-    }
+    },
+    bottomContainer: {
+        paddingTop: 135,
+        alignItems: 'center'
+    },
 })
 
 export default CustomerProfileScreen;

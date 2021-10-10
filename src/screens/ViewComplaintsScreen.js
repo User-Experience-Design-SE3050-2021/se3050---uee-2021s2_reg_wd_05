@@ -1,11 +1,11 @@
 import React from "react";
 import {View, Text, StyleSheet} from "react-native";
-import { PrimaryButton, InputField } from "../components";
+import {PrimaryButton, InputField, NavigationBar} from "../components";
 
 
 
 
-const ViewComplaintsScreen = () => {
+const ViewComplaintsScreen = ({navigation}) =>  {
 
     const btnClick = () => {
         console.log('button clicked');
@@ -52,6 +52,9 @@ const ViewComplaintsScreen = () => {
                 </View>
 
             </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
+            </View>
         </View>
     )
 }
@@ -84,7 +87,11 @@ const styles = StyleSheet.create({
     buttonContainer: {
         alignItems: 'center',
         padding: 10,
-    }
+    },
+    bottomContainer: {
+        paddingTop: 125,
+        alignItems: 'center'
+    },
 })
 
 export default ViewComplaintsScreen;

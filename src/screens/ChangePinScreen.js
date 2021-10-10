@@ -1,11 +1,12 @@
 import React from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
-import { PrimaryButton, InputField } from "../components";
+import {PrimaryButton, InputField, NavigationBar} from "../components";
 
-const ChangePinScreen = () => {
+const ChangePinScreen = ({navigation}) =>  {
 
     const btnClick = () => {
         console.log('button clicked');
+        navigation.navigate('Login')
     }
 
     return(
@@ -16,6 +17,9 @@ const ChangePinScreen = () => {
                 <InputField text="Confirm PIN"/>
 
                 <PrimaryButton onPress={btnClick} text="Submit"/>
+            </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
             </View>
         </View>
     )
@@ -33,6 +37,10 @@ const styles = StyleSheet.create({
         borderRadius:5
 
     },
+    bottomContainer: {
+    paddingTop: 118,
+        alignItems: 'center'
+},
 
 })
 

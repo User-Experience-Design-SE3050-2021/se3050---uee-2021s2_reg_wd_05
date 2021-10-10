@@ -2,10 +2,11 @@ import React from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
 import { PrimaryButton, InputField } from "../components";
 
-const SignupScreen = () => {
+const SignupScreen = ({navigation}) => {
 
     const btnClick = () => {
         console.log('button clicked');
+        navigation.navigate('Login')
     }
 
     return(
@@ -16,7 +17,6 @@ const SignupScreen = () => {
                     <InputField text="PIN"/>
                     <InputField text="Confirm PIN"/>
                     <InputField text="Email ID"/>
-                {/*<InputField text="Email ID"/>*/}
 
                 <PrimaryButton onPress={btnClick} text="Submit"/>
             </View>
