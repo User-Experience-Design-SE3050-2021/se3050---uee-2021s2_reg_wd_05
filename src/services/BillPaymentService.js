@@ -1,9 +1,11 @@
-const BILL_PAYMENT_API_BASE_URI = "http://localhost:5000/billPayment";
+const BILL_PAYMENT_API_BASE_URI = "http://192.168.1.4:3000/billPayment";
+const BILL_ACCOUNT_API_BASE_URI = "http://192.168.1.4:3000/billAccount";
 
 class BillPaymentService {
 
     async verifyAccountDetails(account) {
-        return await fetch(BILL_PAYMENT_API_BASE_URI + "/" + account, {
+        console.log('id',account)
+        return await fetch(BILL_ACCOUNT_API_BASE_URI + "/" + account, {
             method: "GET",
         })
         .then((response) => {
