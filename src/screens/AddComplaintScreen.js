@@ -1,15 +1,38 @@
-import React from "react";
+import React, {useState} from "react";
 import {View, Text, StyleSheet, TextInput,Dimensions} from "react-native";
 import {PrimaryButton, InputField, NavigationBar} from "../components";
+import ComplaintService from "../services/ComplaintService";
 
 
 
 
 const AddComplaintScreen = ({navigation}) =>  {
+    const [message, setmessage] = useState('');
+    const [complaintType, setcomplaintType] = useState('');
+
 
     const btnClick = () => {
+        let complaint = {
+            message: message,
+            complaintType: complaintType,
+        };
+
+        if (message === '') {
+            alert('Enter Message ')
+        }
+        else if (complaintType === '') {
+            alert('Enter Complaint Type ')
+        }else{
+            console.log(complaint);
+            ComplaintService.createComplaint(complaint).then(res => {
+                console.log('After', res);
+                navigation.navigate('ViewComplaints');
+            });
+            // navigation.navigate('ViewComplaints')
+        }
         console.log('button clicked');
-        navigation.navigate('ViewComplaints')
+        // console.log('button clicked');
+        // navigation.navigate('ViewComplaints')
     }
 
     return(
@@ -44,10 +67,8 @@ const AddComplaintScreen = ({navigation}) =>  {
                     <Text style={styles.rightText}>4569XXXXX215</Text>
                 </View>
 
-                <InputField text="Message"/>
-                {/*<View style={styles.selectbuttonContainer}>*/}
-                    {/*<PrimaryButton onPress={btnClick} text="Select Complaint Type"/>*/}
-                    <InputField text="Complaint Type"/>
+                <InputField text="Message" onChangeText={setmessage}/>
+                    <InputField text="Complaint Type" onChangeText={setcomplaintType}/>
                 {/*</View>*/}
 
                 <View style={styles.buttonContainer}>

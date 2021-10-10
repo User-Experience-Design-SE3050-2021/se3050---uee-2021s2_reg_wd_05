@@ -1,13 +1,26 @@
-import React from "react";
-import {View, Text, StyleSheet, Image} from "react-native";
-import { PrimaryButton, InputField } from "../components";
+import React, {useState} from "react";
+import {View, Text, StyleSheet, Image, ScrollView} from "react-native";
+import {PrimaryButton, InputField, AlertBox} from "../components";
+import CardService from "../services/CardService";
 
 const LoginScreen = ({navigation}) => {
-     // const [userId, setuserId] = useState('');
-     // const [password, setpassword] = useState('');
+     const [userId, setuserId] = useState('');
+     const [password, setpassword] = useState('');
 
-    const loginClick = () => {
+    const loginClick = async () => {
+        if (userId === '') {
+            alert('Enter User ID ')
+        }
+        else if (password === '') {
+            alert('Enter Password ')
+        }else{
+            navigation.navigate('BillCategory')
+        }
         console.log('button clicked');
+
+    }
+
+    const backToMain = () => {
         navigation.navigate('BillCategory')
     }
     const SignupClick = () => {
@@ -25,17 +38,14 @@ const LoginScreen = ({navigation}) => {
                 <View style={styles.container}>
                     <Image source={require('../assets/images/SettingsScreen/logo.png')}
                            style={{width: 110, height: 110}} />
-                    {/*<Text style={assets.heading}>Login</Text>*/}
-                    {/*<Image source={require('../assets/UEE_Background.jpg')} />*/}
-                        <InputField text="User ID" keyboardType="numeric" size={4}/>
-                        <InputField text="PIN" keyboardType="numeric" size={4}/>
-                    <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot Password? </Text>
+                        <InputField text="User ID" keyboardType="numeric" size={4} onChangeText={setuserId}/>
+                        <InputField secureTextEntry={true} text="PIN" keyboardType="numeric" size={4} onChangeText={setpassword}/>
+                    <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot PIN? </Text>
                     <View style={styles.rightText}>
                         <Image source={require('../assets/images/Right_Button.png')}
                                style={styles.image} />
-                        <View style={styles.imageview}>
                             <Text style={styles.termsCondition}>I Accept The Terms And Condition</Text>
-                        </View>
+
                     </View>
                         <PrimaryButton onPress={loginClick} text="Login"/>
                     <Text style={styles.contact}>Forgot User ID?Please Contact </Text>
@@ -47,7 +57,6 @@ const LoginScreen = ({navigation}) => {
         </View>
     )
 }
-
 const styles = StyleSheet.create({
     mainContainer:{
         padding:10,
@@ -58,7 +67,6 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         padding:10,
         borderRadius:4
-
     },
     heading: {
         fontSize: 17,
@@ -68,13 +76,12 @@ const styles = StyleSheet.create({
         fontSize: 17,
         padding: 2,
         margin: 3,
-        paddingLeft:160
+        paddingLeft:250,
     },
     termsCondition: {
         fontSize: 17,
-        margin: 5,
-        paddingLeft:28,
-
+        paddingLeft:8,
+        paddingBottom:5,
     },
     contact: {
         fontSize: 17,
@@ -85,28 +92,27 @@ const styles = StyleSheet.create({
     Signup: {
         color: '#0000FF',
         fontSize: 17,
+        padding: 2,
+        margin: 3,
+        paddingLeft:250,
     },
     dAccount: {
         fontSize: 17,
     },
     image: {
-        paddingTop:20,
+        // paddingBottom:20,
         // paddingRight:-100,
         height: 25,
         width:25,
-        flexDirection:"row"
     },
     rightText: {
         fontSize: 25,
-        padding: 10,
+        padding: 15,
         textAlign: 'right',
         alignSelf:'stretch',
         color: '#0000FF',
         flexDirection:"row"
     },
 
-
-
 })
-
 export default LoginScreen;
