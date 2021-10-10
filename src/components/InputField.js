@@ -11,6 +11,7 @@ const InputField = props =>{
 						style={styles.input}
 						keyboardType={props.keyboardType}
 						maxLength={props.size}
+						onChangeText={props.onChangeText}
 					/>
 			</View>
 		)

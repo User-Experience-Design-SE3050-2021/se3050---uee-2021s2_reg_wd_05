@@ -1,15 +1,42 @@
 import React, {useState} from "react";
 import {View, Text, StyleSheet, ScrollView} from "react-native";
 import {PrimaryButton, InputField, NavigationBar, AlertBox} from "../components";
+import BillPaymentService from "../services/BillPaymentService";
 
-const MakePaymentScreen = ({navigation}) => {
-    const [isVisible,setIsVisible] = useState(false);
+const MakePaymentScreen = ({route, navigation}) => {
+    const account = useState(route.params.account)
+    const category = useState(route.params.category)
+    const card = useState(route.params.card)
+    const [cvv,setCVV] = useState('')
+    const [isVisible, setIsVisible] = useState(false)
 
-    const onPressPayment = () => {
-        setIsVisible(true)
+
+
+    const onPressPayment = async () => {
+        const payment = {
+            accountNo: account.accountNo,
+            amount: account.amount,
+            cardNo:card
+        }
+
+        if (cvv === '') {
+            alert('Enter CVV Number')
+        } else {
+            await BillPaymentService.makePayment(payment)
+            .then((response) => {
+                if (response.status === 200) {
+                    setIsVisible(true)
+                } else {
+                    alert('Enter Valid Account Number')
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+        }
     }
 
-    const backToMain = () =>{
+    const backToMain = () => {
         navigation.navigate('BillCategory')
     }
 
@@ -18,19 +45,19 @@ const MakePaymentScreen = ({navigation}) => {
           <View style={styles.inputContainer}>
               <View style={styles.textContainer}>
                   <Text style={styles.text}>Category</Text>
-                  <Text style={styles.rightText}>Utility</Text>
+                  <Text style={styles.rightText}>{category.type}</Text>
               </View>
               <View style={styles.textContainer}>
                   <Text style={styles.text}>Biller </Text>
-                  <Text style={styles.rightText}>Ceylon Electricity Board</Text>
+                  <Text style={styles.rightText}>{category.name}</Text>
               </View>
               <View style={styles.textContainer}>
                   <Text style={styles.text}>Account No </Text>
-                  <Text style={styles.rightText}>80749-5484</Text>
+                  <Text style={styles.rightText}>{account.accountNo}</Text>
               </View>
               <View style={styles.textContainer}>
                   <Text style={styles.text}>Amount </Text>
-                  <Text style={styles.rightText}>1520.00</Text>
+                  <Text style={styles.rightText}>{account.amount}</Text>
               </View>
               <View style={styles.textContainer}>
                   <Text style={styles.text}>Card holder name</Text>
@@ -44,7 +71,7 @@ const MakePaymentScreen = ({navigation}) => {
                   <Text style={styles.text}>Ex Date</Text>
                   <Text style={styles.rightText}>15-22</Text>
               </View>
-              <InputField text="CVV" keyboardType="numeric" size={3}/>
+              <InputField text="CVV" keyboardType="numeric" size={3} onChangeText={setCVV}/>
               <View style={styles.buttonContainer}>
                   <PrimaryButton onPress={onPressPayment} text="Make Payment"/>
               </View>
@@ -53,7 +80,8 @@ const MakePaymentScreen = ({navigation}) => {
               <NavigationBar navigation={navigation}/>
           </View>
           <AlertBox image={require('../assets/images/Checked.png')} text="Bill Paid Successfully"
-                    buttonText="Back to Biller Category" buttonColor="#13C39C" isVisible={isVisible} onPress={backToMain}/>
+                    buttonText="Back to Biller Category" buttonColor="#13C39C" isVisible={isVisible}
+                    onPress={backToMain}/>
       </ScrollView>
 
     )
@@ -88,7 +116,7 @@ const styles = StyleSheet.create({
         alignSelf: 'stretch'
     },
     bottomContainer: {
-        paddingTop:40,
+        paddingTop: 40,
         alignItems: 'center'
     }
 })
