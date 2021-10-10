@@ -54,15 +54,17 @@ const SelectCardForPayment = ({route, navigation}) => {
         setCards(clone);
     }
     return (
-      <View style={styles.mainContainer}>
-          <View style={styles.inputContainer}>
-              {
-                  cards.map((item, index) => {
-                      return <CardHolder key={index} id={index} card={item} onPress={onSelectCard}/>
-                  })
-              }
-              <View style={styles.buttonContainer}>
-                  <PrimaryButton onPress={onPressSelect} text="Select Card"/>
+      <View>
+          <View style={styles.mainContainer}>
+              <View style={styles.inputContainer}>
+                  {
+                      cards.map((item, index) => {
+                          return <CardHolder key={index} id={index} card={item} onPress={onSelectCard}/>
+                      })
+                  }
+                  <View style={styles.buttonContainer}>
+                      <PrimaryButton onPress={onPressSelect} text="Select Card"/>
+                  </View>
               </View>
           </View>
           <View style={styles.bottomContainer}>
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     bottomContainer: {
-        paddingTop: 40,
+        paddingTop: 350,
         alignItems: 'center'
     }
 })

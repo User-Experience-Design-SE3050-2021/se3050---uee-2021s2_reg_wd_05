@@ -1,4 +1,4 @@
-const NOTIFICATION_API_BASE_URI = "http://localhost:3000/notification";
+const NOTIFICATION_API_BASE_URI = "http://192.168.1.4:3000/notification";
 
 class NotificationService {
 

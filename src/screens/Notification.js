@@ -9,9 +9,9 @@ const Notification = ({navigation}) => {
 
     useEffect(() => {
         fetchData().then();
-    },[])
+    }, [])
 
-    const fetchData = async () =>{
+    const fetchData = async () => {
         await NotificationService.getNotification()
         .then((notification) => {
             console.log(notification)
@@ -25,7 +25,7 @@ const Notification = ({navigation}) => {
     const NotificationHolder = ({name, amount, id, onPress}) => {
         const rightSwipe = () => {
             return (
-              <TouchableOpacity activeOpacity={0.6} style={styles.deleteContainer} onPress={()=> onPress(id)}>
+              <TouchableOpacity activeOpacity={0.6} style={styles.deleteContainer} onPress={() => onPress(id)}>
                   <View style={styles.deleteBox}>
                       <Image source={require('../assets/images/Delete.png')} style={styles.deleteIcon}/>
                   </View>
@@ -44,10 +44,11 @@ const Notification = ({navigation}) => {
     }
 
     const deleteNotification = (id) => {
-       NotificationService.removeNotificationById(id).
-       then(response =>{
-
-       })
+        NotificationService.removeNotificationById(id).then(response => {
+            if (response) {
+                fetchData().then();
+            }
+        })
     }
 
     return (
@@ -71,7 +72,7 @@ const Notification = ({navigation}) => {
 const styles = StyleSheet.create({
     mainContainer: {
         alignItems: 'center',
-        padding: 10,
+        padding: 10
     },
     textContainer: {
         width: 400,
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         paddingTop: 20,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     deleteContainer: {
         padding: 5
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
     deleteIcon: {
         width: 40,
         height: 40
-    }
+    },
 })
 
 export default Notification;
