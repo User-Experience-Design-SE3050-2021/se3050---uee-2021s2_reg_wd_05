@@ -11,28 +11,43 @@ import {
     Modal, Animated
 } from "react-native";
 import {NavigationBar} from "../components";
+import CardService from "../services/CardService";
 
 const {width} = Dimensions.get('window');
 
 const CardViewScreen = ({navigation}) => {
 
     const [visible, setVisible] = useState(false);
+    const [Card, setCard] = useState([])
+
+    useEffect(() => {
+        fetchCards();
+    }, [])
+
+    function fetchCards() {
+        CardService.getCards()
+            .then(card => {
+                setCard(card);
+            }).catch(err => {
+            console.error(err)
+        })
+    }
 
     const btnClick = () => {
         console.log('Proceed button clicked');
     };
 
-    const CardHolder = ({onTouchStart}) =>{
-      return(
-          <ImageBackground
-              source={require('../assets/images/VisaCard.png')}
-              onTouchStart={() => onTouchStart(true)}
-              style={styles.cards}>
-              <Text style={styles.textType}>Credit</Text>
-              <Text style={styles.textName}>Zayan Malik</Text>
-              <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
-          </ImageBackground>
-      );
+    const CardHolder = ({card,onTouchStart}) => {
+        return (
+            <ImageBackground
+                source={require('../assets/images/VisaCard.png')}
+                onTouchStart={() => onTouchStart(true)}
+                style={styles.cards}>
+                <Text style={styles.textType}>Credit</Text>
+                <Text style={styles.textName}>{card.name}</Text>
+                <Text style={styles.text}>{card.cardNumber}</Text>
+            </ImageBackground>
+        );
     };
 
     const CardPopup = ({visible, children}) => {
@@ -97,7 +112,14 @@ const CardViewScreen = ({navigation}) => {
                         </View>
                     </CardPopup>
 
-                    <CardHolder onTouchStart={setVisible} />
+                    {
+                        Card.length > 0 ?
+                            Card.map(card => {
+                                return <CardHolder key={card._id} card={card} onTouchStart={setVisible}/>
+                            })
+                            : <Text> No Card Found</Text>
+                    }
+
 
                 </View>
 
