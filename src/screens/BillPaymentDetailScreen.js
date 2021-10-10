@@ -3,26 +3,21 @@ import {View, Text, StyleSheet, ScrollView} from "react-native";
 import {PrimaryButton, InputField, NavigationBar} from "../components";
 import BillPaymentService from "../services/BillPaymentService";
 
-const VALUES = {
-    type: 'Utility',
-    name: 'Water'
-}
 
 const BillPaymentDetailScreen = ({navigation, route}) => {
-    const categoryId = useState(route.params.id);
-    const [billCategory, setBillCategory] = useState({});
+    const [categoryId] = useState(route.params.id);
+    const [billCategory, setBillCategory] = useState('');
     const [accountNo, setAccountNo] = useState('')
     const [amount, setAmount] = useState('')
 
     useEffect(() => {
-        //fetchData().then();
-        setBillCategory(VALUES)
+        fetchData().then();
     }, [])
 
     const fetchData = async () => {
         await BillPaymentService.getBillCategoryDetails(categoryId)
         .then((category) => {
-            setBillCategory(category)
+            setBillCategory(category[0])
         })
         .catch((err) => {
             console.error(err);
@@ -42,7 +37,7 @@ const BillPaymentDetailScreen = ({navigation, route}) => {
         } else {
             await BillPaymentService.verifyAccountDetails(account.accountNo)
             .then((response) => {
-                if (account.accountNo === response.accountNo) {
+                if (account.accountNo === response[0].accountNo) {
                     navigation.navigate('SelectCard', {account: account, category: billCategory})
                 } else {
                     alert('Enter Valid Account Number')
