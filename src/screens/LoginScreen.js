@@ -27,20 +27,13 @@ const LoginScreen = ({navigation}) => {
                            style={{width: 110, height: 110}} />
                     {/*<Text style={assets.heading}>Login</Text>*/}
                     {/*<Image source={require('../assets/UEE_Background.jpg')} />*/}
-                        <InputField text="User ID" keyboardType="numeric"/>
-                        <InputField text="PIN" keyboardType="numeric"/>
+                        <InputField text="User ID" keyboardType="numeric" size={4}/>
+                        <InputField text="PIN" keyboardType="numeric" size={4}/>
                     <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot Password? </Text>
-                    {/*<View >*/}
-                    {/*    <View style={styles.img}>*/}
-                    {/*    <Image source={require('../assets/images/Right_Button.png')}*/}
-                    {/*            style={styles.img}/>*/}
-                    {/*    </View>*/}
-                    {/*<Text style={styles.termsCondition}>I Accept The Terms And Condition</Text>*/}
-                    {/*</View>*/}
                     <View style={styles.rightText}>
+                        <Image source={require('../assets/images/Right_Button.png')}
+                               style={styles.image} />
                         <View style={styles.imageview}>
-                            {/*<Image source={require('../assets/images/Right_Button.png')}*/}
-                            {/*       style={styles.image} />*/}
                             <Text style={styles.termsCondition}>I Accept The Terms And Condition</Text>
                         </View>
                     </View>
@@ -80,8 +73,8 @@ const styles = StyleSheet.create({
     termsCondition: {
         fontSize: 17,
         margin: 5,
-        paddingLeft:48,
-        paddingBottom:10,
+        paddingLeft:28,
+
     },
     contact: {
         fontSize: 17,
@@ -97,10 +90,11 @@ const styles = StyleSheet.create({
         fontSize: 17,
     },
     image: {
-        paddingTop:25,
+        paddingTop:20,
         // paddingRight:-100,
         height: 25,
         width:25,
+        flexDirection:"row"
     },
     rightText: {
         fontSize: 25,
@@ -108,6 +102,7 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         alignSelf:'stretch',
         color: '#0000FF',
+        flexDirection:"row"
     },
 
 

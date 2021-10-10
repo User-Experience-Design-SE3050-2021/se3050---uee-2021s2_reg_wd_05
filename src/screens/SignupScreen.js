@@ -28,29 +28,32 @@ const SignupScreen = ({navigation}) => {
 
     return(
         <View style={styles.mainContainer}>
-            <View style={styles.inputContainer}>
+            <View style={styles.container}>
                     {/*<Text>Register</Text>*/}
-                <Text style={styles.text}>User ID</Text>
-                <TextInput
-                    style={styles.input}
+                {/*<Text style={styles.text}>User ID</Text>*/}
+                <InputField
+                    text="User ID"
                     keyboardType="numeric"
                     onChangeText={setuserId}
+                    size={4}
                 />
-                <Text style={styles.text}>PIN</Text>
-                <TextInput
-                    style={styles.input}
+                {/*<Text style={styles.text}>PIN</Text>*/}
+                <InputField
+                    text="PIN"
                     keyboardType="numeric"
                     onChangeText={setpin}
+                    size={4}
                 />
-                <Text style={styles.text}>Confirm PIN</Text>
-                <TextInput
-                    style={styles.input}
+                {/*<Text style={styles.text}>Confirm PIN</Text>*/}
+                <InputField
+                    text="Confirm PIN"
                     keyboardType="numeric"
                     onChangeText={setconfirmPin}
+                    size={4}
                 />
-                <Text style={styles.text}>Email</Text>
-                <TextInput
-                    style={styles.input}
+                {/*<Text style={styles.text}>Email</Text>*/}
+                <InputField
+                    text="Email ID"
                     keyboardType="default"
                     onChangeText={setemailId}
                 />
@@ -73,35 +76,36 @@ const styles = StyleSheet.create({
         alignItems:'center',
         height:'auto',
         backgroundColor:'white',
-        padding:18,
-        borderRadius:5
-    },
-    inputContainer: {
-        height: 'auto',
-        backgroundColor: 'white',
-        padding: 10,
-        alignItems: 'center',
-        borderRadius: 10,
-
+        padding:10,
+        borderRadius:4
 
     },
-    text: {
-        fontSize: 18,
-        paddingTop: 10,
-        paddingLeft: 15,
-        marginRight: 'auto',
-},
-    input: {
-        width: 350,
-        height: 45,
-        margin: 12,
-        borderWidth: 1,
-        borderRadius: 5,
-        padding: 10,
-        marginRight: 'auto',
-        backgroundColor: 'white',
-
-},
+//     inputContainer: {
+//         height: 'auto',
+//         backgroundColor: 'white',
+//         padding: 10,
+//         alignItems: 'center',
+//         borderRadius: 10,
+//
+//
+//     },
+//     text: {
+//         fontSize: 18,
+//         paddingTop: 10,
+//         paddingLeft: 15,
+//         marginRight: 'auto',
+// },
+//     input: {
+//         width: 350,
+//         height: 45,
+//         margin: 12,
+//         borderWidth: 1,
+//         borderRadius: 5,
+//         padding: 10,
+//         marginRight: 'auto',
+//         backgroundColor: 'white',
+//
+// },
 
 })
 
