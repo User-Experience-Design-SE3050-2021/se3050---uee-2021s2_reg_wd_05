@@ -21,11 +21,11 @@ const CardViewScreen = ({navigation}) => {
     const [Card, setCard] = useState([])
 
     useEffect(() => {
-        fetchCards();
+        fetchCards().then();
     }, [])
 
-    function fetchCards() {
-        CardService.getCards()
+    const fetchCards = async () => {
+        await CardService.getCards()
             .then(card => {
                 setCard(card);
             }).catch(err => {
