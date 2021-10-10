@@ -20,7 +20,7 @@ const ComplaintsHistoryScreen = ({navigation}) => {
 
                     <View style={styles.textContainer}>
                         <Text style={styles.text}>Biller </Text>
-                        <Text style={styles.rightText}>Ceylon Electricity Board</Text>
+                        <Text style={styles.rightText}>Dialog PLC</Text>
                     </View>
 
                     <View style={styles.buttonContainer}>
@@ -31,26 +31,29 @@ const ComplaintsHistoryScreen = ({navigation}) => {
 
 
             </View>
-            <View  style={styles.contentContainer2}>
-                <View style={styles.textContainer}>
-                    <Text style={styles.text}>Dialog Funblaster</Text>
-                    <Text style={styles.rightText}>Utility</Text>
-                </View>
+            {/*<View  style={styles.contentContainer2}>*/}
+            {/*    <View style={styles.textContainer}>*/}
+            {/*        <Text style={styles.text}>CEB Pay</Text>*/}
+            {/*        <Text style={styles.rightText}>Utility</Text>*/}
+            {/*    </View>*/}
 
-                <View style={styles.textContainer}>
-                    <Text style={styles.text}>Biller </Text>
-                    <Text style={styles.rightText}>Ceylon Electricity Board</Text>
-                </View>
+            {/*    <View style={styles.textContainer}>*/}
+            {/*        <Text style={styles.text}>Biller </Text>*/}
+            {/*        <Text style={styles.rightText}>Ceylon Electricity Board</Text>*/}
+            {/*    </View>*/}
 
-                <View style={styles.buttonContainer}>
-                    <PrimaryButton onPress={btnClick} text="Proceed"/>
-                </View>
-            </View>
+            {/*    <View style={styles.buttonContainer}>*/}
+            {/*        <PrimaryButton onPress={btnClick} text="Proceed"/>*/}
+            {/*    </View>*/}
+            {/*</View>*/}
             <View style={styles.addButtonContainer}>
                 <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('AddComplaint')}>
                     <Image source={require('../assets/images/Add_Button.png')}
                            style={{width: 50, height: 50,}} onPress={btnClick}/>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.bottomContainer}>
+                <NavigationBar navigation={navigation}/>
             </View>
         </View>
 
@@ -96,11 +99,11 @@ const styles = StyleSheet.create({
         alignSelf:'stretch'
     },
     addButtonContainer: {
-        paddingTop: 80,
+        paddingTop: 285,
         marginLeft:320,
     },
     bottomContainer: {
-    paddingTop: 50,
+    paddingTop: 20,
         alignItems: 'center'
 },
 })

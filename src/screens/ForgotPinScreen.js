@@ -13,9 +13,9 @@ const ForgotPinScreen = ({navigation}) =>  {
         <View style={styles.mainContainer}>
             <View style={styles.container}>
                 {/*<Text>Forgot PIN</Text>*/}
-                    <InputField text="OTP(Sent To Phone)"/>
-                    <InputField text="PIN"/>
-                    <InputField text="Confirm PIN"/>
+                    <InputField text="OTP(Sent To Phone)" keyboardType="numeric"/>
+                    <InputField text="PIN" keyboardType="numeric"/>
+                    <InputField text="Confirm PIN" keyboardType="numeric"/>
 
                     <PrimaryButton onPress={btnClick} text="Submit"/>
             </View>

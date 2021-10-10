@@ -40,7 +40,7 @@ const ViewComplaintsScreen = ({navigation}) =>  {
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>Card NO:</Text>
-                    <Text style={styles.rightText}>4569XXXXX215</Text>
+                    <Text style={styles.rightText}>4569958637215</Text>
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>Complaint Type:</Text>
