@@ -12,18 +12,22 @@ const SignupScreen = ({navigation}) => {
     const [emailId, setemailId] = useState('');
 
     const btnClick = () => {
+        if (userId === '') {
+            alert('Please Enter the User ID ')
+        }
+        else if (pin === '') {
+            alert('Enter PIN ')
+        }else if (confirmPin === '') {
+            alert('Confirm the PIN ')
+        }else if (emailId === '') {
+            alert('Enter Email Address ')
+        }else{
+            navigation.navigate('Login')
+        }
         console.log('button clicked');
-        let signup = {
-            userId: userId,
-            pin: pin,
-            confirmPin: confirmPin,
-            emailId: emailId,
-        };
-        console.log(signup);
-        SignupService.createSignup(signup).then(res => {
-            console.log('After', res);
-        navigation.navigate('Login')
-        });
+        // console.log('button clicked');
+        // navigation.navigate('Login')
+
     }
 
     return(
@@ -37,31 +41,23 @@ const SignupScreen = ({navigation}) => {
                     onChangeText={setuserId}
                     size={4}
                 />
-                {/*<Text style={styles.text}>PIN</Text>*/}
                 <InputField
                     text="PIN"
                     keyboardType="numeric"
                     onChangeText={setpin}
                     size={4}
                 />
-                {/*<Text style={styles.text}>Confirm PIN</Text>*/}
                 <InputField
                     text="Confirm PIN"
                     keyboardType="numeric"
                     onChangeText={setconfirmPin}
                     size={4}
                 />
-                {/*<Text style={styles.text}>Email</Text>*/}
                 <InputField
                     text="Email ID"
                     keyboardType="default"
                     onChangeText={setemailId}
                 />
-                {/*<InputField text="User ID"/>*/}
-                    {/*<InputField text="PIN"/>*/}
-                    {/*<InputField text="Confirm PIN"/>*/}
-                    {/*<InputField text="Email ID"/>*/}
-
                 <PrimaryButton onPress={btnClick} text="Submit"/>
             </View>
         </View>

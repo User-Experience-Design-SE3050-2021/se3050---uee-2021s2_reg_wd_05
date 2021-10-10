@@ -12,9 +12,9 @@ const ChangePinScreen = ({navigation}) =>  {
     return(
         <View style={styles.mainContainer}>
             <View style={styles.container}>
-                <InputField text="Old PIN" keyboardType="numeric"/>
-                <InputField text="New PIN" keyboardType="numeric"/>
-                <InputField text="Confirm PIN" keyboardType="numeric"/>
+                <InputField text="Old PIN" keyboardType="numeric" size={4}/>
+                <InputField text="New PIN" keyboardType="numeric" size={4}/>
+                <InputField text="Confirm PIN" keyboardType="numeric" size={4}/>
 
                 <PrimaryButton onPress={btnClick} text="Submit"/>
             </View>
