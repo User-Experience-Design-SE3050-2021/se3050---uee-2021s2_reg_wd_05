@@ -1,15 +1,57 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {View, StyleSheet, Text, TextInput, Dimensions, ScrollView} from "react-native";
 import {InputField, PrimaryButton, NavigationBar, RadioButton, AlertBox} from "../components";
+import CardService from "../services/CardService";
+import moment from 'moment';
+import TransactionService from "../services/TransactionService";
 
 const {width} = Dimensions.get('window');
 
-const TransactionConfirmScreen = ({navigation}) => {
+const TransactionConfirmScreen = ({navigation, route}) => {
     const [isVisible, setIsVisible] = useState(false);
+    const [transaction, setTransaction] = useState([]);
+    const [card, setCard] = useState([]);
+    const [cvv, setCvv] = useState('');
 
-    const onPressTransaction = () => {
-        console.log('Proceed button clicked');
-        setIsVisible(true);
+    useEffect(() => {
+        fetchData(route.params.account.fromAccount).then();
+        setTransaction(route.params.account);
+    }, [])
+
+    const fetchData = async (id) => {
+        await CardService.getCardByID(id)
+            .then((card) => {
+                setCard(card)
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
+
+    const onPressTransaction = async () => {
+        const Transaction = {
+            fromAccount: card._id,
+            accountNumber: transaction.accountNumber,
+            accountHolderName: transaction.name,
+            amount: transaction.amount,
+            description: transaction.description,
+            reference: '123654987',
+            Date: moment(Date().toLocaleString()).format("YYYY-MM-DD"),
+        }
+        if (cvv === '') {
+            alert("Enter CVV Number")
+        } else {
+            await TransactionService.makeTransaction(Transaction)
+                .then((response) => {
+                    if (response.status === 200) {
+                        setIsVisible(true);
+                    } else {
+                        alert('Something went wrong!! Try again.');
+                        throw Error('Something went wrong!! Try again.' + response);
+                    }
+                })
+            setIsVisible(true);
+        }
     }
 
     const backToMain = () => {
@@ -23,8 +65,8 @@ const TransactionConfirmScreen = ({navigation}) => {
 
                     <View style={styles.fromAccountContainer}>
                         <View style={styles.TransactionTextContainer}>
-                            <Text style={styles.fromAccountText}>XXXX - XXXX - 2563</Text>
-                            <Text style={styles.fromAccountText}>Zayan Malik</Text>
+                            <Text style={styles.fromAccountText}>{card.cardNumber}</Text>
+                            <Text style={styles.fromAccountText}>{card.name}</Text>
                         </View>
                         <View>
                             <RadioButton selected={true}/>
@@ -34,33 +76,34 @@ const TransactionConfirmScreen = ({navigation}) => {
                     <Text style={styles.text}>Account No</Text>
                     <TextInput
                         style={styles.input}
-                        value={'1234567890'}
+                        value={transaction.accountNumber}
                         keyboardType="numeric"
                     />
                     <Text style={styles.text}>Account Holder Name</Text>
                     <TextInput
                         style={styles.input}
-                        value={'Zayan'}
+                        value={transaction.name}
                         keyboardType="default"
                     />
                     <Text style={styles.text}>Amount</Text>
                     <TextInput
                         style={styles.input}
-                        value={'Rs.5500.00'}
+                        value={'Rs.' + transaction.amount + '.00'}
                         keyboardType="number-pad"
                     />
                     <Text style={styles.text}>Description</Text>
                     <TextInput
                         style={styles.input}
-                        value={'Description'}
+                        value={transaction.description}
                         keyboardType="default"
                     />
-                    <InputField text="CVV" keyboardType="numeric" size={3}/>
+                    <InputField text="CVV" keyboardType="numeric" size={3} onChangeText={setCvv}/>
                     <View style={styles.buttonContainer}>
                         <PrimaryButton onPress={onPressTransaction} text="Proceed"/>
                     </View>
                     <AlertBox
-                        image={require('../assets/images/Checked.png')} text="Successfully Transacted"
+                        image={require('../assets/images/Checked.png')}
+                        text={"LKR " + transaction.amount + ".00 Successfully Transacted"}
                         buttonText="Back to Main" buttonColor="#13C39C" isVisible={isVisible}
                         onPress={backToMain}/>
 
