@@ -36,10 +36,13 @@ const TransactionEnterDetailScreen = ({navigation}) => {
             amount:amount,
             description:description,
         }
+        const nameRegex = /[A-Z]/;
         if (account.accountNumber === "") {
-            alert("Enter Account Number")
+            alert("Enter account Number")
         } else if (account.name === "") {
-            alert("Enter Account Holder Name")
+            alert("Enter account Holder Name")
+        }else if (!nameRegex.test(account.name)) {
+            alert("Enter correct account Holder Name")
         } else if (account.amount === "") {
             alert("Enter Amount")
         } else if (account.description === "") {
