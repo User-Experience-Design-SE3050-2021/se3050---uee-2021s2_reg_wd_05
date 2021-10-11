@@ -10,30 +10,71 @@ import {
     ScrollView,
     Modal, Animated
 } from "react-native";
-import {NavigationBar} from "../components";
+import {AlertBox, NavigationBar} from "../components";
+import CardService from "../services/CardService";
 
 const {width} = Dimensions.get('window');
 
 const CardViewScreen = ({navigation}) => {
-
     const [visible, setVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
+    const [Cards, setCards] = useState([]);
+    const [Card, setCard] = useState([])
+
+
+    useEffect(() => {
+        fetchCards().then();
+    }, [])
+
+    const fetchCards = async () => {
+        await CardService.getCards()
+            .then(card => {
+                setCards(card);
+            }).catch(err => {
+                console.error(err)
+            })
+    }
 
     const btnClick = () => {
         console.log('Proceed button clicked');
     };
 
-    const CardHolder = ({onTouchStart}) =>{
-      return(
-          <ImageBackground
-              source={require('../assets/images/VisaCard.png')}
-              onTouchStart={() => onTouchStart(true)}
-              style={styles.cards}>
-              <Text style={styles.textType}>Credit</Text>
-              <Text style={styles.textName}>Zayan Malik</Text>
-              <Text style={styles.text}>5142 - XXXX - XXXX - 2563</Text>
-          </ImageBackground>
-      );
+    const CardHolder = ({card, onTouchStart}) => {
+        return (
+            <ImageBackground
+                source={require('../assets/images/VisaCard.png')}
+                onTouchStart={() => onTouchStart(card)}
+                style={styles.cards}>
+                <Text style={styles.textType}>Credit</Text>
+                <Text style={styles.textName}>{card.name}</Text>
+                <Text style={styles.text}>{card.cardNumber}</Text>
+            </ImageBackground>
+        );
     };
+
+    const onPressCard = (card) => {
+        setCard(card);
+        setVisible(true);
+    };
+
+    const onPressDeleteCard = (id) => {
+        if (id === '') {
+            alert('Something went wrong!! Try again.');
+        } else {
+            CardService.removeCard(id)
+                .then(res => {
+                    if(res.status === 200){
+                        setTimeout(() => setIsVisible(true), 2000);
+                    }else{
+                        alert('Something went wrong!! Try again.');
+                    }
+                })
+        }
+    };
+
+    const backToMain = () => {
+        navigation.navigate('BillCategory')
+    }
 
     const CardPopup = ({visible, children}) => {
         const [showCard, setShowCard] = useState(visible);
@@ -79,8 +120,8 @@ const CardViewScreen = ({navigation}) => {
                             <ImageBackground source={require('../assets/images/VisaCard.png')}
                                              style={{width: 285, height: 150, marginVertical: 10}}>
                                 <Text style={styles.textCardPopup}>Credit</Text>
-                                <Text style={styles.textCardPopup2}>Zayan Malik</Text>
-                                <Text style={styles.textCardPopup2}>5142 - XXXX - XXXX - 2563</Text>
+                                <Text style={styles.textCardPopup2}>{Card.name}</Text>
+                                <Text style={styles.textCardPopup2}>{Card.cardNumber}</Text>
                             </ImageBackground>
                         </View>
                         <View style={{flexDirection: 'row'}}>
@@ -91,13 +132,27 @@ const CardViewScreen = ({navigation}) => {
                                 </TouchableOpacity>
                             </View>
                             <View style={{alignItems: 'center', width: '50%'}}>
-                                <Image source={require('../assets/images/Delete_Button.png')}
-                                       style={{width: 70, height: 70, marginVertical: 10}}/>
+                                <TouchableOpacity onPress={() => onPressDeleteCard(Card._id)}>
+                                    <Image source={require('../assets/images/Delete_Button.png')}
+                                           style={{width: 70, height: 70, marginVertical: 10}}/>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </CardPopup>
 
-                    <CardHolder onTouchStart={setVisible} />
+                    {
+                        Cards.length > 0 ?
+                            Cards.map(card => {
+                                return <CardHolder key={card._id} card={card} onTouchStart={onPressCard}/>
+                            })
+                            : <Text> No Card Found</Text>
+                    }
+
+                    <AlertBox
+                        image={require('../assets/images/Checked.png')}
+                        text={"Card Successfully Removed."}
+                        buttonText="Back to View Card" buttonColor="#13C39C" isVisible={isVisible}
+                        onPress={backToMain}/>
 
                 </View>
 
