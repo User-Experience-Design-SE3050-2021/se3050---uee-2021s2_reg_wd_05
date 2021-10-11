@@ -24,11 +24,14 @@ const CardEnterDetailScreen = ({navigation}) => {
             year: year,
             cvv: cvv
         }
+        const nameRegex = /[A-Z]/;
         const cardNumberRegex = /[0-9]{16}/;
         const dateRegex = /[0-9]{2}/;
         const cvvRegex = /[0-9]{3}/;
         if (card.name === "") {
             alert("Enter Card Holder Name")
+        } else if (!nameRegex.test(card.name)) {
+            alert("Enter correct Card Holder Name")
         } else if (cardNumber === "") {
             alert("Enter Card Number")
         } else if (!cardNumberRegex.test(cardNumber)) {
