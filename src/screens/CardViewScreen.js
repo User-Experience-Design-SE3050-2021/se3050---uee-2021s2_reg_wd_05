@@ -18,7 +18,9 @@ const {width} = Dimensions.get('window');
 const CardViewScreen = ({navigation}) => {
 
     const [visible, setVisible] = useState(false);
+    const [Cards, setCards] = useState([]);
     const [Card, setCard] = useState([])
+
 
     useEffect(() => {
         fetchCards().then();
@@ -27,21 +29,21 @@ const CardViewScreen = ({navigation}) => {
     const fetchCards = async () => {
         await CardService.getCards()
             .then(card => {
-                setCard(card);
+                setCards(card);
             }).catch(err => {
-            console.error(err)
-        })
+                console.error(err)
+            })
     }
 
     const btnClick = () => {
         console.log('Proceed button clicked');
     };
 
-    const CardHolder = ({card,onTouchStart}) => {
+    const CardHolder = ({card, onTouchStart}) => {
         return (
             <ImageBackground
                 source={require('../assets/images/VisaCard.png')}
-                onTouchStart={() => onTouchStart(true)}
+                onTouchStart={() => onTouchStart(card)}
                 style={styles.cards}>
                 <Text style={styles.textType}>Credit</Text>
                 <Text style={styles.textName}>{card.name}</Text>
@@ -49,6 +51,11 @@ const CardViewScreen = ({navigation}) => {
             </ImageBackground>
         );
     };
+
+    const onPressCard = (card) =>{
+        setCard(card);
+        setVisible(true);
+    }
 
     const CardPopup = ({visible, children}) => {
         const [showCard, setShowCard] = useState(visible);
@@ -94,8 +101,8 @@ const CardViewScreen = ({navigation}) => {
                             <ImageBackground source={require('../assets/images/VisaCard.png')}
                                              style={{width: 285, height: 150, marginVertical: 10}}>
                                 <Text style={styles.textCardPopup}>Credit</Text>
-                                <Text style={styles.textCardPopup2}>Zayan Malik</Text>
-                                <Text style={styles.textCardPopup2}>5142 - XXXX - XXXX - 2563</Text>
+                                <Text style={styles.textCardPopup2}>{Card.name}</Text>
+                                <Text style={styles.textCardPopup2}>{Card.cardNumber}</Text>
                             </ImageBackground>
                         </View>
                         <View style={{flexDirection: 'row'}}>
@@ -106,16 +113,18 @@ const CardViewScreen = ({navigation}) => {
                                 </TouchableOpacity>
                             </View>
                             <View style={{alignItems: 'center', width: '50%'}}>
-                                <Image source={require('../assets/images/Delete_Button.png')}
-                                       style={{width: 70, height: 70, marginVertical: 10}}/>
+                                <TouchableOpacity onPress={() => setVisible(false)}>
+                                    <Image source={require('../assets/images/Delete_Button.png')}
+                                           style={{width: 70, height: 70, marginVertical: 10}}/>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </CardPopup>
 
                     {
-                        Card.length > 0 ?
-                            Card.map(card => {
-                                return <CardHolder key={card._id} card={card} onTouchStart={setVisible}/>
+                        Cards.length > 0 ?
+                            Cards.map(card => {
+                                return <CardHolder key={card._id} card={card} onTouchStart={onPressCard}/>
                             })
                             : <Text> No Card Found</Text>
                     }
