@@ -136,6 +136,14 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         paddingLeft: 10,
 },
+    fullText: {
+    fontSize: 25,
+        padding: 15,
+        textAlign: 'right',
+        alignSelf:'stretch',
+        color: '#0000FF',
+        flexDirection:"row"
+},
 
 
 })

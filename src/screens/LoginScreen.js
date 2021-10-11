@@ -53,8 +53,6 @@ const LoginScreen = ({navigation}) => {
                 <View style={styles.container}>
                     <Image source={require('../assets/images/SettingsScreen/logo.png')}
                            style={{width: 110, height: 110}} />
-                        {/*<InputField secureTextEntry={true} text="User ID" keyboardType="default" size={6} onChangeText={setuserId}/>*/}
-                        {/*<InputField secureTextEntry={true} text="PIN" keyboardType="numeric" size={4} onChangeText={setpassword}/>*/}
                     <Text style={styles.text}> User ID </Text>
                     <TextInput style={styles.input}
                                placeholder="Ab1234"
@@ -62,7 +60,6 @@ const LoginScreen = ({navigation}) => {
                                // autoCorrect={false}
                                keyboardType="default"
                                onChangeText={setuserId}
-                               // size={6}
                                maxLength={6}
 
                     />
