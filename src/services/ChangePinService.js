@@ -1,4 +1,4 @@
-const CHANGEPIN_BASE_URI = "http://192.168.1.101:3000/changepin";
+const CHANGEPIN_BASE_URI = "http://172.20.10.2:3000/changepin";
 
 class ComplaintService {
     /**

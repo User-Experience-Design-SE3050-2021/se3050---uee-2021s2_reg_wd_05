@@ -38,7 +38,7 @@ const LoginScreen = ({navigation}) => {
                 <View style={styles.container}>
                     <Image source={require('../assets/images/SettingsScreen/logo.png')}
                            style={{width: 110, height: 110}} />
-                        <InputField text="User ID" keyboardType="numeric" size={4} onChangeText={setuserId}/>
+                        <InputField text="User ID" keyboardType="default" size={6} onChangeText={setuserId}/>
                         <InputField secureTextEntry={true} text="PIN" keyboardType="numeric" size={4} onChangeText={setpassword}/>
                     <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot PIN? </Text>
                     <View style={styles.rightText}>

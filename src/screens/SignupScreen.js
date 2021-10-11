@@ -37,9 +37,9 @@ const SignupScreen = ({navigation}) => {
                 {/*<Text style={styles.text}>User ID</Text>*/}
                 <InputField
                     text="User ID"
-                    keyboardType="numeric"
+                    keyboardType="default"
                     onChangeText={setuserId}
-                    size={4}
+                    size={6}
                 />
                 <InputField
                     text="PIN"
