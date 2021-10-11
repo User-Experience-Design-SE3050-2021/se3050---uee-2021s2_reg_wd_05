@@ -45,7 +45,7 @@ const TransactionConfirmScreen = ({navigation, route}) => {
             await TransactionService.makeTransaction(Transaction)
                 .then((response) => {
                     if (response.status === 200) {
-                        setIsVisible(true);
+                        setTimeout(() => setIsVisible(true), 2000);
                     } else {
                         alert('Something went wrong!! Try again.');
                         throw Error('Something went wrong!! Try again.' + response);
@@ -56,7 +56,7 @@ const TransactionConfirmScreen = ({navigation, route}) => {
     }
 
     const backToMain = () => {
-        navigation.navigate('BillCategory');
+        navigation.navigate('ViewCard');
     }
 
     return (

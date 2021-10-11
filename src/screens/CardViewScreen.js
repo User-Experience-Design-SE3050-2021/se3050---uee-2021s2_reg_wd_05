@@ -64,8 +64,7 @@ const CardViewScreen = ({navigation}) => {
             CardService.removeCard(id)
                 .then(res => {
                     if(res.status === 200){
-                        // setIsVisible(true);
-                        setTimeout(() => setIsVisible(true), 2000)
+                        setTimeout(() => setIsVisible(true), 2000);
                     }else{
                         alert('Something went wrong!! Try again.');
                     }
@@ -74,7 +73,7 @@ const CardViewScreen = ({navigation}) => {
     };
 
     const backToMain = () => {
-        navigation.navigate('BillCategory');
+        navigation.navigate('ViewCard');
     }
 
     const CardPopup = ({visible, children}) => {
