@@ -49,7 +49,7 @@ const CardEnterDetailScreen = ({navigation}) => {
     }
 
     const backToViewCard = () => {
-        navigation.navigate('BillCategory')
+        navigation.navigate('ViewCard')
     }
 
     return (
@@ -92,7 +92,7 @@ const CardEnterDetailScreen = ({navigation}) => {
                     </View>
                     <AlertBox
                         image={require('../assets/images/Checked.png')} text="Card Successfully added"
-                        buttonText="Back to Main" buttonColor="#13C39C" isVisible={isVisible}
+                        buttonText="Back to View Card" buttonColor="#13C39C" isVisible={isVisible}
                         onPress={backToViewCard}
                     />
                 </View>
