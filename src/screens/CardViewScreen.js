@@ -10,14 +10,14 @@ import {
     ScrollView,
     Modal, Animated
 } from "react-native";
-import {NavigationBar} from "../components";
+import {AlertBox, NavigationBar} from "../components";
 import CardService from "../services/CardService";
 
 const {width} = Dimensions.get('window');
 
 const CardViewScreen = ({navigation}) => {
-
     const [visible, setVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const [Cards, setCards] = useState([]);
     const [Card, setCard] = useState([])
 
@@ -52,9 +52,31 @@ const CardViewScreen = ({navigation}) => {
         );
     };
 
-    const onPressCard = (card) =>{
+    const onPressCard = (card) => {
         setCard(card);
         setVisible(true);
+    };
+
+    const onPressDeleteCard = (id) => {
+        console.log("ID", id);
+        if (id === '') {
+            // alert('Something went wrong!! Try again.');
+            alert('No ID');
+        } else {
+            CardService.removeCard(id)
+                .then(res => {
+                    if(res.status === 200){
+                        // setIsVisible(true);
+                        setTimeout(() => setIsVisible(true), 2000)
+                    }else{
+                        alert('Something went wrong!! Try again.');
+                    }
+                })
+        }
+    };
+
+    const backToMain = () => {
+        navigation.navigate('ViewCard');
     }
 
     const CardPopup = ({visible, children}) => {
@@ -113,7 +135,7 @@ const CardViewScreen = ({navigation}) => {
                                 </TouchableOpacity>
                             </View>
                             <View style={{alignItems: 'center', width: '50%'}}>
-                                <TouchableOpacity onPress={() => setVisible(false)}>
+                                <TouchableOpacity onPress={() => onPressDeleteCard(Card._id)}>
                                     <Image source={require('../assets/images/Delete_Button.png')}
                                            style={{width: 70, height: 70, marginVertical: 10}}/>
                                 </TouchableOpacity>
@@ -129,6 +151,11 @@ const CardViewScreen = ({navigation}) => {
                             : <Text> No Card Found</Text>
                     }
 
+                    <AlertBox
+                        image={require('../assets/images/Checked.png')}
+                        text={"Card Successfully Removed."}
+                        buttonText="Back to View Card" buttonColor="#13C39C" isVisible={isVisible}
+                        onPress={backToMain}/>
 
                 </View>
 
