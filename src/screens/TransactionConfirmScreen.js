@@ -31,7 +31,7 @@ const TransactionConfirmScreen = ({navigation, route}) => {
     const onPressTransaction = async () => {
         const Transaction = {
             fromAccount: card._id,
-            title:'Account Transaction',
+            title:'Money Transfer',
             accountNumber: transaction.accountNumber,
             accountHolderName: transaction.name,
             amount: transaction.amount,
@@ -56,7 +56,7 @@ const TransactionConfirmScreen = ({navigation, route}) => {
     }
 
     const backToMain = () => {
-        navigation.navigate('ViewCard');
+        navigation.navigate('BillCategory');
     }
 
     return (
