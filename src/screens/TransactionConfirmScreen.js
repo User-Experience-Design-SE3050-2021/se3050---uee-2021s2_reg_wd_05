@@ -79,6 +79,7 @@ const TransactionConfirmScreen = ({navigation, route}) => {
                         style={styles.input}
                         value={transaction.accountNumber}
                         keyboardType="numeric"
+                        maxLength={16}
                     />
                     <Text style={styles.text}>Account Holder Name</Text>
                     <TextInput
