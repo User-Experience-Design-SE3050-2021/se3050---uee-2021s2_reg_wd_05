@@ -73,7 +73,7 @@ const CardViewScreen = ({navigation}) => {
     };
 
     const backToMain = () => {
-        navigation.navigate('ViewCard');
+        navigation.navigate('BillCategory')
     }
 
     const CardPopup = ({visible, children}) => {

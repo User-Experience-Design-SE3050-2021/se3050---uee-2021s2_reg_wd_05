@@ -47,7 +47,6 @@ const CardEnterDetailScreen = ({navigation}) => {
         } else {
             await CardService.addCard(card)
                 .then((response) => {
-                    console.log("response", response);
                     if (response.status === 200) {
                         setIsVisible(true);
                     } else {
