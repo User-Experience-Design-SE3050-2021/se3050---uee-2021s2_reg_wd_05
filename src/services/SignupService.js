@@ -38,7 +38,7 @@ class SignupService {
     }
 
     /**
-     *  This service function is to get a order from backend
+     *  This service function is to get single Registered user from backend
      */
     async getSignupByID(id) {
         return await fetch(SIGNUP_BASE_URI + id, {

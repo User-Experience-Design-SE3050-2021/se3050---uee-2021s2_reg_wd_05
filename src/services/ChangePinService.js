@@ -2,7 +2,7 @@ const CHANGEPIN_BASE_URI = "http://172.20.10.2:3000/changepin";
 
 class ComplaintService {
     /**
-     *  This service function handle is to change pin
+     *  This service function  is to handle change pin
      */
     async updatePin(id,Pin){
         console.log(Pin);
@@ -20,7 +20,7 @@ class ComplaintService {
     }
 
     /**
-     *  This service function is to Get All PIN from backend
+     *  This service function is to Get All changed PIN from backend
      */
     async getPin() {
         return await fetch(CHANGEPIN_BASE_URI, {
@@ -36,7 +36,7 @@ class ComplaintService {
     }
 
     /**
-     *  This service function is to get one PIN from backend
+     *  This service function is to get one changed PIN from backend
      */
     async getPinByID(id) {
         return await fetch(CHANGEPIN_BASE_URI + id, {

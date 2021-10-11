@@ -38,7 +38,7 @@ class LoginService {
     }
 
     /**
-     *  This service function is to get one Complaint from the backend
+     *  This service function is to get one Login from the backend
      */
     async loginByID(id) {
         return await fetch(LOGIN_BASE_URI + id, {
