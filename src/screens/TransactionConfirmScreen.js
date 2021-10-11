@@ -83,24 +83,28 @@ const TransactionConfirmScreen = ({navigation, route}) => {
                         value={transaction.accountNumber}
                         keyboardType="numeric"
                         maxLength={16}
+                        editable={false}
                     />
                     <Text style={styles.text}>Account Holder Name</Text>
                     <TextInput
                         style={styles.input}
                         value={transaction.name}
                         keyboardType="default"
+                        editable={false}
                     />
                     <Text style={styles.text}>Amount</Text>
                     <TextInput
                         style={styles.input}
                         value={'Rs.' + transaction.amount + '.00'}
                         keyboardType="number-pad"
+                        editable={false}
                     />
                     <Text style={styles.text}>Description</Text>
                     <TextInput
                         style={styles.input}
                         value={transaction.description}
                         keyboardType="default"
+                        editable={false}
                     />
                     <InputField text="CVV" keyboardType="numeric" size={3} onChangeText={setCvv}/>
                     <View style={styles.buttonContainer}>

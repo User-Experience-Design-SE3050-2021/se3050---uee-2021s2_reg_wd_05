@@ -71,7 +71,7 @@ const TransactionEnterDetailScreen = ({navigation}) => {
                             }
                         </Picker>
                     </View>
-                    <InputField text="Account No" keyboardType="numeric" onChangeText={setAccountNumber}/>
+                    <InputField text="Account No" keyboardType="numeric" onChangeText={setAccountNumber} size={16} />
                     <InputField text="Account Holder Name" onChangeText={setName}/>
                     <InputField text="Amount" keyboardType="numeric" onChangeText={setAmount}/>
                     <InputField text="Description" onChangeText={setDescription}/>
