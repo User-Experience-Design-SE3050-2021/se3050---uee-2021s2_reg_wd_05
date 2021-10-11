@@ -31,7 +31,7 @@ const TransactionConfirmScreen = ({navigation, route}) => {
     const onPressTransaction = async () => {
         const Transaction = {
             fromAccount: card._id,
-            title:'Money Transfer',
+            title: 'Money Transfer',
             accountNumber: transaction.accountNumber,
             accountHolderName: transaction.name,
             amount: transaction.amount,
@@ -39,8 +39,11 @@ const TransactionConfirmScreen = ({navigation, route}) => {
             reference: '123654987',
             Date: moment(Date().toLocaleString()).format("YYYY-MM-DD"),
         }
+        const cvvRegex = /[0-9]{3}/;
         if (cvv === '') {
             alert("Enter CVV Number")
+        } else if (!cvvRegex.test(cvv)) {
+            alert("Enter correct CVV Number")
         } else {
             await TransactionService.makeTransaction(Transaction)
                 .then((response) => {
