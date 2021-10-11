@@ -73,7 +73,7 @@ const CardViewScreen = ({navigation}) => {
     };
 
     const backToMain = () => {
-        navigation.navigate('Back to View Card');
+        navigation.navigate('ViewCard');
     }
 
     const CardPopup = ({visible, children}) => {
