@@ -19,7 +19,7 @@ const CardEnterDetailScreen = ({navigation}) => {
     const onPressCard = async() => {
         const card = {
             name: name,
-            cardNumber: cardNumber,
+            cardNumber: '4321 - XXXX - XXXX - 9876',
             month: month,
             year: year,
             cvv: cvv
@@ -27,7 +27,7 @@ const CardEnterDetailScreen = ({navigation}) => {
 
         if (card.name === "") {
             alert("Enter Card Holder Name")
-        } else if (card.cardNumber === "") {
+        } else if (cardNumber === "") {
             alert("Enter Card Number")
         } else if (card.month === "" || card.year === "") {
             alert("Enter Expired Date")
