@@ -27,7 +27,7 @@ const TransactionHistoryScreen = ({navigation}) => {
                 <View style={styles.contentContainer}>
                     <Text
                         style={styles.textHeading}>
-                        CEYLON ELECTRICITY BOARD
+                        {transaction.title}
                     </Text>
                     <View style={styles.textContainer}>
                         <Text style={styles.text}>From: {transaction.fromAccount.cardNumber}</Text>
