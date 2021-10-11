@@ -19,7 +19,7 @@ const CustomerProfileScreen = ({navigation}) =>{
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>User ID:</Text>
-                    <Text style={styles.rightText}>1259</Text>
+                    <Text style={styles.rightText}>Cb1259</Text>
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.text}>Address:</Text>
