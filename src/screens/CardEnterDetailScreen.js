@@ -16,7 +16,7 @@ const CardEnterDetailScreen = ({navigation}) => {
         setSelection(true)
     }
 
-    const onPressCard = async() => {
+    const onPressCard = async () => {
         const card = {
             name: name,
             cardNumber: '4321 - XXXX - XXXX - 9876',
@@ -24,22 +24,30 @@ const CardEnterDetailScreen = ({navigation}) => {
             year: year,
             cvv: cvv
         }
-
+        const cardNumberRegex = /[0-9]{16}/;
+        const dateRegex = /[0-9]{2}/;
+        const cvvRegex = /[0-9]{3}/;
         if (card.name === "") {
             alert("Enter Card Holder Name")
         } else if (cardNumber === "") {
             alert("Enter Card Number")
+        } else if (!cardNumberRegex.test(card.cardNumber)) {
+            alert("Enter correct Card Number")
         } else if (card.month === "" || card.year === "") {
             alert("Enter Expired Date")
+        } else if (!dateRegex.test(card.month) || !dateRegex.test(card.year)) {
+            alert("Enter correct Expired Date")
         } else if (card.cvv === "") {
             alert("Enter CVV Number")
+        } else if (!cvvRegex.test(card.cvv)) {
+            alert("Enter correct CVV Number")
         } else {
             await CardService.addCard(card)
                 .then((response) => {
-                    console.log("response",response);
-                    if(response.status === 200){
+                    console.log("response", response);
+                    if (response.status === 200) {
                         setIsVisible(true);
-                    }else{
+                    } else {
                         alert('Something went wrong!! Try again.');
                         throw Error('Something went wrong!! Try again.' + response);
                     }
