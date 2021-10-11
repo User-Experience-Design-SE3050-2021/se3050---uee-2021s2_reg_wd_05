@@ -21,7 +21,6 @@ const TransactionEnterDetailScreen = ({navigation}) => {
         await CardService.getCards()
             .then((cards) => {
                 setCards(cards)
-                setFromAccount(cards[0]._id);
             })
             .catch((err) => {
                 console.error(err);
