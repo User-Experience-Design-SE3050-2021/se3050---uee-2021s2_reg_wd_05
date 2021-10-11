@@ -58,10 +58,8 @@ const CardViewScreen = ({navigation}) => {
     };
 
     const onPressDeleteCard = (id) => {
-        console.log("ID", id);
         if (id === '') {
-            // alert('Something went wrong!! Try again.');
-            alert('No ID');
+            alert('Something went wrong!! Try again.');
         } else {
             CardService.removeCard(id)
                 .then(res => {
@@ -76,7 +74,7 @@ const CardViewScreen = ({navigation}) => {
     };
 
     const backToMain = () => {
-        navigation.navigate('ViewCard');
+        navigation.navigate('BillCategory');
     }
 
     const CardPopup = ({visible, children}) => {
