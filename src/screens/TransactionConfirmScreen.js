@@ -31,6 +31,7 @@ const TransactionConfirmScreen = ({navigation, route}) => {
     const onPressTransaction = async () => {
         const Transaction = {
             fromAccount: card._id,
+            title:'Account Transaction',
             accountNumber: transaction.accountNumber,
             accountHolderName: transaction.name,
             amount: transaction.amount,
