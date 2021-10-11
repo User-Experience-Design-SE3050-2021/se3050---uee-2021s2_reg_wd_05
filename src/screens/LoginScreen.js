@@ -1,20 +1,34 @@
 import React, {useState} from "react";
-import {View, Text, StyleSheet, Image, ScrollView} from "react-native";
+import {View, Text, StyleSheet, Image, ScrollView,TextInput} from "react-native";
 import {PrimaryButton, InputField, AlertBox} from "../components";
 import CardService from "../services/CardService";
+import ChangePinService from "../services/ChangePinService";
+import LoginService from "../services/LoginService";
+
+
+
 
 const LoginScreen = ({navigation}) => {
      const [userId, setuserId] = useState('');
      const [password, setpassword] = useState('');
 
     const loginClick = async () => {
+        // let login = {
+        //     userId: userId,
+        //     password: password,
+        // };
         if (userId === '') {
             alert('Enter User ID ')
         }
         else if (password === '') {
             alert('Enter Password ')
         }else{
-            navigation.navigate('BillCategory')
+            // LoginService.login(login).then(res => {
+            //     console.log('After', res);
+            alert('Login Successful')
+                navigation.navigate('BillCategory');
+            // });
+            // navigation.navigate('BillCategory')
         }
         console.log('button clicked');
 
@@ -31,6 +45,7 @@ const LoginScreen = ({navigation}) => {
     const ForgotClick = () => {
         console.log('ForgotPINScreen clicked');
         navigation.navigate('ForgotPin')
+        alert('OTP Has Send to your Mobile')
     }
 
     return(
@@ -38,8 +53,29 @@ const LoginScreen = ({navigation}) => {
                 <View style={styles.container}>
                     <Image source={require('../assets/images/SettingsScreen/logo.png')}
                            style={{width: 110, height: 110}} />
-                        <InputField text="User ID" keyboardType="default" size={6} onChangeText={setuserId}/>
-                        <InputField secureTextEntry={true} text="PIN" keyboardType="numeric" size={4} onChangeText={setpassword}/>
+                        {/*<InputField secureTextEntry={true} text="User ID" keyboardType="default" size={6} onChangeText={setuserId}/>*/}
+                        {/*<InputField secureTextEntry={true} text="PIN" keyboardType="numeric" size={4} onChangeText={setpassword}/>*/}
+                    <Text style={styles.text}> User ID </Text>
+                    <TextInput style={styles.input}
+                               placeholder="Ab1234"
+                               // secureTextEntry
+                               // autoCorrect={false}
+                               keyboardType="default"
+                               onChangeText={setuserId}
+                               // size={6}
+                               maxLength={6}
+
+                    />
+                    <Text style={styles.text}> PIN </Text>
+                    <TextInput style={styles.input}
+                               placeholder="****"
+                               secureTextEntry
+                               autoCorrect={false}
+                               keyboardType="numeric"
+                               onChangeText={setpassword}
+                               maxLength={4}
+                    />
+
                     <Text style={styles.forgotPassword} onPress={ForgotClick} > Forgot PIN? </Text>
                     <View style={styles.rightText}>
                         <Image source={require('../assets/images/Right_Button.png')}
@@ -113,6 +149,21 @@ const styles = StyleSheet.create({
         color: '#0000FF',
         flexDirection:"row"
     },
-
+    text: {
+        fontSize: 18,
+        paddingTop: 10,
+        paddingLeft: 8,
+        marginRight: 'auto',
+    }, input: {
+        width: 354,
+        height: 48,
+        margin: 12,
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 10,
+        marginRight: 'auto',
+        backgroundColor: 'white',
+        paddingLeft: 10,
+    },
 })
 export default LoginScreen;

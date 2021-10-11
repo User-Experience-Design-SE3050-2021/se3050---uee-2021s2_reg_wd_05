@@ -1,17 +1,17 @@
-const SIGNUP_BASE_URI = 'http://172.20.10.2:8080/signup'; //172.20.10.2
+const LOGIN_BASE_URI = "http://172.20.10.2:3000/login";//172.20.10.2
 
-class SignupService {
+class LoginService {
     /**
-     *  This service function is to Add Signup Details
+     *  This service function is to handle Login
      */
-    async createSignup(signup) {
-        console.log(signup);
-        return await fetch(SIGNUP_BASE_URI, {
+    async login(login) {
+        console.log(login);
+        return await fetch(LOGIN_BASE_URI, {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json',
             },
-            body: JSON.stringify(signup),
+            body: JSON.stringify(login),
         })
             .then(response => {
                 console.log(response);
@@ -22,10 +22,10 @@ class SignupService {
             });
     }
     /**
-     *  This service function is to Get All Registered users from backend
+     *  This service function is to Get All Logins from backend
      */
-    async getSignup() {
-        return await fetch(SIGNUP_BASE_URI, {
+    async getLogin() {
+        return await fetch(LOGIN_BASE_URI, {
             method: 'GET',
         })
             .then(response => {
@@ -38,10 +38,10 @@ class SignupService {
     }
 
     /**
-     *  This service function is to get a order from backend
+     *  This service function is to get one Complaint from backend
      */
-    async getSignupByID(id) {
-        return await fetch(SIGNUP_BASE_URI + id, {
+    async loginByID(id) {
+        return await fetch(LOGIN_BASE_URI + id, {
             method: 'GET',
         })
             .then(response => {
@@ -53,4 +53,4 @@ class SignupService {
     }
 
 }
-export default new SignupService();
+export default new LoginService();

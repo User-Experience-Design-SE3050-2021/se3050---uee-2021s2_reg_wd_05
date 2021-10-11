@@ -9,7 +9,7 @@ const ForgotPinScreen = ({navigation}) =>  {
 
     const btnClick = () => {
         if (otp === '') {
-            alert('Please Enter the OTP Sent to Your Phone ')
+            alert('Please Enter the OTP Sent to Your Mobile ')
         }
         else if (pin === '') {
             alert('Enter PIN ')
@@ -26,10 +26,36 @@ const ForgotPinScreen = ({navigation}) =>  {
         <View style={styles.mainContainer}>
             <View style={styles.container}>
                 {/*<Text>Forgot PIN</Text>*/}
-                    <InputField text="OTP(Sent To Phone)" keyboardType="numeric" size={4} onChangeText={setotp}/>
-                    <InputField text="PIN" keyboardType="numeric" size={4} onChangeText={setpin}/>
-                    <InputField text="Confirm PIN" keyboardType="numeric" size={4} onChangeText={setconfirmPin}/>
-
+                {/*    <InputField text="OTP(Sent To Phone)" keyboardType="numeric" size={4} onChangeText={setotp} secureTextEntry={true}/>*/}
+                {/*    <InputField text="PIN" keyboardType="numeric" size={4} onChangeText={setpin} secureTextEntry={true}/>*/}
+                {/*    <InputField text="Confirm PIN" keyboardType="numeric" size={4} onChangeText={setconfirmPin} secureTextEntry={true}/>*/}
+                <Text style={styles.text}>OTP(Sent To Phone)</Text>
+                <TextInput style={styles.input}
+                           placeholder="****"
+                    secureTextEntry
+                    autoCorrect={false}
+                           keyboardType="numeric"
+                           maxLength={4}
+                           onChangeText={setotp}
+                />
+                <Text style={styles.text}>PIN</Text>
+                <TextInput style={styles.input}
+                           placeholder="****"
+                           secureTextEntry
+                           autoCorrect={false}
+                           keyboardType="numeric"
+                           maxLength={4}
+                           onChangeText={setpin}
+                />
+                <Text style={styles.text}>Confirm PIN</Text>
+                <TextInput style={styles.input}
+                           placeholder="****"
+                            secureTextEntry
+                            autoCorrect={false}
+                           keyboardType="numeric"
+                           maxLength={4}
+                           onChangeText={setconfirmPin}
+                />
                     <PrimaryButton onPress={btnClick} text="Submit"/>
             </View>
         </View>
@@ -44,10 +70,26 @@ const styles = StyleSheet.create({
         alignItems:'center',
         height:'auto',
         backgroundColor:'white',
-        padding:30,
-        borderRadius:5
+        padding:10,
+        borderRadius:4
 
-    }
+    },
+    text: {
+        fontSize: 18,
+        paddingTop: 10,
+        paddingLeft: 13,
+        marginRight: 'auto',
+    }, input: {
+        width: 354,
+        height: 48,
+        margin: 12,
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 10,
+        marginRight: 'auto',
+        backgroundColor: 'white',
+        paddingLeft: 10,
+    },
 })
 
 export default ForgotPinScreen;

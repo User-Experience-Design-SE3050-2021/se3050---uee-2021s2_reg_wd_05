@@ -10,11 +10,11 @@ const ChangePinScreen = ({navigation}) =>  {
     const [confirmPin, setconfirmPin] = useState('');
 
     const btnClick = () => {
-        let changePin = {
-            oldPin: oldPin,
-            newPin: newPin,
-            confirmPin:confirmPin,
-        };
+        // let changePin = {
+        //     oldPin: oldPin,
+        //     newPin: newPin,
+        //     confirmPin:confirmPin,
+        // };
 
         if (oldPin === '') {
             alert('Enter Your Old PIN')
@@ -24,10 +24,10 @@ const ChangePinScreen = ({navigation}) =>  {
         }else if (confirmPin === '') {
             alert('Confirm the New PIN ')
         }else{
-            ChangePinService.createPin(changePin).then(res => {
-                console.log('After', res);
+            // ChangePinService.createPin(changePin).then(res => {
+            //     console.log('After', res);
                 navigation.navigate('Login');
-            });
+            // });
         }
         console.log('button clicked');
     }
@@ -35,9 +35,36 @@ const ChangePinScreen = ({navigation}) =>  {
     return(
         <View style={styles.mainContainer}>
             <View style={styles.container}>
-                <InputField text="Old PIN" keyboardType="numeric" size={4} onChangeText={setoldPin}/>
-                <InputField text="New PIN" keyboardType="numeric" size={4} onChangeText={setnewPin}/>
-                <InputField text="Confirm PIN" keyboardType="numeric" size={4} onChangeText={setconfirmPin}/>
+                {/*<InputField text="Old PIN" keyboardType="numeric" size={4} onChangeText={setoldPin}secureTextEntry={true} />*/}
+                {/*<InputField text="New PIN" keyboardType="numeric" size={4} onChangeText={setnewPin} secureTextEntry={true}/>*/}
+                {/*<InputField text="Confirm PIN" keyboardType="numeric" size={4} onChangeText={setconfirmPin} secureTextEntry={true}/>*/}
+                <Text style={styles.text}>Old PIN</Text>
+                <TextInput style={styles.input}
+                           placeholder="****"
+                           secureTextEntry
+                           autoCorrect={false}
+                           keyboardType="numeric"
+                           maxLength={4}
+                           onChangeText={setoldPin}
+                />
+                <Text style={styles.text}>New PIN</Text>
+                <TextInput style={styles.input}
+                           placeholder="****"
+                           secureTextEntry
+                           autoCorrect={false}
+                           keyboardType="numeric"
+                           maxLength={4}
+                           onChangeText={setnewPin}
+                />
+                <Text style={styles.text}>Confirm PIN</Text>
+                <TextInput style={styles.input}
+                           placeholder="****"
+                           secureTextEntry
+                           autoCorrect={false}
+                           keyboardType="numeric"
+                           maxLength={4}
+                           onChangeText={setconfirmPin}
+                />
 
                 <PrimaryButton onPress={btnClick} text="Submit"/>
             </View>
@@ -56,14 +83,29 @@ const styles = StyleSheet.create({
         alignItems:'center',
         height:'auto',
         backgroundColor:'white',
-        padding:30,
-        borderRadius:5
+        padding:10,
+        borderRadius:4
 
     },
     bottomContainer: {
     paddingTop: 118,
         alignItems: 'center'
-},
+},text: {
+        fontSize: 18,
+        paddingTop: 10,
+        paddingLeft: 13,
+        marginRight: 'auto',
+    }, input: {
+        width: 354,
+        height: 48,
+        margin: 12,
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 10,
+        marginRight: 'auto',
+        backgroundColor: 'white',
+        paddingLeft: 10,
+    },
 
 })
 

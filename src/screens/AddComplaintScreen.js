@@ -12,10 +12,10 @@ const AddComplaintScreen = ({navigation}) =>  {
 
 
     const btnClick = () => {
-        let complaint = {
-            message: message,
-            complaintType: complaintType,
-        };
+        // let complaint = {
+        //     message: message,
+        //     complaintType: complaintType,
+        // };
 
         if (message === '') {
             alert('Enter Message ')
@@ -23,11 +23,12 @@ const AddComplaintScreen = ({navigation}) =>  {
         else if (complaintType === '') {
             alert('Enter Complaint Type ')
         }else{
-            console.log(complaint);
-            ComplaintService.createComplaint(complaint).then(res => {
-                console.log('After', res);
+            // console.log(complaint);
+            // ComplaintService.createComplaint(complaint).then(res => {
                 navigation.navigate('ViewComplaints');
-            });
+                // console.log('After', res);
+
+            // });
             // navigation.navigate('ViewComplaints')
         }
         console.log('button clicked');
